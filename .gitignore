@@ -1,0 +1,9 @@
+# Claude Code skills gitignore
+*.log
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+__pycache__/
+*.pyc
+*.pyo

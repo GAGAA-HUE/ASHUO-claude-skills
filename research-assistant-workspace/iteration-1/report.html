@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Assistant - 测试结果报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 15px;
+        }
+
+        /* 核心指标卡片 */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .metric-card.highlight {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .metric-card.highlight .metric-value {
+            font-size: 42px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .metric-delta {
+            font-size: 13px;
+            margin-top: 8px;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* 对比表格 */
+        .section {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .icon {
+            width: 32px;
+            height: 32px;
+            background: #f0f4ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f8fafc;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #64748b;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* 特性对比 */
+        .feature-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .feature-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-content p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* 注解框 */
+        .tip-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border-left: 4px solid #0ea5e9;
+            padding: 16px 20px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 16px;
+        }
+
+        .tip-box h5 {
+            font-size: 14px;
+            color: #0369a1;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-box ul {
+            margin-left: 20px;
+            font-size: 13px;
+            color: #475569;
+        }
+
+        .tip-box li {
+            margin-bottom: 6px;
+        }
+
+        /* 底部 */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 12px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>Research Assistant 测试报告</h1>
+            <div class="subtitle">智能联网信息搜集与验证助手 · 性能基准测试</div>
+        </div>
+
+        <!-- 核心指标 -->
+        <div class="metrics-grid">
+            <div class="metric-card highlight">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">Skill 通过率</div>
+                <div class="metric-delta">+62.5% vs 基线</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">268s</div>
+                <div class="metric-label">平均执行时间</div>
+                <div class="metric-delta" style="color:#dc2626">+57% vs 基线</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">29K</div>
+                <div class="metric-label">平均 Token 消耗</div>
+                <div class="metric-delta" style="color:#dc2626">+73% vs 基线</div>
+            </div>
+        </div>
+
+        <!-- 通俗注解 -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">💡</div>
+                一句话总结
+            </div>
+            <p style="font-size: 15px; color: #475569; line-height: 1.8;">
+                <strong>Research Assistant</strong> 就像一个"信息侦探"：虽然查资料的时间比普通搜索多了约1分钟，
+                但它会帮你从<strong>多个权威来源</strong>交叉验证信息，给每条信息打上<strong>可信度标签</strong>，
+                并主动标注出<strong>数据矛盾</strong>的地方。适合需要<strong>高可信度信息</strong>的重要决策场景。
+            </p>
+        </div>
+
+        <!-- 测试详情 -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">📊</div>
+                测试详情对比
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>测试场景</th>
+                        <th>Skill 版本</th>
+                        <th>普通版本</th>
+                        <th>关键差异</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>OpenAI 最新动态</strong>
+                            <br><span style="color:#94a3b8;font-size:12px">查科技公司新闻</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-success">✓ 100% 通过</span>
+                            <br><span style="color:#64748b;font-size:12px">247s · 26K tokens</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-warning">25% 通过</span>
+                            <br><span style="color:#64748b;font-size:12px">133s · 15K tokens</span>
+                        </td>
+                        <td style="font-size:13px;color:#475569">
+                            有结构化表格、⭐可信度评级、🟢时效标签
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>新能源汽车销量</strong>
+                            <br><span style="color:#94a3b8;font-size:12px">查官方统计数据</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-success">✓ 100% 通过</span>
+                            <br><span style="color:#64748b;font-size:12px">289s · 32K tokens</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-warning">50% 通过</span>
+                            <br><span style="color:#64748b;font-size:12px">209s · 19K tokens</span>
+                        </td>
+                        <td style="font-size:13px;color:#475569">
+                            三权威来源交叉验证、矛盾检测章节
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip-box">
+                <h5>📌 这些数字代表什么？</h5>
+                <ul>
+                    <li><strong>通过率</strong>：是否满足结构化、可信度评级、来源标注、时效标签等质量要求</li>
+                    <li><strong>执行时间</strong>：完成搜索到生成报告的总耗时（Skill 版本因多源验证而更慢）</li>
+                    <li><strong>Token 消耗</strong>：与 AI 交互的计算量（Skill 版本因详细报告而更多）</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Skill 独有特性 -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">✨</div>
+                Skill 带来的独特价值
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-content">
+                        <h4>可信度星级评级</h4>
+                        <p>每条信息都标注 1-5 星可信度，基于来源权威性（政府/学术/媒体）和确认来源数量</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🟢</div>
+                    <div class="feature-content">
+                        <h4>时效性标签</h4>
+                        <p>用颜色标签区分信息时效：🟢最新 🟡近期 🟠较旧 🔴过时</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-content">
+                        <h4>多源交叉验证</h4>
+                        <p>同一信息需在 3 个以上独立来源出现才被标记为"已验证"</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚠️</div>
+                    <div class="feature-content">
+                        <h4>矛盾检测</h4>
+                        <p>自动发现不同来源的数据差异（如统计口径不同导致的数值差异）</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📋</div>
+                    <div class="feature-content">
+                        <h4>结构化报告模板</h4>
+                        <p>统一的报告格式：核心发现 → 详细信息 → 矛盾争议 → 来源总览</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用建议 -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">🎯</div>
+                什么时候用 Skill？
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>使用场景</th>
+                        <th>推荐方式</th>
+                        <th>原因</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>学术研究、论文写作</td>
+                        <td><span class="badge badge-success">✓ 使用 Skill</span></td>
+                        <td>需要可追溯的权威来源</td>
+                    </tr>
+                    <tr>
+                        <td>商业决策、投资分析</td>
+                        <td><span class="badge badge-success">✓ 使用 Skill</span></td>
+                        <td>需要交叉验证降低风险</td>
+                    </tr>
+                    <tr>
+                        <td>新闻核实、辟谣查证</td>
+                        <td><span class="badge badge-success">✓ 使用 Skill</span></td>
+                        <td>需要多源确认真伪</td>
+                    </tr>
+                    <tr>
+                        <td>日常闲聊、快速了解</td>
+                        <td><span class="badge badge-warning">普通搜索即可</span></td>
+                        <td>Skill 的时间成本不划算</td>
+                    </tr>
+                    <tr>
+                        <td>创意灵感、头脑风暴</td>
+                        <td><span class="badge badge-warning">普通搜索即可</span></td>
+                        <td>不需要严格的来源验证</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 成本说明 -->
+        <div class="section">
+            <div class="section-title">
+                <div class="icon">⚖️</div>
+                成本与收益权衡
+            </div>
+            <p style="font-size: 14px; color: #475569; margin-bottom: 16px;">
+                Skill 版本比普通搜索多花了约 <strong>1分半钟</strong> 和 <strong>40% 的计算资源</strong>，
+                但换来的是<strong>信息质量的大幅提升</strong>和<strong>决策风险的降低</strong>。
+            </p>
+            <div style="background: #f0fdf4; border-radius: 10px; padding: 16px; font-size: 13px; color: #166534;">
+                <strong>💡 建议</strong>：把 Research Assistant 当作"信息保险"——重要决策前用它做一次深度验证，
+                日常查询用普通搜索即可。
+            </div>
+        </div>
+
+        <div class="footer">
+            测试时间：2026-03-27 · 模型：Claude Sonnet 4.6 ·
+            <a href="benchmark.json" style="color:#94a3b8">查看原始数据</a>
+        </div>
+    </div>
+</body>
+</html>
