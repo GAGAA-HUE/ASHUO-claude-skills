@@ -11,6 +11,7 @@
 | 技能名 | 类型 | 功能描述 |
 |--------|------|----------|
 | `historian-storyteller` | 研究+创作 | 历史人物/事件深度研究，输出编剧视角的戏剧素材 |
+| `image-prompt-engineer` | AI 绘画 | 图像提示词工程师：为 Seedream、Nano Banana、即梦、可灵等中文 AI 绘画模型生成精准提示词 |
 | `paiwotscdashi` | 视频生成 | 拍我视频大师：时间轴驱动的 AI 视频提示词生成器，音画同步专家 |
 | `research-assistant` | 信息搜集 | 智能联网搜索、多源交叉验证、定时监控任务 |
 | `screenwriting-master` | 创作 | 专业编剧辅助，剧本结构分析与创作指导 |
@@ -57,6 +58,30 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 ```
 @historian-storyteller 我想做一期关于诸葛亮的视频
 ```
+
+---
+
+### image-prompt-engineer（图像提示词工程师）
+
+**适用场景**：AI 绘画提示词生成、文生图、图生图、风格迁移
+
+**核心能力**：
+- 支持主流中文 AI 绘画模型（Seedream、Nano Banana、即梦、可灵等）
+- 精准提示词结构：主体 > 动作 > 场景 > 风格 > 质量 > 技术参数
+- 模型特性适配（写实人像、东方美学、商业摄影、插画风格等）
+- 负面提示词优化
+- 比例参数支持（如 `--ar 16:9`）
+
+**触发方式**：
+```
+@image-prompt-engineer 画一张古风女子在樱花树下的图
+@image-prompt-engineer 生成一张赛博朋克风格的城市夜景
+```
+
+**支持模型**：
+- **Seedream**（字节跳动/即梦）：写实人像、东方美学、商业摄影
+- **Nano Banana**（美团）：插画风格、动漫人物、场景渲染
+- **可灵 AI**（快手）：视频生成、动态场景、电影感画面
 
 ---
 
