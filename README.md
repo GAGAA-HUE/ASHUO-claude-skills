@@ -13,6 +13,7 @@
 | `extract-video` | 文件解析 | 提取视频信息、关键帧、音频、字幕 |
 | `historian-storyteller` | 研究+创作 | 历史人物/事件深度研究，输出编剧视角的戏剧素材 |
 | `image-prompt-engineer` | AI 绘画 | 图像提示词工程师：为 Seedream、Nano Banana、即梦、可灵等中文 AI 绘画模型生成精准提示词 |
+| `novel-crawler` | 网络爬取 | 爬取网络小说并保存为本地 txt 文件，支持通用网站适配 |
 | `paiwotscdashi` | 视频生成 | 拍我视频大师：时间轴驱动的 AI 视频提示词生成器，音画同步专家 |
 | `read-docx` | 文件解析 | 读取 Microsoft Word 文档内容并转为纯文本/Markdown |
 | `read-pptx` | 文件解析 | 读取 Microsoft PowerPoint 演示文稿文本内容 |
@@ -197,6 +198,31 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 - 官方技能规范模板
 - SKILL.md 结构指导
 - 技能调试与优化
+
+---
+
+### novel-crawler（小说爬虫）
+
+**适用场景**：下载网络小说、保存在线小说到本地
+
+**核心能力**：
+- 通用小说网站适配（自动识别章节结构）
+- 单线程稳定爬取（防封策略）
+- 智能内容清理（移除广告、导航）
+- 自动编码检测（UTF-8、GBK、GB2312）
+- 合并输出为单个 txt 文件
+
+**触发方式**：
+```
+@novel-crawler 帮我下载这个小说 https://example.com/novel/123/
+```
+
+**使用说明**：
+1. 提供小说目录页或第一章 URL
+2. Claude 自动分析页面结构，识别章节列表
+3. 确认爬取范围（起始/结束章节）
+4. 单线程顺序爬取，每章间隔 1-2 秒
+5. 保存为格式化的 txt 文件
 
 ---
 
