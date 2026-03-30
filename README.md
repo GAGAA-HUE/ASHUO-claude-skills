@@ -10,9 +10,13 @@
 
 | 技能名 | 类型 | 功能描述 |
 |--------|------|----------|
+| `extract-video` | 文件解析 | 提取视频信息、关键帧、音频、字幕 |
 | `historian-storyteller` | 研究+创作 | 历史人物/事件深度研究，输出编剧视角的戏剧素材 |
 | `image-prompt-engineer` | AI 绘画 | 图像提示词工程师：为 Seedream、Nano Banana、即梦、可灵等中文 AI 绘画模型生成精准提示词 |
 | `paiwotscdashi` | 视频生成 | 拍我视频大师：时间轴驱动的 AI 视频提示词生成器，音画同步专家 |
+| `read-docx` | 文件解析 | 读取 Microsoft Word 文档内容并转为纯文本/Markdown |
+| `read-pptx` | 文件解析 | 读取 Microsoft PowerPoint 演示文稿文本内容 |
+| `read-xlsx` | 文件解析 | 读取 Microsoft Excel 电子表格内容并结构化输出 |
 | `research-assistant` | 信息搜集 | 智能联网搜索、多源交叉验证、定时监控任务 |
 | `screenwriting-master` | 创作 | 专业编剧辅助，剧本结构分析与创作指导 |
 | `seedance-director` | 视频生成 | 电影级分镜提示词生成器，专为 Seedance 2.x 优化 |
@@ -193,6 +197,74 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 - 官方技能规范模板
 - SKILL.md 结构指导
 - 技能调试与优化
+
+---
+
+### extract-video（视频解析）
+
+**适用场景**：视频文件分析、内容提取、转码处理
+
+**核心能力**：
+- 提取视频基本信息（分辨率、时长、码率、编码格式）
+- 提取关键帧截图
+- 提取音频轨道
+- 提取/生成字幕（支持内嵌字幕和 Whisper 转写）
+
+**触发方式**：
+```
+/extract-video <视频路径> [info|frames|audio|subtitle]
+```
+
+---
+
+### read-docx（Word 文档读取）
+
+**适用场景**：分析、搜索、总结 Microsoft Word 文档
+
+**核心能力**：
+- 提取 `.docx` 文档纯文本内容
+- 转换为 Markdown 格式保留层级结构
+- 提取表格内容（Markdown 表格形式）
+- 自动检查和安装 `python-docx` 依赖
+
+**触发方式**：
+```
+/read-docx <文档路径>
+```
+
+---
+
+### read-pptx（PPT 演示文稿读取）
+
+**适用场景**：总结、分析、提取 PowerPoint 文字信息
+
+**核心能力**：
+- 按幻灯片顺序提取文本内容
+- 保留标题和正文层级结构
+- 自动检查和安装 `python-pptx` 依赖
+
+**触发方式**：
+```
+/read-pptx <演示文稿路径>
+```
+
+---
+
+### read-xlsx（Excel 表格读取）
+
+**适用场景**：查看表格数据、分析特定 Sheet、提取单元格内容
+
+**核心能力**：
+- 列出所有工作表（Sheet）
+- 读取指定 Sheet 的单元格数据
+- 以 Markdown 表格形式结构化输出
+- 支持 `.xlsx` 和 `.xls` 格式
+- 自动检查和安装 `openpyxl` / `xlrd` 依赖
+
+**触发方式**：
+```
+/read-xlsx <表格路径> [Sheet名或索引]
+```
 
 ## 🔄 同步与更新
 
