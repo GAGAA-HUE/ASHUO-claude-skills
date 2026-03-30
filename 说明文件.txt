@@ -1,0 +1,13 @@
+historian-storyteller  -- 历史研究与编剧洞察
+
+research-assistant  -- 信息查询
+
+screenwriting-master  -- 编剧大师
+
+seedance-director  -- seedance2.0分镜大师
+
+skill-creator  -- claude官方技能创建
+
+socratic-screenwriter  -- 苏格拉底编剧
+
+video-content-analyst  -- 视频内容分析
