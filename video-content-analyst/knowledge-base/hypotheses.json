@@ -1,0 +1,202 @@
+{
+  "hypotheses": [
+    {
+      "id": "h-001",
+      "statement": "无对白动画比有对白动画跨文化传播力更强",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_no-585-oscar", "2026-03-26_piper-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar", "2026-03-26_burrow-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "8部中有7部无对白，且多为获奖作品，验证成功"
+    },
+    {
+      "id": "h-002",
+      "statement": "极简视觉风格能降低制作成本同时提升艺术价值",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_no-585-oscar", "2026-03-26_el-empleo-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《585号》《雇佣人生》以极简风格获得奥斯卡认可，验证成功"
+    },
+    {
+      "id": "h-003",
+      "statement": "编号/符号化人物比具象人物更具普遍性共鸣",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_no-585-oscar", "2026-03-26_el-empleo-oscar"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-004",
+      "statement": "反乌托邦题材在奥斯卡评选中具有类型优势",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-005",
+      "statement": "萌态角色能降低观众防御，增强情感投入",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_piper-oscar", "2026-03-26_burrow-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《鹬》《洞穴》均使用萌态主角获得高传播势能"
+    },
+    {
+      "id": "h-006",
+      "statement": "技术突破（如毛发渲染）本身能成为传播点",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_piper-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《鹬》的羽毛渲染技术成为主要宣传点"
+    },
+    {
+      "id": "h-007",
+      "statement": "延迟揭示能增强认知颠覆效果",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_el-empleo-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《雇佣人生》前1分钟正常建立，人形台灯揭示震撼"
+    },
+    {
+      "id": "h-008",
+      "statement": "单一极致隐喻比复杂叙事更有力",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_el-empleo-oscar", "2026-03-26_no-585-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "人=工具、编号=身份，单一概念推到极致"
+    },
+    {
+      "id": "h-009",
+      "statement": "手绘风格在数字时代具有差异化价值",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《泪成珍珠》《洞穴》手绘风格形成记忆点"
+    },
+    {
+      "id": "h-010",
+      "statement": "社恐标签在年轻观众中具有viral传播力",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_burrow-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《洞穴》社恐标签成为主要传播点"
+    },
+    {
+      "id": "h-011",
+      "statement": "真实材质动画比数字动画更具情感温度",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_cardboard-oscar", "2026-03-26_bestia-oscar"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-012",
+      "statement": "痛苦转化叙事比战胜痛苦更具治愈力",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_pearl-girl-oscar"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-013",
+      "statement": "共谋叙事比受害者叙事更具伦理深度",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_bestia-oscar"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-014",
+      "statement": "求助叙事比独立叙事更具治愈力",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_burrow-oscar"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-015",
+      "statement": "医院场景能有效集中情感冲突",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_daughter-oscar"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《女儿》医院场景作为生死边界，有效放大情感冲突"
+    },
+    {
+      "id": "h-016",
+      "statement": "动物意象能软化生死议题的沉重",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_daughter-oscar"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-017",
+      "statement": "和解而非大团圆更具真实感",
+      "status": "verified",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_daughter-oscar", "2026-03-26_reunion-student"],
+      "verification_date": "2026-03-26",
+      "conclusion": "《女儿》《重逢》均采用有限和解结局，更具情感力量"
+    },
+    {
+      "id": "h-018",
+      "statement": "超现实空间能有效外化心理状态",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_reunion-student"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-019",
+      "statement": "名校标签作为质量信号能增强传播",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_reunion-student"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-020",
+      "statement": "身体作为政治场域具有强烈象征力量",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_hunger-short"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-021",
+      "statement": "感官诱惑到批判的叙事策略能有效传递议题",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_hunger-short"],
+      "verification_date": null,
+      "conclusion": null
+    },
+    {
+      "id": "h-022",
+      "statement": "窥视视角能让观众反思自身观看位置",
+      "status": "pending",
+      "first_recorded": "2026-03-26",
+      "related_entries": ["2026-03-26_hunger-short"],
+      "verification_date": null,
+      "conclusion": null
+    }
+  ]
+}

@@ -1,0 +1,557 @@
+{
+  "entries": [
+    {
+      "id": "2026-03-26_no-585-oscar",
+      "file": "entries/2026-03-26_no-585-oscar.md",
+      "meta": {
+        "title": "《585号》奥斯卡入围动画",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡短片/电影节",
+        "duration_seconds": 420
+      },
+      "tags": ["#动画短片", "#奥斯卡", "#反乌托邦", "#极简主义", "#社会隐喻", "#无对白叙事"],
+      "methodology": {
+        "hook_type": "悬念型",
+        "structure_model": "规则建立→个体觉醒→系统对抗→开放式结局",
+        "visual_style": "极简线条动画+强烈色彩对比",
+        "language_tone": "无对白纯视觉叙事"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 4,
+        "notes": "艺术电影节强势，大众传播需一定审美门槛"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "无对白动画比有对白动画跨文化传播力更强（待验证）",
+        "极简视觉风格能降低制作成本同时提升艺术价值（已验证）",
+        "编号/符号化人物比具象人物更具普遍性共鸣（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_cardboard-oscar",
+      "file": "entries/2026-03-26_cardboard-oscar.md",
+      "meta": {
+        "title": "《Cardboard》2026年奥斯卡入围动画",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡短片/电影节",
+        "duration_seconds": 420
+      },
+      "tags": ["#定格动画", "#环保主题", "#儿童视角", "#手工质感", "#材质创新", "#奥斯卡"],
+      "methodology": {
+        "hook_type": "视觉奇观型",
+        "structure_model": "发现材料→开始创造→遇到困难→解决/接受→创造继续",
+        "visual_style": "定格纸板动画+真实材质质感",
+        "language_tone": "无对白或儿童喃喃自语"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 4,
+        "virality_potential": 5,
+        "notes": "亲子向+环保，传播力强"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "真实材质动画比数字动画更具情感温度（待验证）",
+        "环保主题通过儿童视角更易被接受（待验证）",
+        "手工质感的不完美本身就是一种美学（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_piper-oscar",
+      "file": "entries/2026-03-26_piper-oscar.md",
+      "meta": {
+        "title": "《鹬》(Piper) 奥斯卡最佳动画短片",
+        "date": "2026-03-26",
+        "source_platform": "皮克斯/奥斯卡",
+        "duration_seconds": 360
+      },
+      "tags": ["#皮克斯", "#超真实3D", "#成长故事", "#克服恐惧", "#自然美学", "#无对白", "#奥斯卡获奖"],
+      "methodology": {
+        "hook_type": "萌态+悬念",
+        "structure_model": "安全区→恐惧→逃避→导师→突破→新生",
+        "visual_style": "超真实3D+自然纪录片美学",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 5,
+        "notes": "全年龄通吃，获奖加持，皮克斯技术巅峰"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "萌态角色能降低观众防御，增强情感投入（已验证）",
+        "无对白动画在全球市场更具优势（已验证）",
+        "技术突破（如毛发渲染）本身能成为传播点（已验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_pearl-girl-oscar",
+      "file": "entries/2026-03-26_pearl-girl-oscar.md",
+      "meta": {
+        "title": "《泪成珍珠的女孩》奥斯卡夺冠热门",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡/电影节",
+        "duration_seconds": 420
+      },
+      "tags": ["#手绘动画", "#女性成长", "#情感治愈", "#痛苦转化", "#装饰美学", "#社会议题"],
+      "methodology": {
+        "hook_type": "奇观+情感共鸣",
+        "structure_model": "污名化→发现→隐藏→接纳→价值重构",
+        "visual_style": "手绘水彩+装饰性边框+液态变固态魔法",
+        "language_tone": "旁白诗化童话叙述"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 4,
+        "virality_potential": 4,
+        "notes": "女性观众强烈共鸣，男性需共情门槛"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "女性议题动画在奥斯卡评选中具有优势（待验证）",
+        "痛苦转化叙事比战胜痛苦更具治愈力（待验证）",
+        "手绘风格在艺术动画中具有独特价值（已验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_retirement-plan-oscar",
+      "file": "entries/2026-03-26_retirement-plan-oscar.md",
+      "meta": {
+        "title": "《退休计划》奥斯卡提名动画",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡/电影节",
+        "duration_seconds": 420
+      },
+      "tags": ["#黑色幽默", "#社会讽刺", "#老年题材", "#制度批判", "#存在主义", "#极简线条"],
+      "methodology": {
+        "hook_type": "日常反常",
+        "structure_model": "日常假象→规则揭露→生存挣扎→系统反击→荒诞结局",
+        "visual_style": "极简线条+冷峻色调+对称构图",
+        "language_tone": "机构公告式旁白"
+      },
+      "effectiveness": {
+        "hook_strength": 4,
+        "information_density": 5,
+        "virality_potential": 3,
+        "notes": "社会价值高，商业传播受限，题材沉重"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "老年题材动画在奥斯卡中具有差异化优势（待验证）",
+        "黑色幽默比直接控诉更具传播力（待验证）",
+        "机构空间的对称构图能增强压迫感（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_el-empleo-oscar",
+      "file": "entries/2026-03-26_el-empleo-oscar.md",
+      "meta": {
+        "title": "《雇佣人生》(El Empleo) 奥斯卡获奖动画",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡获奖/豆瓣9.2/102个奖项",
+        "duration_seconds": 420
+      },
+      "tags": ["#奥斯卡获奖", "#社会批判", "#极简动画", "#存在主义", "#阶级议题", "#延迟揭示"],
+      "methodology": {
+        "hook_type": "认知颠覆",
+        "structure_model": "麻木→发现荒诞→接受/反抗",
+        "visual_style": "极简无脸+灰褐色调+固定机位",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 5,
+        "notes": "102个奖项，豆瓣9.2，动画史上最佳短片之一"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "单一极致隐喻比复杂叙事更有力（已验证）",
+        "延迟揭示能增强认知颠覆效果（已验证）",
+        "无对白社会批判具有全球传播力（已验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_bestia-oscar",
+      "file": "entries/2026-03-26_bestia-oscar.md",
+      "meta": {
+        "title": "《兽性》(Bestia) 2022奥斯卡入围动画",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡/智利动画",
+        "duration_seconds": 480
+      },
+      "tags": ["#黏土定格", "#政治惊悚", "#历史记忆", "#动物视角", "#共谋伦理", "#智利历史"],
+      "methodology": {
+        "hook_type": "情感陷阱",
+        "structure_model": "无知→共谋→觉醒→悲剧宿命",
+        "visual_style": "黏土定格+陶瓷质感+复古色调",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 3,
+        "notes": "艺术与政治勇气的结合，历史背景需要知识门槛"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "历史创伤通过动物视角更易被接受（待验证）",
+        "黏土材质的诡异感能增强政治惊悚效果（待验证）",
+        "共谋叙事比受害者叙事更具伦理深度（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_burrow-oscar",
+      "file": "entries/2026-03-26_burrow-oscar.md",
+      "meta": {
+        "title": "《洞穴》(Burrow) 奥斯卡提名皮克斯治愈动画",
+        "date": "2026-03-26",
+        "source_platform": "皮克斯SparkShorts/奥斯卡提名",
+        "duration_seconds": 360
+      },
+      "tags": ["#皮克斯", "#手绘水彩", "#社恐", "#治愈系", "#社区连接", "#SparkShorts"],
+      "methodology": {
+        "hook_type": "可爱+共鸣",
+        "structure_model": "孤立→危机→求助→连接→归属",
+        "visual_style": "手绘水彩2D+圆形构图+温暖色调",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 4,
+        "virality_potential": 5,
+        "notes": "社恐标签viral，全年龄友好，商业与艺术平衡"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "社恐标签在年轻观众中具有viral传播力（已验证）",
+        "手绘风格在数字时代具有差异化价值（已验证）",
+        "求助叙事比独立叙事更具治愈力（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_if-i-were-hero-oscar",
+      "file": "entries/2026-03-26_if-i-were-hero-oscar.md",
+      "meta": {
+        "title": "《如果我是英雄》2018奥斯卡入围中国动画",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡/中国动画",
+        "duration_seconds": 360
+      },
+      "tags": ["#手绘动画", "#校园霸凌", "#超级英雄幻想", "#社会议题", "#中国动画", "#奥斯卡入围", "#幻想破灭", "#无对白"],
+      "methodology": {
+        "hook_type": "反差震撼",
+        "structure_model": "幻想建立→暴力打断→幻想干预→现实回归→创伤性升华",
+        "visual_style": "黑白素描+选择性红色",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 4,
+        "notes": "中国动画国际突破，社会议题沉重但重要"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "本土议题的国际化表达需要普世情感锚点（待验证）",
+        "黑白+选择性色彩的视觉策略比全彩更具情感冲击力（待验证）",
+        "儿童视角的暴力叙事比成人视角更具伦理深度（待验证）",
+        "幻想破灭结构比英雄实现结构更具艺术价值（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_umbrella-oscar",
+      "file": "entries/2026-03-26_umbrella-oscar.md",
+      "meta": {
+        "title": "《伞》真实故事改编奥斯卡入围动画",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡/真实改编",
+        "duration_seconds": 480
+      },
+      "tags": ["#手绘动画", "#真实改编", "#跨种族收养", "#家庭之爱", "#社会议题", "#奥斯卡入围", "#无对白"],
+      "methodology": {
+        "hook_type": "真实故事+奇观情感",
+        "structure_model": "相遇→困难→考验→成长→升华",
+        "visual_style": "手绘水彩+伞的圆形构图",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 4,
+        "virality_potential": 4,
+        "notes": "真实故事权威感，温情普世但种族议题需谨慎"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "真实故事改编具有天然叙事权威（待验证）",
+        "日常物品的象征化能增强情感共鸣（待验证）",
+        "跨种族议题的温情处理能超越文化边界（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_hunger-short",
+      "file": "entries/2026-03-26_hunger-short.md",
+      "meta": {
+        "title": "《肉食女孩》女性主义实验动画",
+        "date": "2026-03-26",
+        "source_platform": "实验动画/电影节",
+        "duration_seconds": 360
+      },
+      "tags": ["#实验动画", "#女性主义", "#消费主义批判", "#身体政治", "#混合媒介", "#无对白"],
+      "methodology": {
+        "hook_type": "感官冲击",
+        "structure_model": "诱惑→沉溺→异化→毁灭→循环",
+        "visual_style": "混合媒介+食物与身体并置",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 3,
+        "notes": "艺术勇气，题材敏感，商业传播受限"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "身体作为政治场域具有强烈象征力量（待验证）",
+        "感官诱惑到批判的叙事策略能有效传递议题（待验证）",
+        "窥视视角能让观众反思自身观看位置（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_father-daughter-oscar",
+      "file": "entries/2026-03-26_father-daughter-oscar.md",
+      "meta": {
+        "title": "《父与女》奥斯卡最佳动画短片",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡获奖/豆瓣9.2",
+        "duration_seconds": 480
+      },
+      "tags": ["#奥斯卡获奖", "#极简动画", "#父女情感", "#时间流逝", "#等待主题", "#无对白", "#剪影风格"],
+      "methodology": {
+        "hook_type": "情感共鸣",
+        "structure_model": "告别→等待→成长→老去→重逢",
+        "visual_style": "极简线条+剪影风格+季节变换",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 5,
+        "notes": "豆瓣9.2，动画史经典，全年龄通吃"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "极简叙事具有更强的情感力量（已验证）",
+        "循环动作能积累情感仪式感（待验证）",
+        "时间的视觉化能增强生命感悟（待验证）",
+        "开放式结局的超越性比团圆更有诗意（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_reunion-student",
+      "file": "entries/2026-03-26_reunion-student.md",
+      "meta": {
+        "title": "《重逢》韩国Top1动画名校2026学生毕设",
+        "date": "2026-03-26",
+        "source_platform": "韩国动画名校/学生毕设",
+        "duration_seconds": 360
+      },
+      "tags": ["#学生作品", "#3D动画", "#超现实空间", "#离别重逢", "#记忆重构", "#无对白"],
+      "methodology": {
+        "hook_type": "情感悬念",
+        "structure_model": "失去→寻找→追逐→接受→和解",
+        "visual_style": "3D超现实+埃舍尔式空间",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 4,
+        "information_density": 4,
+        "virality_potential": 4,
+        "notes": "名校光环，学生作品完成度标杆"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "超现实空间能有效外化心理状态（待验证）",
+        "名校标签作为质量信号能增强传播（待验证）",
+        "和解而非团圆的结局更有情感力量（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_daughter-oscar",
+      "file": "entries/2026-03-26_daughter-oscar.md",
+      "meta": {
+        "title": "《女儿》2020奥斯卡最佳动画短片提名",
+        "date": "2026-03-26",
+        "source_platform": "奥斯卡/捷克动画",
+        "duration_seconds": 480
+      },
+      "tags": ["#手绘动画", "#父女情感", "#医院场景", "#生死议题", "#和解修复", "#奥斯卡提名", "#无对白"],
+      "methodology": {
+        "hook_type": "情感悬念",
+        "structure_model": "危机→回忆→创伤→防御→和解",
+        "visual_style": "手绘质感+冷暖对比",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 4,
+        "notes": "奥斯卡提名品质，医院场景的细腻情感处理"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "医院场景能有效集中情感冲突（待验证）",
+        "动物意象能软化生死议题的沉重（待验证）",
+        "有限和解比大团圆更具真实感（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-03-26_double-king-award",
+      "file": "entries/2026-03-26_double-king-award.md",
+      "meta": {
+        "title": "《DOUBLE KING》(双王) 全球获奖动画",
+        "date": "2026-03-26",
+        "source_platform": "全球获奖动画",
+        "duration_seconds": 420
+      },
+      "tags": ["#获奖动画", "#荒诞寓言", "#权力批判", "#双王", "#黑色幽默", "#手绘风格", "#无对白"],
+      "methodology": {
+        "hook_type": "反常识设定",
+        "structure_model": "并置→追逐→升级→虚无→永恒循环",
+        "visual_style": "独特手绘+高对比度+红色突出",
+        "language_tone": "完全无对白"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 4,
+        "notes": "全球获奖，多层解读空间，需要审美门槛"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "双主角镜像结构能增强荒诞感（待验证）",
+        "权力寓言通过荒诞处理更易传播（待验证）",
+        "追逐节奏的升级能增强虚无感（待验证）"
+      ],
+      "created_at": "2026-03-26T12:00:00Z",
+      "last_cited": null
+    }
+  ],
+  "tag_index": {
+    "#动画短片": ["2026-03-26_no-585-oscar", "2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar", "2026-03-26_burrow-oscar"],
+    "#奥斯卡": ["2026-03-26_no-585-oscar", "2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar", "2026-03-26_burrow-oscar"],
+    "#奥斯卡获奖": ["2026-03-26_piper-oscar", "2026-03-26_el-empleo-oscar"],
+    "#无对白": ["2026-03-26_no-585-oscar", "2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar", "2026-03-26_burrow-oscar"],
+    "#极简主义": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
+    "#手绘动画": ["2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar"],
+    "#定格动画": ["2026-03-26_cardboard-oscar", "2026-03-26_bestia-oscar"],
+    "#皮克斯": ["2026-03-26_piper-oscar", "2026-03-26_burrow-oscar"],
+    "#社会批判": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar"],
+    "#治愈系": ["2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar"],
+    "#成长故事": ["2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar"],
+    "#反乌托邦": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
+    "#女性成长": ["2026-03-26_pearl-girl-oscar"],
+    "#社恐": ["2026-03-26_burrow-oscar"],
+    "#环保主题": ["2026-03-26_cardboard-oscar"],
+    "#历史记忆": ["2026-03-26_bestia-oscar"],
+    "#中国动画": ["2026-03-26_if-i-were-hero-oscar"],
+    "#校园霸凌": ["2026-03-26_if-i-were-hero-oscar"],
+    "#幻想破灭": ["2026-03-26_if-i-were-hero-oscar"],
+    "#真实改编": ["2026-03-26_umbrella-oscar"],
+    "#跨种族收养": ["2026-03-26_umbrella-oscar"],
+    "#家庭之爱": ["2026-03-26_umbrella-oscar"],
+    "#实验动画": ["2026-03-26_hunger-short"],
+    "#女性主义": ["2026-03-26_hunger-short"],
+    "#消费主义批判": ["2026-03-26_hunger-short"],
+    "#身体政治": ["2026-03-26_hunger-short"],
+    "#奥斯卡获奖": ["2026-03-26_piper-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_father-daughter-oscar"],
+    "#父女情感": ["2026-03-26_father-daughter-oscar"],
+    "#剪影风格": ["2026-03-26_father-daughter-oscar"],
+    "#学生作品": ["2026-03-26_reunion-student"],
+    "#3D动画": ["2026-03-26_reunion-student"],
+    "#超现实空间": ["2026-03-26_reunion-student"],
+    "#医院场景": ["2026-03-26_daughter-oscar"],
+    "#生死议题": ["2026-03-26_daughter-oscar"],
+    "#和解修复": ["2026-03-26_daughter-oscar"],
+    "#获奖动画": ["2026-03-26_double-king-award"],
+    "#荒诞寓言": ["2026-03-26_double-king-award"],
+    "#权力批判": ["2026-03-26_double-king-award"],
+    "#双王": ["2026-03-26_double-king-award"],
+    "#黑色幽默": ["2026-03-26_double-king-award"]
+  },
+  "methodology_index": {
+    "hook_type": {
+      "悬念型": ["2026-03-26_no-585-oscar"],
+      "视觉奇观型": ["2026-03-26_cardboard-oscar"],
+      "萌态+悬念": ["2026-03-26_piper-oscar"],
+      "奇观+情感共鸣": ["2026-03-26_pearl-girl-oscar"],
+      "日常反常": ["2026-03-26_retirement-plan-oscar"],
+      "认知颠覆": ["2026-03-26_el-empleo-oscar"],
+      "情感陷阱": ["2026-03-26_bestia-oscar"],
+      "可爱+共鸣": ["2026-03-26_burrow-oscar"],
+      "反差震撼": ["2026-03-26_if-i-were-hero-oscar"],
+      "真实故事+奇观情感": ["2026-03-26_umbrella-oscar"],
+      "感官冲击": ["2026-03-26_hunger-short"],
+      "情感共鸣": ["2026-03-26_father-daughter-oscar"],
+      "情感悬念": ["2026-03-26_reunion-student", "2026-03-26_daughter-oscar"],
+      "反常识设定": ["2026-03-26_double-king-award"]
+    },
+    "structure_model": {
+      "反乌托邦结构": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
+      "创造弧": ["2026-03-26_cardboard-oscar"],
+      "成长弧": ["2026-03-26_piper-oscar"],
+      "价值重构弧": ["2026-03-26_pearl-girl-oscar"],
+      "悲剧弧": ["2026-03-26_bestia-oscar"],
+      "治愈弧": ["2026-03-26_burrow-oscar"],
+      "幻想-现实交织弧": ["2026-03-26_if-i-were-hero-oscar"],
+      "真实故事弧": ["2026-03-26_umbrella-oscar"],
+      "欲望升级弧": ["2026-03-26_hunger-short"],
+      "生命循环弧": ["2026-03-26_father-daughter-oscar"],
+      "超现实治愈弧": ["2026-03-26_reunion-student"],
+      "创伤修复弧": ["2026-03-26_daughter-oscar"],
+      "荒诞循环弧": ["2026-03-26_double-king-award"]
+    },
+    "visual_style": {
+      "极简线条": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
+      "定格动画": ["2026-03-26_cardboard-oscar", "2026-03-26_bestia-oscar"],
+      "超真实3D": ["2026-03-26_piper-oscar"],
+      "手绘水彩": ["2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar", "2026-03-26_umbrella-oscar"],
+      "黑白素描+选择性色彩": ["2026-03-26_if-i-were-hero-oscar"],
+      "混合媒介": ["2026-03-26_hunger-short"],
+      "剪影风格": ["2026-03-26_father-daughter-oscar"],
+      "3D超现实": ["2026-03-26_reunion-student"],
+      "独特手绘": ["2026-03-26_double-king-award"]
+    }
+  }
+}
