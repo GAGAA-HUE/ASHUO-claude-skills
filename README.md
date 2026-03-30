@@ -11,6 +11,7 @@
 | 技能名 | 类型 | 功能描述 |
 |--------|------|----------|
 | `historian-storyteller` | 研究+创作 | 历史人物/事件深度研究，输出编剧视角的戏剧素材 |
+| `paiwotscdashi` | 视频生成 | 拍我视频大师：时间轴驱动的 AI 视频提示词生成器，音画同步专家 |
 | `research-assistant` | 信息搜集 | 智能联网搜索、多源交叉验证、定时监控任务 |
 | `screenwriting-master` | 创作 | 专业编剧辅助，剧本结构分析与创作指导 |
 | `seedance-director` | 视频生成 | 电影级分镜提示词生成器，专为 Seedance 2.x 优化 |
@@ -56,6 +57,29 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 ```
 @historian-storyteller 我想做一期关于诸葛亮的视频
 ```
+
+---
+
+### paiwotscdashi（拍我视频大师）
+
+**适用场景**：AI 视频生成、多镜头叙事、音画同步设计
+
+**核心能力**：
+- 时间轴驱动的提示词生成（自然语言解析）
+- 音画精确同步（硬同步/节拍同步/提前同步/延迟同步）
+- 多镜头叙事拆分与连贯性保证
+- 焦距情绪映射（14mm-400mm+ 心理学效应）
+- 三层音频结构设计（环境/音乐/音效）
+
+**触发方式**：
+```
+@paiwotscdashi 我想做一个15秒的治愈系视频，有海浪声和夕阳
+```
+
+**参考文档**：
+- `references/time-axis-templates.md` - 常见视频类型时间轴模板
+- `references/audio-sync-guide.md` - 音画同步技术指南
+- `references/lens-emotion-mapping.md` - 焦距情绪映射表
 
 ---
 
