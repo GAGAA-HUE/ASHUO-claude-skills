@@ -9,7 +9,14 @@
         "source_platform": "奥斯卡短片/电影节",
         "duration_seconds": 420
       },
-      "tags": ["#动画短片", "#奥斯卡", "#反乌托邦", "#极简主义", "#社会隐喻", "#无对白叙事"],
+      "tags": [
+        "#动画短片",
+        "#奥斯卡",
+        "#反乌托邦",
+        "#极简主义",
+        "#社会隐喻",
+        "#无对白叙事"
+      ],
       "methodology": {
         "hook_type": "悬念型",
         "structure_model": "规则建立→个体觉醒→系统对抗→开放式结局",
@@ -40,7 +47,14 @@
         "source_platform": "奥斯卡短片/电影节",
         "duration_seconds": 420
       },
-      "tags": ["#定格动画", "#环保主题", "#儿童视角", "#手工质感", "#材质创新", "#奥斯卡"],
+      "tags": [
+        "#定格动画",
+        "#环保主题",
+        "#儿童视角",
+        "#手工质感",
+        "#材质创新",
+        "#奥斯卡"
+      ],
       "methodology": {
         "hook_type": "视觉奇观型",
         "structure_model": "发现材料→开始创造→遇到困难→解决/接受→创造继续",
@@ -71,7 +85,15 @@
         "source_platform": "皮克斯/奥斯卡",
         "duration_seconds": 360
       },
-      "tags": ["#皮克斯", "#超真实3D", "#成长故事", "#克服恐惧", "#自然美学", "#无对白", "#奥斯卡获奖"],
+      "tags": [
+        "#皮克斯",
+        "#超真实3D",
+        "#成长故事",
+        "#克服恐惧",
+        "#自然美学",
+        "#无对白",
+        "#奥斯卡获奖"
+      ],
       "methodology": {
         "hook_type": "萌态+悬念",
         "structure_model": "安全区→恐惧→逃避→导师→突破→新生",
@@ -102,7 +124,14 @@
         "source_platform": "奥斯卡/电影节",
         "duration_seconds": 420
       },
-      "tags": ["#手绘动画", "#女性成长", "#情感治愈", "#痛苦转化", "#装饰美学", "#社会议题"],
+      "tags": [
+        "#手绘动画",
+        "#女性成长",
+        "#情感治愈",
+        "#痛苦转化",
+        "#装饰美学",
+        "#社会议题"
+      ],
       "methodology": {
         "hook_type": "奇观+情感共鸣",
         "structure_model": "污名化→发现→隐藏→接纳→价值重构",
@@ -133,7 +162,14 @@
         "source_platform": "奥斯卡/电影节",
         "duration_seconds": 420
       },
-      "tags": ["#黑色幽默", "#社会讽刺", "#老年题材", "#制度批判", "#存在主义", "#极简线条"],
+      "tags": [
+        "#黑色幽默",
+        "#社会讽刺",
+        "#老年题材",
+        "#制度批判",
+        "#存在主义",
+        "#极简线条"
+      ],
       "methodology": {
         "hook_type": "日常反常",
         "structure_model": "日常假象→规则揭露→生存挣扎→系统反击→荒诞结局",
@@ -164,7 +200,14 @@
         "source_platform": "奥斯卡获奖/豆瓣9.2/102个奖项",
         "duration_seconds": 420
       },
-      "tags": ["#奥斯卡获奖", "#社会批判", "#极简动画", "#存在主义", "#阶级议题", "#延迟揭示"],
+      "tags": [
+        "#奥斯卡获奖",
+        "#社会批判",
+        "#极简动画",
+        "#存在主义",
+        "#阶级议题",
+        "#延迟揭示"
+      ],
       "methodology": {
         "hook_type": "认知颠覆",
         "structure_model": "麻木→发现荒诞→接受/反抗",
@@ -195,7 +238,14 @@
         "source_platform": "奥斯卡/智利动画",
         "duration_seconds": 480
       },
-      "tags": ["#黏土定格", "#政治惊悚", "#历史记忆", "#动物视角", "#共谋伦理", "#智利历史"],
+      "tags": [
+        "#黏土定格",
+        "#政治惊悚",
+        "#历史记忆",
+        "#动物视角",
+        "#共谋伦理",
+        "#智利历史"
+      ],
       "methodology": {
         "hook_type": "情感陷阱",
         "structure_model": "无知→共谋→觉醒→悲剧宿命",
@@ -226,7 +276,14 @@
         "source_platform": "皮克斯SparkShorts/奥斯卡提名",
         "duration_seconds": 360
       },
-      "tags": ["#皮克斯", "#手绘水彩", "#社恐", "#治愈系", "#社区连接", "#SparkShorts"],
+      "tags": [
+        "#皮克斯",
+        "#手绘水彩",
+        "#社恐",
+        "#治愈系",
+        "#社区连接",
+        "#SparkShorts"
+      ],
       "methodology": {
         "hook_type": "可爱+共鸣",
         "structure_model": "孤立→危机→求助→连接→归属",
@@ -257,7 +314,16 @@
         "source_platform": "奥斯卡/中国动画",
         "duration_seconds": 360
       },
-      "tags": ["#手绘动画", "#校园霸凌", "#超级英雄幻想", "#社会议题", "#中国动画", "#奥斯卡入围", "#幻想破灭", "#无对白"],
+      "tags": [
+        "#手绘动画",
+        "#校园霸凌",
+        "#超级英雄幻想",
+        "#社会议题",
+        "#中国动画",
+        "#奥斯卡入围",
+        "#幻想破灭",
+        "#无对白"
+      ],
       "methodology": {
         "hook_type": "反差震撼",
         "structure_model": "幻想建立→暴力打断→幻想干预→现实回归→创伤性升华",
@@ -289,7 +355,15 @@
         "source_platform": "奥斯卡/真实改编",
         "duration_seconds": 480
       },
-      "tags": ["#手绘动画", "#真实改编", "#跨种族收养", "#家庭之爱", "#社会议题", "#奥斯卡入围", "#无对白"],
+      "tags": [
+        "#手绘动画",
+        "#真实改编",
+        "#跨种族收养",
+        "#家庭之爱",
+        "#社会议题",
+        "#奥斯卡入围",
+        "#无对白"
+      ],
       "methodology": {
         "hook_type": "真实故事+奇观情感",
         "structure_model": "相遇→困难→考验→成长→升华",
@@ -320,7 +394,14 @@
         "source_platform": "实验动画/电影节",
         "duration_seconds": 360
       },
-      "tags": ["#实验动画", "#女性主义", "#消费主义批判", "#身体政治", "#混合媒介", "#无对白"],
+      "tags": [
+        "#实验动画",
+        "#女性主义",
+        "#消费主义批判",
+        "#身体政治",
+        "#混合媒介",
+        "#无对白"
+      ],
       "methodology": {
         "hook_type": "感官冲击",
         "structure_model": "诱惑→沉溺→异化→毁灭→循环",
@@ -351,7 +432,15 @@
         "source_platform": "奥斯卡获奖/豆瓣9.2",
         "duration_seconds": 480
       },
-      "tags": ["#奥斯卡获奖", "#极简动画", "#父女情感", "#时间流逝", "#等待主题", "#无对白", "#剪影风格"],
+      "tags": [
+        "#奥斯卡获奖",
+        "#极简动画",
+        "#父女情感",
+        "#时间流逝",
+        "#等待主题",
+        "#无对白",
+        "#剪影风格"
+      ],
       "methodology": {
         "hook_type": "情感共鸣",
         "structure_model": "告别→等待→成长→老去→重逢",
@@ -383,7 +472,14 @@
         "source_platform": "韩国动画名校/学生毕设",
         "duration_seconds": 360
       },
-      "tags": ["#学生作品", "#3D动画", "#超现实空间", "#离别重逢", "#记忆重构", "#无对白"],
+      "tags": [
+        "#学生作品",
+        "#3D动画",
+        "#超现实空间",
+        "#离别重逢",
+        "#记忆重构",
+        "#无对白"
+      ],
       "methodology": {
         "hook_type": "情感悬念",
         "structure_model": "失去→寻找→追逐→接受→和解",
@@ -414,7 +510,15 @@
         "source_platform": "奥斯卡/捷克动画",
         "duration_seconds": 480
       },
-      "tags": ["#手绘动画", "#父女情感", "#医院场景", "#生死议题", "#和解修复", "#奥斯卡提名", "#无对白"],
+      "tags": [
+        "#手绘动画",
+        "#父女情感",
+        "#医院场景",
+        "#生死议题",
+        "#和解修复",
+        "#奥斯卡提名",
+        "#无对白"
+      ],
       "methodology": {
         "hook_type": "情感悬念",
         "structure_model": "危机→回忆→创伤→防御→和解",
@@ -445,7 +549,15 @@
         "source_platform": "全球获奖动画",
         "duration_seconds": 420
       },
-      "tags": ["#获奖动画", "#荒诞寓言", "#权力批判", "#双王", "#黑色幽默", "#手绘风格", "#无对白"],
+      "tags": [
+        "#获奖动画",
+        "#荒诞寓言",
+        "#权力批判",
+        "#双王",
+        "#黑色幽默",
+        "#手绘风格",
+        "#无对白"
+      ],
       "methodology": {
         "hook_type": "反常识设定",
         "structure_model": "并置→追逐→升级→虚无→永恒循环",
@@ -466,92 +578,588 @@
       ],
       "created_at": "2026-03-26T12:00:00Z",
       "last_cited": null
+    },
+    {
+      "id": "2026-04-01_baisui-youeryuan",
+      "file": "entries/2026-04-01_baisui-youeryuan.md",
+      "meta": {
+        "title": "《百岁幼儿园》",
+        "date": "2026-04-01",
+        "source_platform": "本地视频分析",
+        "duration_seconds": 485
+      },
+      "tags": [
+        "#社会纪录片",
+        "#老龄化议题",
+        "#温暖治愈",
+        "#概念反差",
+        "#人文关怀",
+        "#电影感"
+      ],
+      "methodology": {
+        "hook_type": "反常识概念型",
+        "structure_model": "概念抛出→背景建立→主体叙事→情感升华→结尾收口",
+        "visual_style": "电影宽屏2.35:1+纪录片质感+暖色调",
+        "language_tone": "温暖治愈+轻松幽默+口语化"
+      },
+      "effectiveness": {
+        "hook_strength": 4,
+        "information_density": 3,
+        "virality_potential": 4,
+        "notes": "社会议题+情感共鸣，概念反差极具吸引力"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "电影宽屏比例在短视频平台的完播率是否更高？",
+        "概念反差型标题 vs 悬念型标题，哪个 CTR 更高？",
+        "8分钟长视频在抖音/视频号的完播率曲线如何？"
+      ],
+      "created_at": "2026-04-01T13:30:00Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-04-01_zhi-shou-ji",
+      "file": "entries/2026-04-01_zhi-shou-ji.md",
+      "meta": {
+        "title": "纸手机｜清明节温情短片",
+        "date": "2026-04-01",
+        "source_platform": "Bilibili",
+        "duration_seconds": 301
+      },
+      "tags": [
+        "#AI创作",
+        "#温情短片",
+        "#清明节",
+        "#儿童视角",
+        "#可灵AI",
+        "#B站AI创作大赛",
+        "#生死议题",
+        "#技术人文"
+      ],
+      "methodology": {
+        "hook_type": "情感陷阱（儿童天真发问）",
+        "structure_model": "温情反转弧：困境→误解→真相→善意→情绪释放",
+        "visual_style": "AI生成写实主义，4K温情美学",
+        "language_tone": "诗化旁白+日常对话，克制短句"
+      },
+      "effectiveness": {
+        "hook_strength": 4.5,
+        "information_density": 4,
+        "virality_potential": 4.5,
+        "notes": "技术展示与人文叙事结合，节日节点放大传播，AI写实剧情片情感可信度强"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "AI写实剧情片的情感可信度已接近真人电影",
+        "节日节点发布的AI短片比日常发布传播力高2-3倍",
+        "技术演示+人文叙事是B站AI内容的最佳选题公式"
+      ],
+      "created_at": "2026-04-01T11:06:05.823Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-04-01_hun-yin-youxiao-qi",
+      "file": "entries/2026-04-01_hun-yin-youxiao-qi.md",
+      "meta": {
+        "title": "拯救爱情！｜短片《婚姻有效期》",
+        "date": "2026-04-01",
+        "source_platform": "Bilibili",
+        "duration_seconds": 447
+      },
+      "tags": [
+        "#AI创作",
+        "#科幻短片",
+        "#爱情",
+        "#轻喜剧",
+        "#婚姻议题",
+        "#高概念",
+        "#B站AI创作大赛",
+        "#系列化",
+        "#AIGC",
+        "#影视"
+      ],
+      "methodology": {
+        "hook_type": "概念型（高设定单刀直入）",
+        "structure_model": "系统对抗下的情感求生弧：规则建立→测试危机→共同努力→情感确认",
+        "visual_style": "AI生成梦幻意境美学，高饱和象征主义",
+        "language_tone": "轻喜剧对白+哲学化旁白+个人经验诗化誓言"
+      },
+      "effectiveness": {
+        "hook_strength": 4,
+        "information_density": 4,
+        "virality_potential": 4,
+        "notes": "高概念+现实议题嫁接成功，评论区婚姻辩论热烈，系列化优势明显"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "高概念轻喜剧比写实剧情片更容易引发评论区辩论",
+        "系列化运营比单部作品在B站长尾流量上更有优势",
+        "佛系创作 pace 在AI短片社区中具有品牌差异化价值",
+        "导演个人经验注入能有效对冲AI内容的无灵魂感"
+      ],
+      "created_at": "2026-04-01T11:08:39.783Z",
+      "last_cited": null
+    },
+    {
+      "id": "2026-04-01_pai-zi",
+      "file": "entries/2026-04-01_pai-zi.md",
+      "meta": {
+        "title": "【牌子】当世界过分诚实，我们要如何保持好奇与勇气",
+        "date": "2026-04-01",
+        "source_platform": "Bilibili",
+        "duration_seconds": 465
+      },
+      "tags": [
+        "#AI创作",
+        "#科幻短片",
+        "#电影",
+        "#脑洞",
+        "#原创",
+        "#日常异化",
+        "#文明叙事",
+        "#符号系统",
+        "#B站AI创作大赛",
+        "#爆款",
+        "#AIGC"
+      ],
+      "methodology": {
+        "hook_type": "悬念+奇观型（日常异化单刀直入）",
+        "structure_model": "渐进揭示弧：日常异常→规则升级→文明危机→人类反击→终极反转",
+        "visual_style": "AI生成高信息密度奇观流，伪纪录片/电影混剪美学，符号化角色系统",
+        "language_tone": "电影化旁白 + 规则说明 + emoji作为后语言系统"
+      },
+      "effectiveness": {
+        "hook_strength": 5,
+        "information_density": 5,
+        "virality_potential": 5,
+        "notes": "全站第1名，1805万播放，破圈级符号系统+编剧密度+渐进升级"
+      },
+      "reuse_count": 0,
+      "hypotheses": [
+        "日常元素异化比原创高概念更容易破圈",
+        "渐进式世界观升级是长留存最佳结构",
+        "视觉符号系统是二次传播的关键转化器",
+        "情绪必须有明确的人类反击时刻",
+        "AI短片画质天花板效应已消失，1080p足够支撑爆款"
+      ],
+      "created_at": "2026-04-01T11:13:52.085Z",
+      "last_cited": null
     }
   ],
   "tag_index": {
-    "#动画短片": ["2026-03-26_no-585-oscar", "2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar", "2026-03-26_burrow-oscar"],
-    "#奥斯卡": ["2026-03-26_no-585-oscar", "2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar", "2026-03-26_burrow-oscar"],
-    "#奥斯卡获奖": ["2026-03-26_piper-oscar", "2026-03-26_el-empleo-oscar"],
-    "#无对白": ["2026-03-26_no-585-oscar", "2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar", "2026-03-26_burrow-oscar"],
-    "#极简主义": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
-    "#手绘动画": ["2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar"],
-    "#定格动画": ["2026-03-26_cardboard-oscar", "2026-03-26_bestia-oscar"],
-    "#皮克斯": ["2026-03-26_piper-oscar", "2026-03-26_burrow-oscar"],
-    "#社会批判": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_bestia-oscar"],
-    "#治愈系": ["2026-03-26_cardboard-oscar", "2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar"],
-    "#成长故事": ["2026-03-26_piper-oscar", "2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar"],
-    "#反乌托邦": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
-    "#女性成长": ["2026-03-26_pearl-girl-oscar"],
-    "#社恐": ["2026-03-26_burrow-oscar"],
-    "#环保主题": ["2026-03-26_cardboard-oscar"],
-    "#历史记忆": ["2026-03-26_bestia-oscar"],
-    "#中国动画": ["2026-03-26_if-i-were-hero-oscar"],
-    "#校园霸凌": ["2026-03-26_if-i-were-hero-oscar"],
-    "#幻想破灭": ["2026-03-26_if-i-were-hero-oscar"],
-    "#真实改编": ["2026-03-26_umbrella-oscar"],
-    "#跨种族收养": ["2026-03-26_umbrella-oscar"],
-    "#家庭之爱": ["2026-03-26_umbrella-oscar"],
-    "#实验动画": ["2026-03-26_hunger-short"],
-    "#女性主义": ["2026-03-26_hunger-short"],
-    "#消费主义批判": ["2026-03-26_hunger-short"],
-    "#身体政治": ["2026-03-26_hunger-short"],
-    "#奥斯卡获奖": ["2026-03-26_piper-oscar", "2026-03-26_el-empleo-oscar", "2026-03-26_father-daughter-oscar"],
-    "#父女情感": ["2026-03-26_father-daughter-oscar"],
-    "#剪影风格": ["2026-03-26_father-daughter-oscar"],
-    "#学生作品": ["2026-03-26_reunion-student"],
-    "#3D动画": ["2026-03-26_reunion-student"],
-    "#超现实空间": ["2026-03-26_reunion-student"],
-    "#医院场景": ["2026-03-26_daughter-oscar"],
-    "#生死议题": ["2026-03-26_daughter-oscar"],
-    "#和解修复": ["2026-03-26_daughter-oscar"],
-    "#获奖动画": ["2026-03-26_double-king-award"],
-    "#荒诞寓言": ["2026-03-26_double-king-award"],
-    "#权力批判": ["2026-03-26_double-king-award"],
-    "#双王": ["2026-03-26_double-king-award"],
-    "#黑色幽默": ["2026-03-26_double-king-award"]
+    "#社会纪录片": [
+      "2026-04-01_baisui-youeryuan"
+    ],
+    "#老龄化议题": [
+      "2026-04-01_baisui-youeryuan"
+    ],
+    "#温暖治愈": [
+      "2026-03-26_cardboard-oscar",
+      "2026-03-26_piper-oscar",
+      "2026-03-26_pearl-girl-oscar",
+      "2026-03-26_burrow-oscar",
+      "2026-04-01_baisui-youeryuan"
+    ],
+    "#概念反差": [
+      "2026-04-01_baisui-youeryuan"
+    ],
+    "#人文关怀": [
+      "2026-04-01_baisui-youeryuan"
+    ],
+    "#电影感": [
+      "2026-04-01_baisui-youeryuan"
+    ],
+    "#动画短片": [
+      "2026-03-26_no-585-oscar",
+      "2026-03-26_cardboard-oscar",
+      "2026-03-26_piper-oscar",
+      "2026-03-26_pearl-girl-oscar",
+      "2026-03-26_retirement-plan-oscar",
+      "2026-03-26_el-empleo-oscar",
+      "2026-03-26_bestia-oscar",
+      "2026-03-26_burrow-oscar"
+    ],
+    "#奥斯卡": [
+      "2026-03-26_no-585-oscar",
+      "2026-03-26_cardboard-oscar",
+      "2026-03-26_piper-oscar",
+      "2026-03-26_pearl-girl-oscar",
+      "2026-03-26_retirement-plan-oscar",
+      "2026-03-26_el-empleo-oscar",
+      "2026-03-26_bestia-oscar",
+      "2026-03-26_burrow-oscar"
+    ],
+    "#奥斯卡获奖": [
+      "2026-03-26_piper-oscar",
+      "2026-03-26_el-empleo-oscar",
+      "2026-03-26_father-daughter-oscar"
+    ],
+    "#无对白": [
+      "2026-03-26_no-585-oscar",
+      "2026-03-26_cardboard-oscar",
+      "2026-03-26_piper-oscar",
+      "2026-03-26_retirement-plan-oscar",
+      "2026-03-26_el-empleo-oscar",
+      "2026-03-26_bestia-oscar",
+      "2026-03-26_burrow-oscar"
+    ],
+    "#极简主义": [
+      "2026-03-26_no-585-oscar",
+      "2026-03-26_retirement-plan-oscar",
+      "2026-03-26_el-empleo-oscar"
+    ],
+    "#手绘动画": [
+      "2026-03-26_pearl-girl-oscar",
+      "2026-03-26_burrow-oscar"
+    ],
+    "#定格动画": [
+      "2026-03-26_cardboard-oscar",
+      "2026-03-26_bestia-oscar"
+    ],
+    "#皮克斯": [
+      "2026-03-26_piper-oscar",
+      "2026-03-26_burrow-oscar"
+    ],
+    "#社会批判": [
+      "2026-03-26_no-585-oscar",
+      "2026-03-26_retirement-plan-oscar",
+      "2026-03-26_el-empleo-oscar",
+      "2026-03-26_bestia-oscar"
+    ],
+    "#治愈系": [
+      "2026-03-26_cardboard-oscar",
+      "2026-03-26_piper-oscar",
+      "2026-03-26_pearl-girl-oscar",
+      "2026-03-26_burrow-oscar"
+    ],
+    "#成长故事": [
+      "2026-03-26_piper-oscar",
+      "2026-03-26_pearl-girl-oscar",
+      "2026-03-26_burrow-oscar"
+    ],
+    "#反乌托邦": [
+      "2026-03-26_no-585-oscar",
+      "2026-03-26_retirement-plan-oscar",
+      "2026-03-26_el-empleo-oscar"
+    ],
+    "#女性成长": [
+      "2026-03-26_pearl-girl-oscar"
+    ],
+    "#社恐": [
+      "2026-03-26_burrow-oscar"
+    ],
+    "#环保主题": [
+      "2026-03-26_cardboard-oscar"
+    ],
+    "#历史记忆": [
+      "2026-03-26_bestia-oscar"
+    ],
+    "#中国动画": [
+      "2026-03-26_if-i-were-hero-oscar"
+    ],
+    "#校园霸凌": [
+      "2026-03-26_if-i-were-hero-oscar"
+    ],
+    "#幻想破灭": [
+      "2026-03-26_if-i-were-hero-oscar"
+    ],
+    "#真实改编": [
+      "2026-03-26_umbrella-oscar"
+    ],
+    "#跨种族收养": [
+      "2026-03-26_umbrella-oscar"
+    ],
+    "#家庭之爱": [
+      "2026-03-26_umbrella-oscar"
+    ],
+    "#实验动画": [
+      "2026-03-26_hunger-short"
+    ],
+    "#女性主义": [
+      "2026-03-26_hunger-short"
+    ],
+    "#消费主义批判": [
+      "2026-03-26_hunger-short"
+    ],
+    "#身体政治": [
+      "2026-03-26_hunger-short"
+    ],
+    "#父女情感": [
+      "2026-03-26_father-daughter-oscar"
+    ],
+    "#剪影风格": [
+      "2026-03-26_father-daughter-oscar"
+    ],
+    "#学生作品": [
+      "2026-03-26_reunion-student"
+    ],
+    "#3D动画": [
+      "2026-03-26_reunion-student"
+    ],
+    "#超现实空间": [
+      "2026-03-26_reunion-student"
+    ],
+    "#医院场景": [
+      "2026-03-26_daughter-oscar"
+    ],
+    "#生死议题": [
+      "2026-03-26_daughter-oscar",
+      "2026-04-01_zhi-shou-ji"
+    ],
+    "#和解修复": [
+      "2026-03-26_daughter-oscar"
+    ],
+    "#获奖动画": [
+      "2026-03-26_double-king-award"
+    ],
+    "#荒诞寓言": [
+      "2026-03-26_double-king-award"
+    ],
+    "#权力批判": [
+      "2026-03-26_double-king-award"
+    ],
+    "#双王": [
+      "2026-03-26_double-king-award"
+    ],
+    "#黑色幽默": [
+      "2026-03-26_double-king-award"
+    ],
+    "#AI创作": [
+      "2026-04-01_zhi-shou-ji",
+      "2026-04-01_hun-yin-youxiao-qi",
+      "2026-04-01_pai-zi"
+    ],
+    "#温情短片": [
+      "2026-04-01_zhi-shou-ji"
+    ],
+    "#清明节": [
+      "2026-04-01_zhi-shou-ji"
+    ],
+    "#儿童视角": [
+      "2026-04-01_zhi-shou-ji"
+    ],
+    "#可灵AI": [
+      "2026-04-01_zhi-shou-ji"
+    ],
+    "#B站AI创作大赛": [
+      "2026-04-01_zhi-shou-ji",
+      "2026-04-01_hun-yin-youxiao-qi",
+      "2026-04-01_pai-zi"
+    ],
+    "#技术人文": [
+      "2026-04-01_zhi-shou-ji"
+    ],
+    "#科幻短片": [
+      "2026-04-01_hun-yin-youxiao-qi",
+      "2026-04-01_pai-zi"
+    ],
+    "#爱情": [
+      "2026-04-01_hun-yin-youxiao-qi"
+    ],
+    "#轻喜剧": [
+      "2026-04-01_hun-yin-youxiao-qi"
+    ],
+    "#婚姻议题": [
+      "2026-04-01_hun-yin-youxiao-qi"
+    ],
+    "#高概念": [
+      "2026-04-01_hun-yin-youxiao-qi"
+    ],
+    "#系列化": [
+      "2026-04-01_hun-yin-youxiao-qi"
+    ],
+    "#AIGC": [
+      "2026-04-01_hun-yin-youxiao-qi",
+      "2026-04-01_pai-zi"
+    ],
+    "#影视": [
+      "2026-04-01_hun-yin-youxiao-qi"
+    ],
+    "#电影": [
+      "2026-04-01_pai-zi"
+    ],
+    "#脑洞": [
+      "2026-04-01_pai-zi"
+    ],
+    "#原创": [
+      "2026-04-01_pai-zi"
+    ],
+    "#日常异化": [
+      "2026-04-01_pai-zi"
+    ],
+    "#文明叙事": [
+      "2026-04-01_pai-zi"
+    ],
+    "#符号系统": [
+      "2026-04-01_pai-zi"
+    ],
+    "#爆款": [
+      "2026-04-01_pai-zi"
+    ]
   },
   "methodology_index": {
     "hook_type": {
-      "悬念型": ["2026-03-26_no-585-oscar"],
-      "视觉奇观型": ["2026-03-26_cardboard-oscar"],
-      "萌态+悬念": ["2026-03-26_piper-oscar"],
-      "奇观+情感共鸣": ["2026-03-26_pearl-girl-oscar"],
-      "日常反常": ["2026-03-26_retirement-plan-oscar"],
-      "认知颠覆": ["2026-03-26_el-empleo-oscar"],
-      "情感陷阱": ["2026-03-26_bestia-oscar"],
-      "可爱+共鸣": ["2026-03-26_burrow-oscar"],
-      "反差震撼": ["2026-03-26_if-i-were-hero-oscar"],
-      "真实故事+奇观情感": ["2026-03-26_umbrella-oscar"],
-      "感官冲击": ["2026-03-26_hunger-short"],
-      "情感共鸣": ["2026-03-26_father-daughter-oscar"],
-      "情感悬念": ["2026-03-26_reunion-student", "2026-03-26_daughter-oscar"],
-      "反常识设定": ["2026-03-26_double-king-award"]
+      "悬念型": [
+        "2026-03-26_no-585-oscar"
+      ],
+      "视觉奇观型": [
+        "2026-03-26_cardboard-oscar"
+      ],
+      "萌态+悬念": [
+        "2026-03-26_piper-oscar"
+      ],
+      "奇观+情感共鸣": [
+        "2026-03-26_pearl-girl-oscar"
+      ],
+      "日常反常": [
+        "2026-03-26_retirement-plan-oscar"
+      ],
+      "认知颠覆": [
+        "2026-03-26_el-empleo-oscar"
+      ],
+      "情感陷阱": [
+        "2026-03-26_bestia-oscar"
+      ],
+      "可爱+共鸣": [
+        "2026-03-26_burrow-oscar"
+      ],
+      "反差震撼": [
+        "2026-03-26_if-i-were-hero-oscar"
+      ],
+      "真实故事+奇观情感": [
+        "2026-03-26_umbrella-oscar"
+      ],
+      "感官冲击": [
+        "2026-03-26_hunger-short"
+      ],
+      "情感共鸣": [
+        "2026-03-26_father-daughter-oscar"
+      ],
+      "情感悬念": [
+        "2026-03-26_reunion-student",
+        "2026-03-26_daughter-oscar"
+      ],
+      "反常识设定": [
+        "2026-03-26_double-king-award"
+      ],
+      "反常识概念型": [
+        "2026-04-01_baisui-youeryuan"
+      ],
+      "情感陷阱（儿童天真发问）": [
+        "2026-04-01_zhi-shou-ji"
+      ],
+      "概念型（高设定单刀直入）": [
+        "2026-04-01_hun-yin-youxiao-qi"
+      ],
+      "悬念+奇观型（日常异化单刀直入）": [
+        "2026-04-01_pai-zi"
+      ]
     },
     "structure_model": {
-      "反乌托邦结构": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
-      "创造弧": ["2026-03-26_cardboard-oscar"],
-      "成长弧": ["2026-03-26_piper-oscar"],
-      "价值重构弧": ["2026-03-26_pearl-girl-oscar"],
-      "悲剧弧": ["2026-03-26_bestia-oscar"],
-      "治愈弧": ["2026-03-26_burrow-oscar"],
-      "幻想-现实交织弧": ["2026-03-26_if-i-were-hero-oscar"],
-      "真实故事弧": ["2026-03-26_umbrella-oscar"],
-      "欲望升级弧": ["2026-03-26_hunger-short"],
-      "生命循环弧": ["2026-03-26_father-daughter-oscar"],
-      "超现实治愈弧": ["2026-03-26_reunion-student"],
-      "创伤修复弧": ["2026-03-26_daughter-oscar"],
-      "荒诞循环弧": ["2026-03-26_double-king-award"]
+      "反乌托邦结构": [
+        "2026-03-26_no-585-oscar",
+        "2026-03-26_retirement-plan-oscar",
+        "2026-03-26_el-empleo-oscar"
+      ],
+      "创造弧": [
+        "2026-03-26_cardboard-oscar"
+      ],
+      "成长弧": [
+        "2026-03-26_piper-oscar"
+      ],
+      "价值重构弧": [
+        "2026-03-26_pearl-girl-oscar"
+      ],
+      "悲剧弧": [
+        "2026-03-26_bestia-oscar"
+      ],
+      "治愈弧": [
+        "2026-03-26_burrow-oscar"
+      ],
+      "幻想-现实交织弧": [
+        "2026-03-26_if-i-were-hero-oscar"
+      ],
+      "真实故事弧": [
+        "2026-03-26_umbrella-oscar"
+      ],
+      "欲望升级弧": [
+        "2026-03-26_hunger-short"
+      ],
+      "生命循环弧": [
+        "2026-03-26_father-daughter-oscar"
+      ],
+      "超现实治愈弧": [
+        "2026-03-26_reunion-student"
+      ],
+      "创伤修复弧": [
+        "2026-03-26_daughter-oscar"
+      ],
+      "荒诞循环弧": [
+        "2026-03-26_double-king-award"
+      ],
+      "概念纪录片弧": [
+        "2026-04-01_baisui-youeryuan"
+      ],
+      "温情反转弧：困境→误解→真相→善意→情绪释放": [
+        "2026-04-01_zhi-shou-ji"
+      ],
+      "系统对抗下的情感求生弧：规则建立→测试危机→共同努力→情感确认": [
+        "2026-04-01_hun-yin-youxiao-qi"
+      ],
+      "渐进揭示弧：日常异常→规则升级→文明危机→人类反击→终极反转": [
+        "2026-04-01_pai-zi"
+      ]
     },
     "visual_style": {
-      "极简线条": ["2026-03-26_no-585-oscar", "2026-03-26_retirement-plan-oscar", "2026-03-26_el-empleo-oscar"],
-      "定格动画": ["2026-03-26_cardboard-oscar", "2026-03-26_bestia-oscar"],
-      "超真实3D": ["2026-03-26_piper-oscar"],
-      "手绘水彩": ["2026-03-26_pearl-girl-oscar", "2026-03-26_burrow-oscar", "2026-03-26_umbrella-oscar"],
-      "黑白素描+选择性色彩": ["2026-03-26_if-i-were-hero-oscar"],
-      "混合媒介": ["2026-03-26_hunger-short"],
-      "剪影风格": ["2026-03-26_father-daughter-oscar"],
-      "3D超现实": ["2026-03-26_reunion-student"],
-      "独特手绘": ["2026-03-26_double-king-award"]
+      "极简线条": [
+        "2026-03-26_no-585-oscar",
+        "2026-03-26_retirement-plan-oscar",
+        "2026-03-26_el-empleo-oscar"
+      ],
+      "定格动画": [
+        "2026-03-26_cardboard-oscar",
+        "2026-03-26_bestia-oscar"
+      ],
+      "超真实3D": [
+        "2026-03-26_piper-oscar"
+      ],
+      "手绘水彩": [
+        "2026-03-26_pearl-girl-oscar",
+        "2026-03-26_burrow-oscar",
+        "2026-03-26_umbrella-oscar"
+      ],
+      "黑白素描+选择性色彩": [
+        "2026-03-26_if-i-were-hero-oscar"
+      ],
+      "混合媒介": [
+        "2026-03-26_hunger-short"
+      ],
+      "剪影风格": [
+        "2026-03-26_father-daughter-oscar"
+      ],
+      "3D超现实": [
+        "2026-03-26_reunion-student"
+      ],
+      "独特手绘": [
+        "2026-03-26_double-king-award"
+      ],
+      "电影宽屏纪录片": [
+        "2026-04-01_baisui-youeryuan"
+      ],
+      "AI生成写实主义，4K温情美学": [
+        "2026-04-01_zhi-shou-ji"
+      ],
+      "AI生成": [
+        "2026-04-01_zhi-shou-ji",
+        "2026-04-01_hun-yin-youxiao-qi",
+        "2026-04-01_pai-zi"
+      ],
+      "AI生成梦幻意境美学，高饱和象征主义": [
+        "2026-04-01_hun-yin-youxiao-qi"
+      ],
+      "AI生成高信息密度奇观流，伪纪录片/电影混剪美学，符号化角色系统": [
+        "2026-04-01_pai-zi"
+      ]
     }
   }
 }
