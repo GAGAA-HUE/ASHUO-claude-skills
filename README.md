@@ -21,6 +21,8 @@
 | `research-assistant` | 信息搜集 | 智能联网搜索、多源交叉验证、定时监控任务 |
 | `screenwriting-master` | 创作 | 专业编剧辅助，剧本结构分析与创作指导 |
 | `seedance-director` | 视频生成 | 电影级分镜提示词生成器，专为 Seedance 2.x 优化 |
+| `shanyin-director-master-main` | 视频生成 | 山音导演大师：专业AI视频生成提示词系统 |
+| `wan27-image-prompter` | AI 绘画 | Wan 2.7 图像提示词生成专家（阿里万象） |
 | `skill-creator` | 开发工具 | Claude 官方技能创建模板与规范 |
 | `socratic-screenwriter` | 创作 | 苏格拉底式编剧对话，通过提问深化剧本 |
 | `video-content-analyst` | 分析 | 视频内容深度分析与解构 |
@@ -194,6 +196,43 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 - 视听语言分析
 - 节奏与情绪曲线
 - 可复用技法提取
+
+---
+
+### shanyin-director-master-main（山音导演大师）
+
+**适用场景**：AI 视频生成、专业分镜脚本、电影级提示词
+
+**核心能力**：
+- 专业AI视频生成提示词系统
+- 电影级分镜设计与镜头语言
+- 场景构建与视觉叙事
+- 动作设计与表演指导
+
+**触发方式**：
+```
+@shanyin-director-master-main 生成一段古风武侠对决的分镜
+```
+
+---
+
+### wan27-image-prompter（Wan 2.7 图像提示词专家）
+
+**适用场景**：阿里 Wan 2.7（万象）图像模型提示词生成
+
+**核心能力**：
+- 基于阿里巴巴官方《Wan 2.7-Image 图像生产力指南》
+- 千人千面：人物五官、表情、妆容细粒度控制
+- 调色盘：参考图色彩提取与迁移
+- 复杂图文渲染：支持4000字符图文混排
+- 组图生成：最高12张连续组图，保持一致性
+- 支持 `wan2.7-image-pro`（4K+Thinking Mode）和 `wan2.7-image`（快速版）
+
+**触发方式**：
+```
+@wan27-image-prompter 生成一张赛博朋克风格的街头场景
+@wan27-image-prompter 为这个产品生成电商主图提示词
+```
 
 ---
 
