@@ -33,7 +33,7 @@
 
 1. 克隆本仓库到本地：
 ```bash
-git clone https://github.com/GAGAA-HUE/ASHUO-claude-skills.git
+git clone https://github.com/GAGAA-HUE/ASHUO-claude-skills.git ~/.claude/skills
 ```
 
 2. 将技能文件夹复制到 Claude Code 技能目录：

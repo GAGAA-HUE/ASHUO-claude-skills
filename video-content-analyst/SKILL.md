@@ -10,7 +10,7 @@ description: >
   (3) /write-script   从选题到完整分镜脚本全流程生成
   (4) /kb-add         手动追加文字笔记到知识库
   (5) /kb-summary     AI主动梳理知识库并更新规律总结
-  知识库路径：~/.claude/skills/ASHUO-claude-skills/video-content-analyst/knowledge-base/
+  知识库路径：~/.claude/skills/video-content-analyst/knowledge-base/
 usage: |
   /analyze-video <视频路径>
   /generate-idea [主题关键词]
@@ -162,7 +162,7 @@ bash scripts/extract.sh "$VIDEO_PATH"
 
 1. **读取知识库状态**：
 ```bash
-KB_DIR="$HOME/.claude/skills/ASHUO-claude-skills/video-content-analyst/knowledge-base"
+KB_DIR="$HOME/.claude/skills/video-content-analyst/knowledge-base"
 cat "$KB_DIR/patterns.md"          # 已归纳规律
 cat "$KB_DIR/index.json"           # 方法论分布
 # 按 reuse_count 降序读取前5条高价值条目
@@ -327,7 +327,7 @@ xxx（此段最易犯的错误，或来自知识库的反面案例）
 ## 模式四：/kb-add — 手动追加笔记
 
 ```bash
-KB_NOTES="$HOME/.claude/skills/ASHUO-claude-skills/video-content-analyst/knowledge-base/notes/manual-notes.md"
+KB_NOTES="$HOME/.claude/skills/video-content-analyst/knowledge-base/notes/manual-notes.md"
 mkdir -p "$(dirname $KB_NOTES)"
 echo "\n---\n$(date '+%Y-%m-%d %H:%M') 手动笔记\n$*" >> "$KB_NOTES"
 echo "✅ 已追加"
