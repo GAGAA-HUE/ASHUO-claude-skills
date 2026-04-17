@@ -13,6 +13,7 @@
 | `extract-video` | 文件解析 | 提取视频信息、关键帧、音频、字幕 |
 | `historian-storyteller` | 研究+创作 | 历史人物/事件深度研究，输出编剧视角的戏剧素材 |
 | `image-prompt-engineer` | AI 绘画 | 图像提示词工程师：为 Seedream、Nano Banana、即梦、可灵等中文 AI 绘画模型生成精准提示词 |
+| `nano-banana-pro-prompter` | AI 绘画 | Nano Banana Pro（Google Gemini 3 Pro Image）结构化 JSON 提示词框架 |
 | `novel-crawler` | 网络爬取 | 爬取网络小说并保存为本地 txt 文件，支持通用网站适配 |
 | `paiwotscdashi` | 视频生成 | 拍我视频大师：时间轴驱动的 AI 视频提示词生成器，音画同步专家 |
 | `read-docx` | 文件解析 | 读取 Microsoft Word 文档内容并转为纯文本/Markdown |
@@ -25,7 +26,7 @@
 | `wan27-image-prompter` | AI 绘画 | Wan 2.7 图像提示词生成专家（阿里万象） |
 | `skill-creator` | 开发工具 | Claude 官方技能创建模板与规范 |
 | `socratic-screenwriter` | 创作 | 苏格拉底式编剧对话，通过提问深化剧本 |
-| `video-content-analyst` | 分析 | 视频内容深度分析与解构 |
+| `video-content-analyst` | 分析+创作 | 视频创作知识大脑：分析视频→沉淀知识库→生成创意与分镜脚本 |
 
 ## 🚀 快速开始
 
@@ -163,21 +164,21 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 
 ---
 
-### screenwriting-master（编剧大师）
+### screenwriting-master（山音超级编剧大师）
 
-**适用场景**：剧本创作、故事结构分析
+**适用场景**：全格式影视剧本创作（概念超短片 / 5-10 分钟叙事短片 / 90 分钟长片 / 多集剧集）
 
 **核心能力**：
-- 三幕结构分析与设计
-- 角色弧光构建
-- 对白优化
-- 类型片剧本规范
+- 四种格式全覆盖：概念超短片、叙事短片、长片（商业/文艺）、多集剧集
+- 人物设计、叙事结构、对白创作
+- 类型片模板与节拍表
+- 与 `shanyin-director-master-main` 联动输出导演分镜
 
 ---
 
-### socratic-screenwriter（苏格拉底编剧）
+### socratic-screenwriter（苏格拉底编剧导师）
 
-**适用场景**：剧本深度打磨、创意探索
+**适用场景**：剧本深度打磨、创意探索、编剧学习
 
 **核心能力**：
 - 苏格拉底式提问引导
@@ -187,15 +188,27 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 
 ---
 
-### video-content-analyst（视频内容分析）
+### video-content-analyst（视频创作知识大脑）
 
-**适用场景**：视频分析、竞品研究
+**适用场景**：视频分析、竞品研究、创意生成、分镜脚本创作
 
 **核心能力**：
-- 视频结构解构
-- 视听语言分析
-- 节奏与情绪曲线
-- 可复用技法提取
+- `/analyze-video`：分析视频并沉淀到知识库
+- `/generate-idea`：基于知识库生成选题创意
+- `/write-script`：从选题到完整分镜脚本全流程生成
+- `/kb-add` / `/kb-summary`：手动追加笔记、AI 梳理规律
+
+**知识库现状**：
+- 22 部短片分析条目（13 部奥斯卡获奖短片 + 4 部 B 站全站前 5 爆款 + 5 部 AI 短片）
+- 18 种高频钩子类型、16 种可靠结构模型
+- 自动生成 `patterns.md` 规律总结
+
+**触发方式**：
+```
+@video-content-analyst /analyze-video <视频路径>
+@video-content-analyst /generate-idea 我想做一个关于亲情的短片
+@video-content-analyst /write-script 一个关于重逢的故事
+```
 
 ---
 
@@ -212,6 +225,25 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 **触发方式**：
 ```
 @shanyin-director-master-main 生成一段古风武侠对决的分镜
+```
+
+---
+
+### nano-banana-pro-prompter（Nano Banana Pro 提示词专家）
+
+**适用场景**：Google Gemini 3 Pro Image（社区昵称 Nano Banana Pro）提示词生成
+
+**核心能力**：
+- 结构化 JSON 输出（元信息、提示词要素、完整提示词、使用建议）
+- 支持推理思考模式、实时搜索模式、图像编辑模式
+- 精准文字渲染（30+ 语言，含中文、日文、阿拉伯文）
+- 多图参考输入（最多 14 张）、区域 Annotation 编辑
+- 用途分类：产品摄影、艺术插画、信息图表、UI 设计、多语言文字、创意合成
+
+**触发方式**：
+```
+@nano-banana-pro-prompter 帮我写一个产品摄影提示词
+@nano-banana-pro-prompter 生成一张带中文文字的电商海报
 ```
 
 ---
@@ -244,6 +276,10 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 - 官方技能规范模板
 - SKILL.md 结构指导
 - 技能调试与优化
+- 支持 eval 测试与 benchmark 评估
+
+**相关目录**：
+- `research-assistant-workspace/` — `research-assistant` 的 benchmark 测试数据与评估报告
 
 ---
 
@@ -369,8 +405,14 @@ skill-name/
 ├── references/           # 参考资料目录
 │   ├── 参考文档1.md
 │   └── 参考文档2.md
-└── examples/             # 示例目录（可选）
-    └── example1.txt
+├── scripts/              # 辅助脚本目录（可选）
+│   └── extract.sh
+├── examples/             # 示例目录（可选）
+│   └── example1.txt
+└── knowledge-base/       # 知识库目录（部分技能使用）
+    ├── entries/
+    ├── patterns.md
+    └── index.json
 ```
 
 ### SKILL.md 基本结构
@@ -400,6 +442,7 @@ description: |
 2. **参考文件**：部分技能会自动加载 `references/` 目录下的文档
 3. **网络依赖**：`historian-storyteller` 和 `research-assistant` 需要联网
 4. **定时任务**：`research-assistant` 的定时功能依赖系统 Cron
+5. **工作目录**：`video-content-analyst` 会在 `work/` 目录下生成视频提取文件
 
 ## 📄 许可证
 
