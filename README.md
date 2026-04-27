@@ -16,6 +16,7 @@
 | `nano-banana-pro-prompter` | AI 绘画 | Nano Banana Pro（Google Gemini 3 Pro Image）结构化 JSON 提示词框架 |
 | `novel-crawler` | 网络爬取 | 爬取网络小说并保存为本地 txt 文件，支持通用网站适配 |
 | `paiwotscdashi` | 视频生成 | 拍我视频大师：时间轴驱动的 AI 视频提示词生成器，音画同步专家 |
+| `promo-film-creative` | 创作 | 国际级宣传片创意启发大师：城市/品牌/产品/公益宣传片创意开发，融合戛纳/D&AD 等国际奖项获奖逻辑 |
 | `read-docx` | 文件解析 | 读取 Microsoft Word 文档内容并转为纯文本/Markdown |
 | `read-pptx` | 文件解析 | 读取 Microsoft PowerPoint 演示文稿文本内容 |
 | `read-xlsx` | 文件解析 | 读取 Microsoft Excel 电子表格内容并结构化输出 |
@@ -23,6 +24,7 @@
 | `screenwriting-master` | 创作 | 专业编剧辅助，剧本结构分析与创作指导 |
 | `seedance-director` | 视频生成 | 电影级分镜提示词生成器，专为 Seedance 2.x 优化 |
 | `shanyin-director-master-main` | 视频生成 | 山音导演大师：专业AI视频生成提示词系统 |
+| `short-drama-writer` | 创作 | 短剧编剧大师：小说/IP 改编、市场分析、原创短剧、分集剧本与分镜，覆盖国内抖快微短剧与海外 Reelshort/DramaBox 出海赛道 |
 | `wan27-image-prompter` | AI 绘画 | Wan 2.7 图像提示词生成专家（阿里万象） |
 | `skill-creator` | 开发工具 | Claude 官方技能创建模板与规范 |
 | `socratic-screenwriter` | 创作 | 苏格拉底式编剧对话，通过提问深化剧本 |
@@ -173,6 +175,49 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 - 人物设计、叙事结构、对白创作
 - 类型片模板与节拍表
 - 与 `shanyin-director-master-main` 联动输出导演分镜
+
+---
+
+### short-drama-writer（短剧编剧大师）
+
+**适用场景**：小说/IP 改编短剧、爆款市场分析、原创短剧、分集剧本与分镜，覆盖国内抖音/快手/微短剧与海外 Reelshort/DramaBox/ShortMax 出海赛道
+
+**核心能力**：
+- `/adapt-novel`：小说/IP 改编为标准分集剧本（爽点提炼、删繁就简、节奏重构、对白现代化、钩子重分布）
+- `/market-analysis`：国内外爆款规律、赛道热度、题材公式、选题评估（霸总/战神/穿越 vs Alpha/Werewolf/Revenge）
+- `/original-drama`：从零原创短剧（题材→人物→大纲→分集剧本）
+- `/shot-script`：在标准分集基础上叠加分镜视听语言
+- `/diagnose`：剧本五维诊断（节奏/钩子/情绪弧线/对白效率/角色动机）
+- `/episode-outline`：快速集数大纲与钩子节拍表
+
+**参考文档**：
+- `references/novel-adaptation.md` — 小说改编方法论
+- `references/market-intelligence.md` — 国内外短剧市场情报
+- `references/original-drama-workflow.md` — 原创短剧工作流
+- `references/shot-script-guide.md` — 分镜视听指南
+
+**触发方式**：
+```
+@short-drama-writer 这本小说能改短剧吗
+@short-drama-writer 现在出海什么短剧好卖
+```
+
+---
+
+### promo-film-creative（国际级宣传片创意大师）
+
+**适用场景**：城市/国家形象片、品牌宣传片、产品发布片、公益/社会议题片创意开发
+
+**核心能力**：
+- 融合 Cannes Lions、D&AD、One Show、Clio Awards、Sundance 等国际奖项获奖逻辑
+- 创意概念（Big Idea）开发与差异化策略
+- 叙事结构与视听语言设计
+- 文化洞察与情感共鸣点挖掘
+
+**触发方式**：
+```
+@promo-film-creative 帮我做一个城市形象片的创意方案
+```
 
 ---
 

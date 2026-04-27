@@ -23,34 +23,34 @@ class NovelCrawler:
         self.config = config
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.0'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         })
         self.chapters = []
+        self.failed_chapters = []
+        self.empty_chapters = []
 
     def detect_encoding(self, response):
         """检测响应编码"""
-        # 从响应头检测
-        encoding = response.encoding
-        if encoding and encoding.lower() != 'iso-8859-1':
-            return encoding
+        for encoding in [response.encoding, response.apparent_encoding]:
+            if encoding:
+                normalized = encoding.lower().replace('_', '-')
+                if normalized in ('utf-8-sig', 'utf-8'):
+                    return 'utf-8'
+                if normalized != 'iso-8859-1':
+                    return encoding
 
-        # 从 HTML meta 标签检测
         content_type = response.headers.get('content-type', '')
-        if 'charset=' in content_type:
-            return content_type.split('charset=')[-1].split(';')[0].strip()
+        match = re.search(r'charset=([^;\s]+)', content_type, re.I)
+        if match:
+            charset = match.group(1).strip().strip('"\'').lower().replace('_', '-')
+            return 'utf-8' if charset == 'utf-8-sig' else charset
 
-        # 尝试从内容检测
-        content = response.content
-        for enc in ['utf-8', 'gbk', 'gb2312', 'gb18030']:
-            try:
-                decoded = content.decode(enc)
-                if 'charset=' in decoded:
-                    match = re.search(r'charset=["\']?([^"\'>]+)', decoded)
-                    if match:
-                        return match.group(1).lower()
-                return enc
-            except:
-                continue
+        html_head = response.content[:4096].decode('ascii', errors='ignore')
+        match = re.search(r'<meta[^>]+charset=["\']?([^"\'\s>/]+)', html_head, re.I)
+        if match:
+            charset = match.group(1).strip().lower().replace('_', '-')
+            return 'utf-8' if charset == 'utf-8-sig' else charset
+
         return 'utf-8'
 
     def fetch_page(self, url, retries=3):
@@ -58,8 +58,8 @@ class NovelCrawler:
         for i in range(retries):
             try:
                 response = self.session.get(url, timeout=30)
-                encoding = self.detect_encoding(response)
-                response.encoding = encoding
+                response.raise_for_status()
+                response.encoding = self.detect_encoding(response)
                 return response.text
             except Exception as e:
                 if i == retries - 1:
@@ -68,11 +68,17 @@ class NovelCrawler:
                 time.sleep(2 ** i)
         return None
 
+    def parse_chapter_number(self, title):
+        """从章节标题中提取章节号"""
+        if not title:
+            return None
+        match = re.match(r'^第(\d+)章', title.strip())
+        return int(match.group(1)) if match else None
+
     def extract_chapters(self, html, base_url):
-        """提取章节列表"""
+        """提取通用章节列表"""
         soup = BeautifulSoup(html, 'html.parser')
 
-        # 尝试多种章节列表选择器
         selectors = [
             '.catalog li a', '.chapter-list a', '.listmain dd a',
             '#list dl a', 'ul.chapters a', '.mulu li a',
@@ -83,43 +89,99 @@ class NovelCrawler:
         chapters = []
         for selector in selectors:
             links = soup.select(selector)
-            if len(links) >= 5:  # 至少要有5个链接才算有效
+            if len(links) >= 5:
                 for link in links:
                     href = link.get('href', '')
                     title = link.get_text(strip=True)
                     if href and title and len(title) < 100:
                         full_url = urljoin(base_url, href)
+                        chapter_number = self.parse_chapter_number(title)
                         chapters.append({
                             'title': title,
-                            'url': full_url
+                            'url': full_url,
+                            'chapter_number': chapter_number,
                         })
                 if len(chapters) >= 5:
                     break
 
-        # 去重并保持顺序
-        seen = set()
-        unique_chapters = []
-        for ch in chapters:
-            if ch['url'] not in seen:
-                seen.add(ch['url'])
-                unique_chapters.append(ch)
+        return self.deduplicate_and_sort_chapters(chapters)
 
-        return unique_chapters
+    def extract_biquge_paginated_chapters(self, base_url):
+        """针对 22biqu 站点提取分页目录"""
+        collected = []
+        visited_pages = set()
+        next_url = base_url
 
-    def extract_content(self, html):
+        while next_url and next_url not in visited_pages:
+            visited_pages.add(next_url)
+            html = self.fetch_page(next_url)
+            if not html:
+                break
+
+            soup = BeautifulSoup(html, 'html.parser')
+            page_chapters = []
+            for link in soup.find_all('a', href=True):
+                title = link.get_text(' ', strip=True)
+                chapter_number = self.parse_chapter_number(title)
+                if chapter_number is None:
+                    continue
+
+                full_url = urljoin(next_url, link['href'])
+                if '/biqu' not in full_url or not full_url.endswith('.html'):
+                    continue
+
+                page_chapters.append({
+                    'title': title,
+                    'url': full_url,
+                    'chapter_number': chapter_number,
+                })
+
+            collected.extend(page_chapters)
+
+            next_link = soup.find('a', string=lambda s: s and '下一页' in s)
+            if not next_link:
+                break
+            next_url = urljoin(next_url, next_link.get('href', ''))
+
+        return self.deduplicate_and_sort_chapters(collected)
+
+    def deduplicate_and_sort_chapters(self, chapters):
+        """去重并按章节号排序"""
+        by_number = {}
+        without_number = []
+        seen_urls = set()
+
+        for chapter in chapters:
+            url = chapter['url']
+            if url in seen_urls:
+                continue
+            seen_urls.add(url)
+
+            number = chapter.get('chapter_number')
+            if number is None:
+                without_number.append(chapter)
+                continue
+
+            existing = by_number.get(number)
+            if not existing or len(chapter['title']) > len(existing['title']):
+                by_number[number] = chapter
+
+        ordered = [by_number[number] for number in sorted(by_number)]
+        ordered.extend(without_number)
+        return ordered
+
+    def extract_content(self, html, fallback_title=''):
         """提取正文内容"""
         soup = BeautifulSoup(html, 'html.parser')
 
-        # 移除脚本和样式
         for tag in soup(['script', 'style', 'iframe', 'nav', 'header', 'footer']):
             tag.decompose()
 
-        # 尝试多种正文选择器
         content_selectors = [
-            '.content', '.chapter-content', '#content',
-            '.read-content', '.text', '#booktext',
-            '.novel-content', '.chapter-body', '.article-content',
-            '#txtcontent', '.showtxt', '#htmlContent'
+            '#chaptercontent', '#content', '.content', '.chapter-content',
+            '.read-content', '.text', '#booktext', '.novel-content',
+            '.chapter-body', '.article-content', '#txtcontent',
+            '.showtxt', '#htmlContent'
         ]
 
         content_elem = None
@@ -130,10 +192,8 @@ class NovelCrawler:
                 break
 
         if not content_elem:
-            # 回退：找最长的文本段落
             paragraphs = soup.find_all('p')
             if len(paragraphs) > 5:
-                # 找包含最多段落的容器
                 candidates = {}
                 for p in paragraphs[:50]:
                     parent = p.find_parent(['div', 'article', 'section'])
@@ -152,20 +212,25 @@ class NovelCrawler:
         if not content_elem:
             return None
 
-        # 提取章节标题
         title = ''
-        title_selectors = ['h1', '.chapter-title', '.title', '#title', 'h2', 'h3']
+        title_selectors = [
+            '.bookname h1', '.content h1', '.chaptertitle', '.chapter-title',
+            '#chaptertitle', '#title', 'h1', 'h2', 'h3'
+        ]
         for selector in title_selectors:
             title_elem = soup.select_one(selector)
-            if title_elem:
-                title = title_elem.get_text(strip=True)
-                if title and len(title) < 100:
-                    break
+            if not title_elem:
+                continue
+            candidate = title_elem.get_text(strip=True)
+            if candidate and len(candidate) < 100 and candidate != '笔趣阁':
+                title = candidate
+                break
 
-        # 清理内容
+        if not title:
+            title = fallback_title
+
         text = content_elem.get_text('\n', strip=True)
 
-        # 移除常见广告文本
         ad_patterns = [
             r'本章由.*赞助', r'请记住本书首发域名', r'笔趣阁',
             r'阅读最新章节', r'手机阅读', r'天才壹秒記住',
@@ -175,11 +240,31 @@ class NovelCrawler:
         for pattern in ad_patterns:
             text = re.sub(pattern, '', text)
 
-        # 清理多余空行
         lines = [line.strip() for line in text.split('\n') if line.strip()]
         text = '\n\n'.join(lines)
 
         return {'title': title, 'content': text}
+
+    def find_missing_ranges(self, chapter_numbers):
+        """查找缺失的章节号区间"""
+        if not chapter_numbers:
+            return []
+
+        missing = []
+        expected = set(range(min(chapter_numbers), max(chapter_numbers) + 1))
+        absent = sorted(expected - set(chapter_numbers))
+        if not absent:
+            return []
+
+        start = prev = absent[0]
+        for number in absent[1:]:
+            if number == prev + 1:
+                prev = number
+                continue
+            missing.append((start, prev))
+            start = prev = number
+        missing.append((start, prev))
+        return missing
 
     def crawl(self):
         """执行爬取"""
@@ -187,23 +272,25 @@ class NovelCrawler:
         output_path = self.config.get('output_path', './novel.txt')
         delay = self.config.get('delay', 1.0)
 
-        # 如果提供了章节链接列表，直接使用
         if 'chapter_links' in self.config and self.config['chapter_links']:
             chapter_links = self.config['chapter_links']
             if isinstance(chapter_links[0], str):
-                self.chapters = [{'title': f'第{i+1}章', 'url': url}
-                                for i, url in enumerate(chapter_links)]
+                self.chapters = [{'title': f'第{i+1}章', 'url': url, 'chapter_number': i + 1}
+                                 for i, url in enumerate(chapter_links)]
             else:
                 self.chapters = chapter_links
         else:
-            # 否则从目录页提取
             print(f"正在分析目录页: {base_url}")
-            html = self.fetch_page(base_url)
-            if not html:
-                print("获取目录页失败")
-                return False
+            parsed = urlparse(base_url)
+            if '22biqu.' in parsed.netloc and re.search(r'/biqu\d+/?$', parsed.path):
+                self.chapters = self.extract_biquge_paginated_chapters(base_url)
+            else:
+                html = self.fetch_page(base_url)
+                if not html:
+                    print("获取目录页失败")
+                    return False
+                self.chapters = self.extract_chapters(html, base_url)
 
-            self.chapters = self.extract_chapters(html, base_url)
             if not self.chapters:
                 print("未能提取到章节列表，请检查页面结构")
                 return False
@@ -211,42 +298,68 @@ class NovelCrawler:
         total = len(self.chapters)
         print(f"找到 {total} 个章节")
 
-        # 应用章节范围
         start = self.config.get('start_chapter', 0)
         end = self.config.get('end_chapter', -1)
         if end < 0:
             end = total
         self.chapters = self.chapters[start:end]
-        print(f"将爬取第 {start+1} 章到第 {end} 章，共 {len(self.chapters)} 章")
+        print(f"将爬取第 {start + 1} 章到第 {end} 章，共 {len(self.chapters)} 章")
 
-        # 爬取各章节
         results = []
         for i, chapter in enumerate(self.chapters):
-            print(f"进度: [{i+1}/{len(self.chapters)}] {chapter['title'][:30]}...", end=' ')
+            title = chapter.get('title', f'第{i + 1}章')
+            print(f"进度: [{i + 1}/{len(self.chapters)}] {title[:30]}...", end=' ')
 
             html = self.fetch_page(chapter['url'])
             if html:
-                content = self.extract_content(html)
+                content = self.extract_content(html, fallback_title=title)
                 if content and content['content']:
                     results.append({
-                        'title': content['title'] or chapter['title'],
-                        'content': content['content']
+                        'title': content['title'] or title,
+                        'content': content['content'],
+                        'chapter_number': chapter.get('chapter_number'),
                     })
-                    print("✓")
+                    print("[OK]")
                 else:
-                    print("× (未提取到内容)")
+                    self.empty_chapters.append(chapter)
+                    print("[EMPTY]")
             else:
-                print("× (获取失败)")
+                self.failed_chapters.append(chapter)
+                print("[FAIL]")
 
             if i < len(self.chapters) - 1:
                 time.sleep(delay)
 
-        # 保存文件
         if not results:
             print("没有成功获取任何章节")
             return False
 
         self.save_to_file(results, output_path)
+
+        chapter_numbers = [c['chapter_number'] for c in self.chapters if c.get('chapter_number') is not None]
+        missing_ranges = self.find_missing_ranges(chapter_numbers)
+        print(f"成功章节: {len(results)}")
+        print(f"抓取失败章节: {len(self.failed_chapters)}")
+        print(f"空内容章节: {len(self.empty_chapters)}")
+        if missing_ranges:
+            missing_text = ', '.join(
+                f"{start}-{end}" if start != end else str(start)
+                for start, end in missing_ranges
+            )
+            print(f"目录缺失章节号: {missing_text}")
+        else:
+            print("目录缺失章节号: 无")
+
+        if self.failed_chapters:
+            print("失败章节列表:")
+            for chapter in self.failed_chapters:
+                print(f"  - {chapter.get('title', chapter['url'])}: {chapter['url']}")
+
+        if self.empty_chapters:
+            print("空内容章节列表:")
+            for chapter in self.empty_chapters:
+                print(f"  - {chapter.get('title', chapter['url'])}: {chapter['url']}")
+
         return True
 
     def save_to_file(self, chapters, output_path):
@@ -257,13 +370,11 @@ class NovelCrawler:
         output = Path(output_path)
         output.parent.mkdir(parents=True, exist_ok=True)
 
-        with open(output, 'w', encoding='utf-8') as f:
-            # 写入标题和作者
+        with open(output, 'w', encoding='utf-8-sig') as f:
             f.write(f"《{novel_title}》\n")
             f.write(f"作者：{author}\n\n")
             f.write("=" * 50 + "\n\n")
 
-            # 写入各章节
             for chapter in chapters:
                 f.write(f"{chapter['title']}\n\n")
                 f.write(chapter['content'])
