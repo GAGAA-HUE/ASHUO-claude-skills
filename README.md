@@ -10,6 +10,7 @@
 
 | 技能名 | 类型 | 功能描述 |
 |--------|------|----------|
+| `dual-core-advisor` | 对话顾问 | 双核顾问助手——结构化思考 × 同理心引擎，处理个人困惑、决策难题、情绪困扰 |
 | `extract-video` | 文件解析 | 提取视频信息、关键帧、音频、字幕 |
 | `historian-storyteller` | 研究+创作 | 历史人物/事件深度研究，输出编剧视角的戏剧素材 |
 | `image-prompt-engineer` | AI 绘画 | 图像提示词工程师：为 Seedream、Nano Banana、即梦、可灵等中文 AI 绘画模型生成精准提示词 |
@@ -29,6 +30,7 @@
 | `skill-creator` | 开发工具 | Claude 官方技能创建模板与规范 |
 | `socratic-screenwriter` | 创作 | 苏格拉底式编剧对话，通过提问深化剧本 |
 | `video-content-analyst` | 分析+创作 | 视频创作知识大脑：分析视频→沉淀知识库→生成创意与分镜脚本 |
+| `dual-core-advisor` | 对话顾问 | 双核顾问助手——结构化思考 × 同理心引擎，处理个人困惑、决策难题、情绪困扰 |
 
 ## 🚀 快速开始
 
@@ -39,15 +41,7 @@
 git clone https://github.com/GAGAA-HUE/ASHUO-claude-skills.git ~/.claude/skills
 ```
 
-2. 将技能文件夹复制到 Claude Code 技能目录：
-```bash
-# Windows
-cp -r historian-storyteller %USERPROFILE%\.claude\skills\
-cp -r seedance-director %USERPROFILE%\.claude\skills\
-# ... 其他技能
-```
-
-3. 在 Claude Code 中使用：
+2. 在 Claude Code 中使用：
 ```
 @historian-storyteller 帮我研究拿破仑的生平
 ```
@@ -163,6 +157,24 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 - `references/动作戏摄影指导.md` - 动作戏创作框架
 - `references/焦距情绪映射完整表.md` - 镜头心理学参数
 - `references/拉班动作词汇库.md` - 动作描述规范
+
+---
+
+### dual-core-advisor（双核顾问助手）
+
+**适用场景**：个人困惑、决策难题、工作问题、情绪困扰、创意探讨
+
+**核心能力**：
+- 双引擎驱动：结构化思考 × 真实同理心
+- 自动感知情绪状态，决定先共情还是先分析
+- 根据问题严肃程度在"智慧老友"和"专业顾问"之间切换风格
+- 识别认知盲区，提供有层次、有优先级的建议
+
+**触发方式**：
+```
+@dual-core-advisor 我不知道该怎么办，最近工作压力很大
+@dual-core-advisor 帮我分析一下这个选择的利弊
+```
 
 ---
 
@@ -324,7 +336,7 @@ cp -r seedance-director %USERPROFILE%\.claude\skills\
 - 支持 eval 测试与 benchmark 评估
 
 **相关目录**：
-- `research-assistant-workspace/` — `research-assistant` 的 benchmark 测试数据与评估报告
+- `research-assistant-workspace/` — `research-assistant` 的 benchmark 测试数据与评估报告（非独立技能）
 
 ---
 
@@ -488,6 +500,14 @@ description: |
 3. **网络依赖**：`historian-storyteller` 和 `research-assistant` 需要联网
 4. **定时任务**：`research-assistant` 的定时功能依赖系统 Cron
 5. **工作目录**：`video-content-analyst` 会在 `work/` 目录下生成视频提取文件
+
+## 📁 目录说明
+
+| 目录 | 说明 |
+|------|------|
+| `*/`（各技能文件夹） | 独立技能模块，含 `SKILL.md` 定义文件 |
+| `research-assistant-workspace/` | `research-assistant` 技能的 benchmark 测试数据（非独立技能） |
+| `work/` | `video-content-analyst` 等技能的运行时工作目录（自动生成，非技能） |
 
 ## 📄 许可证
 
