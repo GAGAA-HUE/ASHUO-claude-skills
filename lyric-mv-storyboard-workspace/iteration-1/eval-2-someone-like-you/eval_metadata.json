@@ -1,0 +1,35 @@
+{
+  "eval_id": 2,
+  "eval_name": "someone-like-you-english-pop",
+  "prompt": "给这首歌设计MV画面：《Someone Like You》...",
+  "assertions": [
+    {
+      "name": "has_lyric_analysis",
+      "description": "输出包含歌词深度分析部分（故事内核、情绪弧线、角色设定、意象符号、场景设定中的至少3项）"
+    },
+    {
+      "name": "has_storyboard",
+      "description": "输出包含MV分镜脚本部分"
+    },
+    {
+      "name": "shot_elements_complete",
+      "description": "分镜包含景别、运镜、时长、画面描述四项基本要素"
+    },
+    {
+      "name": "segmented_by_lyric_parts",
+      "description": "分镜按歌词段落（如Verse/Chorus/Bridge）组织"
+    },
+    {
+      "name": "has_visual_style",
+      "description": "包含整体视觉风格建议（色彩、摄影、剪辑等）"
+    },
+    {
+      "name": "has_character_setting",
+      "description": "明确提及角色设定"
+    },
+    {
+      "name": "has_scene_setting",
+      "description": "明确提及场景设定"
+    }
+  ]
+}

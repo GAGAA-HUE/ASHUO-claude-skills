@@ -1,0 +1,23 @@
+{
+  "skill_name": "lyric-mv-storyboard",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我根据下面这首歌的歌词写一套MV分镜。\n\n《消愁》\n\n当你走进这欢乐场\n背上所有的梦与想\n各色的脸上各色的妆\n没人记得你的模样\n\n三巡酒过你在角落\n固执地唱着苦涩的歌\n听它在喧嚣里被淹没\n你拿起酒杯对自己说\n\n一杯敬朝阳 一杯敬月光\n唤醒我的向往 温柔了寒窗\n于是可以不回头地逆风飞翔\n不怕心头有雨 眼底有霜\n\n一杯敬故乡 一杯敬远方\n守着我的善良 催着我成长\n所以南北的路从此不再漫长\n灵魂不再无处安放\n\n躁动不安的座上客\n自以为是地表演着\n伪装着 舞蹈着 疲惫着\n你拿起酒杯对自己说\n\n一杯敬明天 一杯敬过往\n支撑我的身体 厚重了肩膀\n虽然从不相信所谓山高水长\n人生苦短何必念念不忘\n\n一杯敬自由 一杯敬死亡\n宽恕我的平凡 驱散了迷惘\n好吧天亮之后总是潦草离场\n清醒的人最荒唐\n清醒的人最荒唐",
+      "expected_output": "包含歌词深度分析（故事内核、情绪弧线、角色设定、核心意象、场景设定）和按段落划分的MV分镜脚本，分镜包含画面风格、景别、运镜、时长、灯光、音效提示等要素",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "给这首歌设计MV画面：\n\n《Someone Like You》\n\nI heard that you're settled down\nThat you found a girl and you're married now\nI heard that your dreams came true\nGuess she gave you things I didn't give to you\n\nOld friend, why are you so shy?\nAin't like you to hold back or hide from the light\n\nI hate to turn up out of the blue, uninvited\nBut I couldn't stay away, I couldn't fight it\nI had hoped you'd see my face\nAnd that you'd be reminded that for me, it isn't over\n\nNever mind, I'll find someone like you\nI wish nothing but the best for you, too\nDon't forget me, I beg\nI remember you said\nSometimes it lasts in love, but sometimes it hurts instead\nSometimes it lasts in love, but sometimes it hurts instead",
+      "expected_output": "对英文歌词进行深度分析并生成MV分镜，分镜包含画面风格、景别、运镜、时长、灯光、音效提示等要素",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "分析这段歌词并生成MV分镜脚本：\n\n《海底》\n\n散落的月光穿过了云\n躲着人群\n铺成大海的鳞\n海浪打湿白裙\n试图推你回去\n\n你喜欢海风咸咸的气息\n踩着湿湿的沙砾\n你说人们的骨灰应该撒进海里\n你问我死后会去哪里\n有没有人爱你\n世界能否不再抛弃你\n\n来不及 来不及\n你曾笑着哭泣\n来不及 来不及\n你颤抖的手臂\n来不及 来不及\n无人将你打捞起\n来不及 来不及\n你明明讨厌窒息",
+      "expected_output": "分析这首情绪压抑、意象强烈的歌词，生成分镜需体现海洋意象、窒息感与救赎主题的视觉表达，包含完整的画面风格、景别、运镜、时长、灯光、音效提示",
+      "files": []
+    }
+  ]
+}

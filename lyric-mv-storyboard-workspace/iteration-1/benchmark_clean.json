@@ -1,0 +1,392 @@
+{
+  "metadata": {
+    "skill_name": "lyric-mv-storyboard",
+    "skill_path": "C:/Users/vip/.claude/skills/lyric-mv-storyboard",
+    "executor_model": "claude-opus-4-7",
+    "timestamp": "2026-05-11T13:30:00Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "xiaochou-chinese-pop",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 216.9,
+        "tokens": 34583,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "输出包含歌词深度分析部分",
+          "passed": true,
+          "evidence": "找到 10/10 个分析关键词"
+        },
+        {
+          "text": "输出包含MV分镜脚本部分",
+          "passed": true,
+          "evidence": "找到分镜相关关键词"
+        },
+        {
+          "text": "分镜包含景别、运镜、时长、画面描述",
+          "passed": true,
+          "evidence": "中文要素: 4/4"
+        },
+        {
+          "text": "分镜按歌词段落组织",
+          "passed": true,
+          "evidence": "找到 6 个段落标记关键词"
+        },
+        {
+          "text": "包含整体视觉风格建议",
+          "passed": true,
+          "evidence": "找到 6 个视觉风格关键词"
+        },
+        {
+          "text": "明确提及角色设定",
+          "passed": true,
+          "evidence": "找到角色相关关键词"
+        },
+        {
+          "text": "明确提及场景设定",
+          "passed": true,
+          "evidence": "找到场景相关关键词"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "xiaochou-chinese-pop",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.86,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "time_seconds": 94.0,
+        "tokens": 18981,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "输出包含歌词深度分析部分",
+          "passed": true,
+          "evidence": "找到 8/10 个分析关键词"
+        },
+        {
+          "text": "输出包含MV分镜脚本部分",
+          "passed": true,
+          "evidence": "找到分镜相关关键词"
+        },
+        {
+          "text": "分镜包含景别、运镜、时长、画面描述",
+          "passed": false,
+          "evidence": "要素不足: 中文2, 英文0"
+        },
+        {
+          "text": "分镜按歌词段落组织",
+          "passed": true,
+          "evidence": "找到 3 个段落标记关键词"
+        },
+        {
+          "text": "包含整体视觉风格建议",
+          "passed": true,
+          "evidence": "找到 4 个视觉风格关键词"
+        },
+        {
+          "text": "明确提及角色设定",
+          "passed": true,
+          "evidence": "找到角色相关关键词"
+        },
+        {
+          "text": "明确提及场景设定",
+          "passed": true,
+          "evidence": "找到场景相关关键词"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "someone-like-you-english-pop",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 82.9,
+        "tokens": 20711,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "输出包含歌词深度分析部分",
+          "passed": true,
+          "evidence": "找到 10/10 个分析关键词"
+        },
+        {
+          "text": "输出包含MV分镜脚本部分",
+          "passed": true,
+          "evidence": "找到分镜相关关键词"
+        },
+        {
+          "text": "分镜包含景别、运镜、时长、画面描述",
+          "passed": true,
+          "evidence": "中文要素: 4/4, 英文要素: 0/4"
+        },
+        {
+          "text": "分镜按歌词段落组织",
+          "passed": true,
+          "evidence": "找到 7 个段落标记关键词"
+        },
+        {
+          "text": "包含整体视觉风格建议",
+          "passed": true,
+          "evidence": "找到 6 个视觉风格关键词"
+        },
+        {
+          "text": "明确提及角色设定",
+          "passed": true,
+          "evidence": "找到角色相关关键词"
+        },
+        {
+          "text": "明确提及场景设定",
+          "passed": true,
+          "evidence": "找到场景相关关键词"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "someone-like-you-english-pop",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.71,
+        "passed": 5,
+        "failed": 2,
+        "total": 7,
+        "time_seconds": 34.4,
+        "tokens": 15152,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "输出包含歌词深度分析部分",
+          "passed": false,
+          "evidence": "仅找到 2 个分析关键词"
+        },
+        {
+          "text": "输出包含MV分镜脚本部分",
+          "passed": true,
+          "evidence": "找到分镜相关关键词"
+        },
+        {
+          "text": "分镜包含景别、运镜、时长、画面描述",
+          "passed": false,
+          "evidence": "要素不足: 中文0, 英文0"
+        },
+        {
+          "text": "分镜按歌词段落组织",
+          "passed": true,
+          "evidence": "找到 2 个段落标记关键词"
+        },
+        {
+          "text": "包含整体视觉风格建议",
+          "passed": true,
+          "evidence": "找到 3 个视觉风格关键词"
+        },
+        {
+          "text": "明确提及角色设定",
+          "passed": true,
+          "evidence": "找到角色相关关键词"
+        },
+        {
+          "text": "明确提及场景设定",
+          "passed": true,
+          "evidence": "找到场景相关关键词"
+        }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "haidi-dark-imagery",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 57.3,
+        "tokens": 19809,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "输出包含歌词深度分析部分",
+          "passed": true,
+          "evidence": "找到 10/10 个分析关键词"
+        },
+        {
+          "text": "输出包含MV分镜脚本部分",
+          "passed": true,
+          "evidence": "找到分镜相关关键词"
+        },
+        {
+          "text": "分镜包含景别、运镜、时长、画面描述",
+          "passed": true,
+          "evidence": "中文要素: 4/4, 英文要素: 0/4"
+        },
+        {
+          "text": "分镜按歌词段落组织",
+          "passed": true,
+          "evidence": "找到 5 个段落标记关键词"
+        },
+        {
+          "text": "包含整体视觉风格建议",
+          "passed": true,
+          "evidence": "找到 6 个视觉风格关键词"
+        },
+        {
+          "text": "明确提及角色设定",
+          "passed": true,
+          "evidence": "找到角色相关关键词"
+        },
+        {
+          "text": "明确提及场景设定",
+          "passed": true,
+          "evidence": "找到场景相关关键词"
+        },
+        {
+          "text": "海洋意象在分镜中有具体视觉呈现",
+          "passed": true,
+          "evidence": "找到 10 个海洋意象关键词"
+        }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "haidi-dark-imagery",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.88,
+        "passed": 7,
+        "failed": 1,
+        "total": 8,
+        "time_seconds": 69.5,
+        "tokens": 19077,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "输出包含歌词深度分析部分",
+          "passed": true,
+          "evidence": "找到 6/10 个分析关键词"
+        },
+        {
+          "text": "输出包含MV分镜脚本部分",
+          "passed": true,
+          "evidence": "找到分镜相关关键词"
+        },
+        {
+          "text": "分镜包含景别、运镜、时长、画面描述",
+          "passed": false,
+          "evidence": "要素不足: 中文1, 英文0"
+        },
+        {
+          "text": "分镜按歌词段落组织",
+          "passed": true,
+          "evidence": "找到 4 个段落标记关键词"
+        },
+        {
+          "text": "包含整体视觉风格建议",
+          "passed": true,
+          "evidence": "找到 4 个视觉风格关键词"
+        },
+        {
+          "text": "明确提及角色设定",
+          "passed": true,
+          "evidence": "找到角色相关关键词"
+        },
+        {
+          "text": "明确提及场景设定",
+          "passed": true,
+          "evidence": "找到场景相关关键词"
+        },
+        {
+          "text": "海洋意象在分镜中有具体视觉呈现",
+          "passed": true,
+          "evidence": "找到 8 个海洋意象关键词"
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 119.0,
+        "stddev": 70.4,
+        "min": 57.3,
+        "max": 216.9
+      },
+      "tokens": {
+        "mean": 25034,
+        "stddev": 6944,
+        "min": 19809,
+        "max": 34583
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.82,
+        "stddev": 0.09,
+        "min": 0.71,
+        "max": 0.88
+      },
+      "time_seconds": {
+        "mean": 66.0,
+        "stddev": 24.8,
+        "min": 34.4,
+        "max": 94.0
+      },
+      "tokens": {
+        "mean": 17737,
+        "stddev": 1704,
+        "min": 15152,
+        "max": 19077
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.18",
+      "time_seconds": "+53.0",
+      "tokens": "+7297"
+    }
+  },
+  "notes": [
+    "Skill consistently achieves 100% pass rate across all evals, while baseline averages 82%",
+    "Baseline struggles most with structured shot elements (framing, camera movement, duration) and lyric analysis depth",
+    "Skill adds ~53s execution time and ~7.3K tokens on average, but produces significantly more structured and complete outputs",
+    "Eval-2 (English lyrics) shows the largest skill impact: baseline only 71% vs skill 100%",
+    "All skill outputs include both Phase 1 (lyric analysis) and Phase 2 (storyboard) as specified in SKILL.md"
+  ]
+}

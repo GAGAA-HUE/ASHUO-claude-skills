@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "输出包含歌词深度分析部分（故事内核、情绪弧线、角色设定、意象符号、场景设定中的至少3项）",
+      "passed": true,
+      "evidence": "找到 5/10 个分析关键词"
+    },
+    {
+      "text": "输出包含MV分镜脚本部分",
+      "passed": true,
+      "evidence": "找到分镜相关关键词"
+    },
+    {
+      "text": "分镜包含景别、运镜、时长、画面描述四项基本要素",
+      "passed": true,
+      "evidence": "中文要素: 3/4, 英文要素: 0/4"
+    },
+    {
+      "text": "分镜按歌词段落（如Verse/Chorus/Bridge）组织",
+      "passed": true,
+      "evidence": "找到 4 个段落标记关键词"
+    },
+    {
+      "text": "包含整体视觉风格建议（色彩、摄影、剪辑等）",
+      "passed": true,
+      "evidence": "找到 4 个视觉风格关键词"
+    },
+    {
+      "text": "明确提及角色设定",
+      "passed": true,
+      "evidence": "找到角色相关关键词"
+    },
+    {
+      "text": "明确提及场景设定",
+      "passed": true,
+      "evidence": "找到场景相关关键词"
+    },
+    {
+      "text": "海洋意象（月光、海浪、海底、沙滩等）在分镜中有具体视觉呈现",
+      "passed": true,
+      "evidence": "找到 7 个海洋意象关键词"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "total": 8,
+    "pass_rate": 1.0
+  }
+}
