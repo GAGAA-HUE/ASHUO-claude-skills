@@ -1,0 +1,89 @@
+{
+  "skill_name": "image-prompt",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "用 GPT Image 帮我生成一张提示词：一个穿着雨衣的女孩站在夜晚的霓虹街头，日系电影风格",
+      "expected_output": "GPT Image 格式的英文提示词，包含主体描述、场景、构图、光线、风格，以及中文使用建议",
+      "files": [],
+      "assertions": [
+        {
+          "name": "prompt_is_english",
+          "description": "提示词本身使用英文输出"
+        },
+        {
+          "name": "follows_gpt_image_structure",
+          "description": "提示词遵循 GPT Image 结构：主体+动作+场景+构图+光线+风格，用完整句子而非 tag 列表"
+        },
+        {
+          "name": "includes_chinese_tips",
+          "description": "输出包含中文使用建议（宽高比、质量设置或模型注意事项）"
+        },
+        {
+          "name": "prompt_is_self_contained",
+          "description": "提示词是完全自洽的独立文本，不依赖对话上下文"
+        },
+        {
+          "name": "no_tag_stacking",
+          "description": "提示词没有用逗号堆叠 tag 的风格（如 epic, cinematic, 4K, ultra-realistic）"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "用 Nano Banana Pro 帮我反推这张图的提示词。（图像描述：一名20多岁亚裔女性，短发，米白色宽松针织毛衣，坐在咖啡馆窗边，手捧拿铁，望向窗外。柔和暖黄光，浅景深，胶片摄影风格。）",
+      "expected_output": "先输出结构化图像分析（中文），再输出 Nano Banana Pro 格式的英文提示词，附中文使用建议",
+      "files": [],
+      "assertions": [
+        {
+          "name": "includes_image_analysis",
+          "description": "输出包含结构化图像分析，覆盖主体、场景、构图、光线、色彩、风格"
+        },
+        {
+          "name": "prompt_is_english",
+          "description": "提示词本身使用英文输出"
+        },
+        {
+          "name": "follows_nano_banana_structure",
+          "description": "提示词遵循 Nano Banana Pro 的 art director brief 格式，按主体→动作→场景→风格→构图→光线顺序组织"
+        },
+        {
+          "name": "includes_chinese_tips",
+          "description": "输出包含中文使用建议"
+        },
+        {
+          "name": "prompt_is_self_contained",
+          "description": "提示词是完全自洽的独立文本，不依赖对话上下文"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "这张图我想把背景换成白色干净的摄影棚，用 Nano Banana Pro 出编辑提示词。（图像描述：一双白色运动鞋放在木质地板上，背景是做旧感砖墙，侧光打亮鞋身，暖色调商业摄影风格。）",
+      "expected_output": "Nano Banana Pro 编辑格式：先 Preserve 不变部分，再 Edit only 描述背景改动，附中文使用建议",
+      "files": [],
+      "assertions": [
+        {
+          "name": "prompt_is_english",
+          "description": "提示词本身使用英文输出"
+        },
+        {
+          "name": "preserve_before_edit",
+          "description": "编辑提示词先列出要保留的内容（Preserve），再描述改动（Edit only）"
+        },
+        {
+          "name": "single_change_focus",
+          "description": "提示词聚焦于单一改动（背景替换），没有同时改多处"
+        },
+        {
+          "name": "includes_chinese_tips",
+          "description": "输出包含中文使用建议"
+        },
+        {
+          "name": "prompt_is_self_contained",
+          "description": "提示词是完全自洽的独立文本，不依赖对话上下文"
+        }
+      ]
+    }
+  ]
+}

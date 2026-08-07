@@ -1,0 +1,32 @@
+{
+  "eval_id": 1,
+  "eval_name": "eval-generate-gpt",
+  "prompt": "用 GPT Image 帮我生成一张提示词：一个穿着雨衣的女孩站在夜晚的霓虹街头，日系电影风格",
+  "assertions": [
+    {
+      "text": "提示词本身使用英文输出",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词遵循 GPT Image 结构：主体+动作+场景+构图+光线+风格，用完整句子而非 tag 列表",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "输出包含中文使用建议（宽高比、质量设置或模型注意事项）",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词是完全自洽的独立文本，不依赖对话上下文",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词没有用逗号堆叠 tag 的风格",
+      "passed": null,
+      "evidence": ""
+    }
+  ]
+}

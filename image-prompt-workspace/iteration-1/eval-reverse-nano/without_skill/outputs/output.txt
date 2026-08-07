@@ -1,0 +1,35 @@
+【反推提示词 / Reverse Prompt】
+
+工具：Nano Banana Pro（图像反推模式）
+图像描述来源：文字模拟
+
+---
+
+**中文提示词（主提示词）：**
+
+20多岁亚裔女性，短发，身穿米白色宽松针织毛衣，坐在咖啡馆靠窗位置，双手捧着一杯拿铁，目光温柔地望向窗外。窗外街道和树影朦胧虚化。室内暖黄色自然光，浅景深，背景奶油色虚化散景。整体氛围文艺宁静，胶片摄影质感，颗粒感，色调偏暖。竖构图，人像特写至半身。
+
+---
+
+**英文提示词（适配 AI 图像生成）：**
+
+A young Asian woman in her mid-20s with short hair, wearing an oversized cream-white knit sweater, sitting by a cafe window, holding a latte with both hands, gazing softly out the window. Blurred street scene and tree shadows visible through the glass. Soft warm indoor natural light, shallow depth of field, creamy bokeh background. Quiet, artistic atmosphere. Film photography aesthetic, subtle grain, warm tones. Vertical composition, portrait to half-body framing.
+
+---
+
+**风格标签 / Style Tags：**
+
+film photography, cafe portrait, warm tones, bokeh, shallow DOF, knit sweater, Asian female, short hair, latte, window light, quiet mood, vintage film grain, soft natural light, cozy aesthetic, vertical portrait
+
+---
+
+**负向提示词 / Negative Prompt（建议排除）：**
+
+harsh lighting, overexposed, busy background, neon colors, sharp background, cluttered, oversaturated, cartoon, illustration, 3D render, ugly, deformed
+
+---
+
+**参数建议：**
+- 宽高比：9:16（竖构图人像）
+- 风格强度：偏写实 + 胶片感
+- 细节权重：面部清晰，背景虚化

@@ -1,0 +1,8 @@
+A young woman in her early 20s wearing an oversized translucent yellow raincoat stands alone on a rain-soaked urban street at night. She gazes slightly downward, one hand loosely holding the hood of her raincoat. The street is lined with glowing neon signs in Japanese kanji — red, pink, and teal — reflected in long shimmering streaks across the wet pavement. Medium shot, slightly low angle, with shallow depth of field blurring the background bokeh of neon lights and distant pedestrians. Soft diffused rain mist fills the air; the only hard light comes from the neon signs casting colored shadows across her face and coat. Japanese arthouse cinema style, reminiscent of films by Shunji Iwai — grainy 35mm film texture, muted yet luminous color grading with a slight cool-blue shadow and warm neon highlight contrast. Aspect ratio 2:3.
+
+---
+【中文使用建议】
+1. 推荐宽高比 2:3（竖构图），符合日系电影海报感，也可改为 16:9 横构图用于影片截图风。
+2. GPT Image 对霓虹反光和雨夜湿地面的美学表现较强，此场景复杂度适中，出图质量通常稳定。
+3. 若画面出现细节杂乱或笔触脏乱，可尝试删减"rain mist"描述或减少背景行人提及，专注前景主体。
+4. 如需画面中出现日文霓虹文字（如招牌内容），可在提示词中直接写入具体文字，GPT Image 文字渲染支持较好。

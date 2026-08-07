@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "image-prompt", "runs": [{"id": "eval-generate-gpt-with_skill", "prompt": "\u7528 GPT Image \u5e2e\u6211\u751f\u6210\u4e00\u5f20\u63d0\u793a\u8bcd\uff1a\u4e00\u4e2a\u7a7f\u7740\u96e8\u8863\u7684\u5973\u5b69\u7ad9\u5728\u591c\u665a\u7684\u9713\u8679\u8857\u5934\uff0c\u65e5\u7cfb\u7535\u5f71\u98ce\u683c", "eval_id": 1, "outputs": [{"name": "output.txt", "type": "text", "content": "A young woman in her early 20s wearing an oversized translucent yellow raincoat stands alone on a rain-soaked urban street at night. She gazes slightly downward, one hand loosely holding the hood of her raincoat. The street is lined with glowing neon signs in Japanese kanji \u9225\ufffd red, pink, and teal \u9225\ufffd reflected in long shimmering streaks across the wet pavement. Medium shot, slightly low angle, with shallow depth of field blurring the background bokeh of neon lights and distant pedestrians. Soft diffused rain mist fills the air; the only hard light comes from the neon signs casting colored shadows across her face and coat. Japanese arthouse cinema style, reminiscent of films by Shunji Iwai \u9225\ufffd grainy 35mm film texture, muted yet luminous color grading with a slight cool-blue shadow and warm neon highlight contrast. Aspect ratio 2:3.\n\n---\n\u9286\u612a\u8151\u93c2\u56e6\u5a07\u9422\u3125\u7f13\u7481\ufffd\u9286\ufffd\n1. \u93ba\u3128\u5d18\u7039\u4ecb\u73ee\u59e3\ufffd 2:3\u951b\u5822\u73eb\u93cb\u52eb\u6d58\u951b\u591b\u7d1d\u7ed7\ufe40\u608e\u93c3\u30e7\u90f4\u9422\u975b\u5956\u5a34\u950b\u59e4\u93b0\u71c2\u7d1d\u6d94\u71b7\u5f72\u93c0\u901b\u8d1f 16:9 \u59af\ufffd\u93cb\u52eb\u6d58\u9422\u3124\u7c2c\u8930\u8fa9\u5896\u93b4\ufffd\u9365\u9e43\ufffd\u5e9b\ufffd\ufffd\n2. GPT Image \u7035\u5f52\u6e4f\u94cf\u7470\u5f3d\u934f\u590a\u62f0\u95c6\u3125\ufffd\u6ec4\u7b8d\u9366\u4f34\u6f70\u9428\u52ed\u7de8\u701b\ufe41\u3003\u941c\u62cc\u7ddd\u5bee\u7334\u7d1d\u59dd\u3085\u6e80\u93c5\ufffd\u6fb6\u5d86\u6f45\u6434\ufe42\ufffd\u5099\u8151\u951b\u5c7d\u56ad\u9365\u6350\u5ddd\u95b2\u5fdb\ufffd\u6c2c\u7236\u7ecb\u51b2\u757e\u9286\ufffd\n3. \u947b\u30e7\u657e\u95c8\u3220\u56ad\u941c\u626e\u7c8f\u947a\u509b\u6f45\u6d94\u8fa8\u57a8\u7ed7\u65c7\u0415\u9474\u5fce\u8d21\u951b\u5c7d\u5f72\u704f\u6fca\u762f\u9352\u72b2\u567a\"rain mist\"\u93bb\u5fda\u582a\u93b4\u6827\u567a\u704f\u6223\u5117\u93c5\ufffd\u741b\u5c7c\u6c49\u93bb\u612c\u5f37\u951b\u5c7c\u7b13\u5a09\u3125\u58a0\u93c5\ufffd\u6d93\u8bb3\u7d8b\u9286\ufffd\n4. \u6fe1\u509e\u6e36\u9422\u5a5a\u6f70\u6d93\ufffd\u9351\u8679\u5e47\u93c3\u30e6\u6783\u95c7\u64b9\u6ae3\u93c2\u56e7\u74e7\u951b\u581d\ufffd\u509b\u5ad1\u9417\u5c7d\u5534\u7039\u7678\u7d1a\u951b\u5c7d\u5f72\u9366\u3126\u5f41\u7ec0\u9e3f\u761d\u6d93\ufffd\u9429\u5b58\u5e34\u9350\u6b0f\u53c6\u934f\u8702\u7d8b\u93c2\u56e7\u74e7\u951b\u5b4fPT Image \u93c2\u56e7\u74e7\u5a13\u53c9\u714b\u93c0\ufffd\u93b8\u4f7d\u7ddd\u6fc2\u59d0\ufffd\ufffd\n"}], "grading": null}, {"id": "eval-generate-gpt-without_skill", "prompt": "\u7528 GPT Image \u5e2e\u6211\u751f\u6210\u4e00\u5f20\u63d0\u793a\u8bcd\uff1a\u4e00\u4e2a\u7a7f\u7740\u96e8\u8863\u7684\u5973\u5b69\u7ad9\u5728\u591c\u665a\u7684\u9713\u8679\u8857\u5934\uff0c\u65e5\u7cfb\u7535\u5f71\u98ce\u683c", "eval_id": 1, "outputs": [{"name": "output.txt", "type": "text", "content": "A young woman wearing a shiny hooded raincoat stands alone on a rain-soaked urban street at night. Neon signs in Japanese and Chinese glow in vivid pink, blue, and red, reflecting off the wet pavement. Puddles mirror the colorful lights. She faces slightly away from the camera, her expression quiet and contemplative. The scene is cinematic and melancholic, shot in the style of Japanese films by directors like Shunji Iwai or Hirokazu Kore-eda \u9225\ufffd soft bokeh background, shallow depth of field, muted shadows contrasted with saturated neon highlights. Film grain texture, 35mm aesthetic, night photography mood."}], "grading": null}, {"id": "eval-reverse-nano-with_skill", "prompt": "\u7528 Nano Banana Pro \u5e2e\u6211\u53cd\u63a8\u8fd9\u5f20\u56fe\u7684\u63d0\u793a\u8bcd\u3002\uff08\u56fe\u50cf\u63cf\u8ff0\uff1a\u4e00\u540d20\u591a\u5c81\u4e9a\u88d4\u5973\u6027\uff0c\u77ed\u53d1\uff0c\u7c73\u767d\u8272\u5bbd\u677e\u9488\u7ec7\u6bdb\u8863\uff0c\u5750\u5728\u5496\u5561\u9986\u7a97\u8fb9\uff0c\u624b\u6367\u62ff\u94c1\uff0c\u671b\u5411\u7a97\u5916\u3002\u67d4\u548c\u6696\u9ec4\u5149\uff0c\u6d45\u666f\u6df1\uff0c\u80f6\u7247\u6444\u5f71\u98ce\u683c\u3002\uff09", "eval_id": 2, "outputs": [{"name": "output.txt", "type": "text", "content": "\u9286\u612c\u6d58\u934d\u5fd3\u578e\u93cb\u6129\ufffd\ufffd\n\u6d93\u8bb3\u7d8b\u951b\u6c2b\u7af4\u935a\ufffd20\u6fb6\u6c2c\u77be\u9428\u52ea\u7c39\u7441\u65bf\u30b3\u93ac\u044d\u7d1d\u942d\ufffd\u9359\u622f\u7d1d\u97ec\ufffd\u7ecc\u8de8\u80cc\u9427\u501f\u58ca\u7039\u82a5\u6f97\u95bd\u5822\u7c90\u59e3\u6d9c\u3002\n\u9354\u3124\u7d94/\u6fee\u630e\ufffd\u4f8a\u7d30\u9367\u612c\u042d\u951b\u5c7d\u5f3b\u93b5\u5b2b\u5d38\u942b\ufffd\u6d93\ufffd\u93c9\ufffd\u93b7\u5757\u6427\u951b\u5c83\ufffd\u55d9\u568e\u93c8\u6d98\u609c\u7ed0\u6940\ufffd\ufffd\n\u9366\u70d8\u6ad9\u951b\u6c2c\ufffd\u3085\u5534\u935c\u6827\u668b\u68e3\u55ed\u7d1d\u7ed0\u6944\u7adf\u6434\u0442\u7d85\u951b\u5c80\u6ae7\u6fb6\u254b\u7d1d\u7ed0\u6940\ufffd\u6827\u5f72\u7459\u4f79\u0101\u7eef\u5a44\u6b91\u741b\u6945\u4ebe\u6d93\u5ea2\u7232\u8930\ufffd\n\u93cb\u52eb\u6d58\u951b\u6c31\u73eb\u93cb\u52eb\u6d58\u951b\ufffd9:16\u951b\u591b\u7d1d\u6d93\ufffd\u93c5\ufffd\u934b\u5fda\u7e4e\u951b\u5c7c\u5bcc\u6d63\u64b3\u7733\u9422\u5a5a\u6f70\u6d93\ufffd\u95ae\ufffd\u951b\u5c80\u7365\u5997\u55d7\u8230\u93b4\u612f\u569c\u9412\u60f0\u7adf\u9423\ufffd\n\u934f\u590c\u568e\u951b\u6c2c\ufffd\u3085\u5534\u9477\ufffd\u9412\u6735\u6676\u934f\u591b\u7d1d\u93c9\u30e8\u569c\u7ed0\u6940\u5f5b\u951b\u5c7d\u539c\u7490\u3126\u714d\u935c\u5c8b\u7d1d\u93c6\u682d\u7c8d\u9479\u8336\u58ca\u5a13\u254b\u7d1d\u6d63\u5ea1\ufffd\u89c4\u762e\u6434\ufffd\n\u9479\u63d2\u50f5\u690b\u5ea2\u7278\u951b\u6c2d\u6ba9\u699b\u52ee\u58ca\u748b\u51a7\u8d1f\u6d93\u4f19\u7d1d\u6d63\u5ea8\u30b1\u935c\u5c7d\u5bb3\u951b\u5c7e\u796c\u93c5\ufffd\u5a23\u8fab\u5117\u93c5\ufffd\u6fb6\u0447\u6f70\u7ec9\ufffd\u94cf\u6c2c\u5bf2\u951b\u5c83\u514c\u9417\u56ea\u58ca\u8930\u2541\u578e\u7efe\u0447\ufffd\u5ea2\u7278\n\u7459\u55da\ufffd\u5910\ufffd\u5ea2\u7278\u951b\u6c33\u514c\u9417\u56e8\u619a\u8930\u618b\u7d1d\u9350\u6b0f\u7584\u951b\u5c83\u4ea4\u5bf0\ufffd\u68f0\u6943\u77d1\u7490\u3126\u5285\u951b\u5c7e\u6783\u9479\u70d8\u68e9\u752f\u7a3f\u5f4a\u6d5c\u5b2d\u769f\u93ac\ufffd\n\u9422\u5a5a\u6f70\u93c2\u56e7\u74e7\u951b\u6c2d\u68e4\n\n---\n\n\u9286\u6024ano Banana Pro \u9359\u5d86\u5e39\u93bb\u612e\u305a\u7487\u5d83\ufffd\ufffd\n\n```\nA young East Asian woman in her mid-20s with short black hair, wearing an oversized cream-colored chunky knit sweater, sitting at a window-side table in a cozy caf\u8305.\n\nShe is seated and holding a latte cup with both hands close to her chest, her gaze directed softly toward the window and the street outside.\n\nIndoor caf\u8305 setting, daytime. Warm ambient light filters through a large window. Outside the window, a blurred street scene with trees and soft bokeh shapes.\n\nFilm photography style, realistic, slightly grainy texture with gentle analog film grain. Artistic and contemplative everyday mood.\n\nMedium shot, eye-level angle, subject centered slightly toward the window. Shallow depth of field \u9225\ufffd background and exterior view are softly out of focus.\n\nWarm golden-yellow color palette, low saturation, soft low-contrast lighting with gentle side light from the window. Overall tone is muted, warm, and quiet \u9225\ufffd reminiscent of a 35mm film still.\n\nNo text in the image.\n\nAspect ratio 9:16, portrait orientation.\n```\n\n---\n\n\u9286\u612a\u8151\u93c2\u56e6\u5a07\u9422\u3125\u7f13\u7481\ufffd\u9286\ufffd\n\n1. \u7039\u4ecb\u73ee\u59e3\u65d3\u7d30\u6d63\u8de8\u6564 9:16 \u7ed4\u6828\u702f\u9365\u6485\u7d1d\u7ed7\ufe40\u608e\u9358\u71b7\u6d58\u690b\u5ea2\u7278\u951b\u5c7c\u7bc3\u95ab\u509a\u608e\u93b5\u5b2b\u6e80\u7ed4\ufffd\u705e\u66e0\u305a\u9286\ufffd\n2. \u9473\u5241\u5896\u7490\u3126\u5285\u951b\u6b42ano Banana Pro \u7035\ufffd\"film grain\"\u935c\ufffd\"analog film\"\u935d\u5d85\u7c32\u9479\ufffd\u6fc2\u65a4\u7d1d\u9359\ufffd\u9366\u3127\u6553\u93b4\u612c\u6097\u5bf0\ufffd\u748b\u51ae\ufffd\u6943\u77d1\u5bee\u54c4\u5bb3\u934f\u62bd\u656d\u7487\u5d8f\u7d19\u6fe1\u509a\u76a2 \"slightly grainy\" \u93c0\u901b\u8d1f \"strong film grain\"\u951b\u590b\u6f75\u93ba\u0443\u57d7\u7490\u3126\u5285\u5a34\u64b3\u5bb3\u9286\ufffd\n3. \u93c5\ufffd\u5a23\u8fa8\u5e36\u9352\u8bb9\u7d30\u93bb\u612e\u305a\u7487\u5d84\u8151\u5bb8\u53c9\u69d1\u7ead\ufffd shallow depth of field\u951b\u5c83\u5ae2\u9473\u5c7e\u6ad9\u94cf\u6c2c\u5bf2\u6d93\u5d85\ufffd\u71b8\u69d1\u93c4\u6485\u7d1d\u9359\ufffd\u741b\u30e5\u5396 \"f/1.8 portrait lens bokeh\" \u5bee\u54c4\u5bf2\u93c1\u581f\u7049\u9286\ufffd\n4. \u9479\u8336\u769f\u6d93\ufffd\u9477\u5b58\ufffd\u044d\u7d30\u947b\u30e8\u7ded\u9351\u54c4\u4eb8\u9350\u950b\u57a8\u6957\u535e\u62f0\u6434\ufe40\u4eb8\u6942\u6a48\u7d1d\u9359\ufffd\u9366\u3128\u58ca\u8930\u2541\u7730\u741b\u30e5\u5396 \"desaturated warm tones, faded highlights\" \u6769\u6d97\u7af4\u59dd\u30e6\u5aba\u6769\u6223\u514c\u9417\u56e8\u5285\u9286\ufffd\n"}], "grading": null}, {"id": "eval-reverse-nano-without_skill", "prompt": "\u7528 Nano Banana Pro \u5e2e\u6211\u53cd\u63a8\u8fd9\u5f20\u56fe\u7684\u63d0\u793a\u8bcd\u3002\uff08\u56fe\u50cf\u63cf\u8ff0\uff1a\u4e00\u540d20\u591a\u5c81\u4e9a\u88d4\u5973\u6027\uff0c\u77ed\u53d1\uff0c\u7c73\u767d\u8272\u5bbd\u677e\u9488\u7ec7\u6bdb\u8863\uff0c\u5750\u5728\u5496\u5561\u9986\u7a97\u8fb9\uff0c\u624b\u6367\u62ff\u94c1\uff0c\u671b\u5411\u7a97\u5916\u3002\u67d4\u548c\u6696\u9ec4\u5149\uff0c\u6d45\u666f\u6df1\uff0c\u80f6\u7247\u6444\u5f71\u98ce\u683c\u3002\uff09", "eval_id": 2, "outputs": [{"name": "output.txt", "type": "text", "content": "\u9286\u612c\u5f3d\u93ba\u3126\u5f41\u7ec0\u9e3f\u761d / Reverse Prompt\u9286\ufffd\n\n\u5bb8\u30e5\u53ff\u951b\u6b42ano Banana Pro\u951b\u581d\u6d58\u934d\u5fd3\u5f3d\u93ba\u3126\u0101\u5bee\u5fe5\u7d1a\n\u9365\u60e7\u511a\u93bb\u5fda\u582a\u93c9\u30e6\u7c2e\u951b\u6c2d\u6783\u701b\u6941\u0101\u93b7\ufffd\n\n---\n\n**\u6d93\ufffd\u93c2\u56e8\u5f41\u7ec0\u9e3f\u761d\u951b\u581c\u5bcc\u93bb\u612e\u305a\u7487\u5d8f\u7d1a\u951b\ufffd**\n\n20\u6fb6\u6c2c\u77be\u6d5c\u6c33\ufffd\u65bf\u30b3\u93ac\u044d\u7d1d\u942d\ufffd\u9359\u622f\u7d1d\u97ec\ufffd\u7ecc\u8de8\u80cc\u9427\u501f\u58ca\u7039\u82a5\u6f97\u95bd\u5822\u7c90\u59e3\u6d9c\u3002\u951b\u5c7d\u6f57\u9366\u3125\u6305\u935f\uffe0\ufffd\u55db\u6f6c\u7ed0\u693e\u7d85\u7f03\ufffd\u951b\u5c7d\u5f3b\u93b5\u5b2b\u5d38\u942b\ufffd\u6d93\ufffd\u93c9\ufffd\u93b7\u5757\u6427\u951b\u5c80\u6d30\u934f\u590b\u4fef\u93cc\u65bf\u6e74\u93c8\u6d98\u609c\u7ed0\u6940\ufffd\u6825\ufffd\u509c\u7365\u6fb6\u682c\ufffd\u6945\u4ebe\u935c\u5c7e\u7232\u8930\u8fa8\u6e68\u9473\u0446\u6ac4\u9356\u6825\ufffd\u509a\ufffd\u3085\u5534\u93c6\u682d\u7c8d\u9479\u8336\u569c\u9412\u8dfa\u539c\u951b\u5c7e\u796c\u93c5\ufffd\u5a23\u618b\u7d1d\u9473\u5c7e\u6ad9\u6fc2\u8235\u8865\u9479\u8336\u6ac4\u9356\u6828\u668e\u93c5\ufffd\u9286\u509b\u66a3\u6d63\u64b4\u76bc\u9365\u5b58\u6783\u9479\u54c4\u755e\u95c8\u6b19\u7d1d\u9473\u5241\u5896\u93bd\u52eb\u5956\u7490\u3126\u5285\u951b\u5c84\ufffd\u6943\u77d1\u93b0\u71c2\u7d1d\u9479\u8336\u769f\u934b\u5fd4\u6ba9\u9286\u509c\u73eb\u93cb\u52eb\u6d58\u951b\u5c7c\u6c49\u934d\u5fd5\u58d2\u9350\u6b12\u56a6\u9357\u5a45\u97e9\u9286\ufffd\n\n---\n\n**\u947b\u8fa8\u6783\u93bb\u612e\u305a\u7487\u5d8f\u7d19\u95ab\u509e\u53a4 AI \u9365\u60e7\u511a\u9422\u71b8\u579a\u951b\u591b\u7d30**\n\nA young Asian woman in her mid-20s with short hair, wearing an oversized cream-white knit sweater, sitting by a cafe window, holding a latte with both hands, gazing softly out the window. Blurred street scene and tree shadows visible through the glass. Soft warm indoor natural light, shallow depth of field, creamy bokeh background. Quiet, artistic atmosphere. Film photography aesthetic, subtle grain, warm tones. Vertical composition, portrait to half-body framing.\n\n---\n\n**\u690b\u5ea2\u7278\u93cd\u56e9\ufffd\ufffd / Style Tags\u951b\ufffd**\n\nfilm photography, cafe portrait, warm tones, bokeh, shallow DOF, knit sweater, Asian female, short hair, latte, window light, quiet mood, vintage film grain, soft natural light, cozy aesthetic, vertical portrait\n\n---\n\n**\u7490\u71b7\u609c\u93bb\u612e\u305a\u7487\ufffd / Negative Prompt\u951b\u581d\u7f13\u7481\ufffd\u93ba\u6397\u6ace\u951b\u591b\u7d30**\n\nharsh lighting, overexposed, busy background, neon colors, sharp background, cluttered, oversaturated, cartoon, illustration, 3D render, ugly, deformed\n\n---\n\n**\u9359\u509b\u669f\u5be4\u9e3f\ufffd\ufffd\u951b\ufffd**\n- \u7039\u4ecb\u73ee\u59e3\u65d3\u7d309:16\u951b\u5822\u73eb\u93cb\u52eb\u6d58\u6d5c\u54c4\u511a\u951b\ufffd\n- \u690b\u5ea2\u7278\u5bee\u54c4\u5bb3\u951b\u6c2c\u4eb8\u9350\u6b0f\u7584 + \u9473\u5241\u5896\u93b0\ufffd\n- \u7f01\u55da\u59ad\u93c9\u51ae\u5678\u951b\u6c36\u6f70\u95ae\u3126\u7afb\u93c5\u5e2e\u7d1d\u9473\u5c7e\u6ad9\u94cf\u6c2c\u5bf2\n"}], "grading": null}, {"id": "eval-edit-nano-with_skill", "prompt": "\u8fd9\u5f20\u56fe\u6211\u60f3\u628a\u80cc\u666f\u6362\u6210\u767d\u8272\u5e72\u51c0\u7684\u6444\u5f71\u68da\uff0c\u7528 Nano Banana Pro \u51fa\u7f16\u8f91\u63d0\u793a\u8bcd\u3002\uff08\u56fe\u50cf\u63cf\u8ff0\uff1a\u4e00\u53cc\u767d\u8272\u8fd0\u52a8\u978b\u653e\u5728\u6728\u8d28\u5730\u677f\u4e0a\uff0c\u80cc\u666f\u662f\u505a\u65e7\u611f\u7816\u5899\uff0c\u4fa7\u5149\u6253\u4eae\u978b\u8eab\uff0c\u6696\u8272\u8c03\u5546\u4e1a\u6444\u5f71\u98ce\u683c\u3002\uff09", "eval_id": 3, "outputs": [{"name": "output.txt", "type": "text", "content": "\u9286\u612c\u6d58\u934d\u5fd3\u578e\u93cb\u6136\u7d19\u9369\u8f70\u7c2c\u93bb\u5fda\u582a\u59af\u2103\u5ad9\u951b\u5908\ufffd\ufffd\n\u6d93\u8bb3\u7d8b\u951b\u6c2b\u7af4\u9359\u5c80\u6ae7\u9479\u8336\u7e4d\u9354\u3129\u7037\u951b\u5c84\u7037\u9368\u5b2a\u756c\u93c1\u8fbe\u7d1d\u95c9\u5b2d\u97e9\u9a9e\u63d2\u5663\n\u9354\u3124\u7d94/\u6fee\u630e\ufffd\u4f8a\u7d30\u95c8\u6b11\u7586\u93bd\u55d8\u6581\n\u9366\u70d8\u6ad9\u951b\u6c2c\ufffd\u3085\u5534\u951b\u5c7e\u6e6a\u7490\u3125\u6e74\u93c9\u5938\u7b02\u951b\u5c83\u5117\u93c5\ufffd\u6d93\u54c4\u4edb\u93c3\u0445\u723e\u6fa7\ufffd\n\u93cb\u52eb\u6d58\u951b\u6c2b\u9a87\u935d\u4f79\u619a\u8930\u8fa8\u7223\u9351\u55d8\u702f\u9365\u6485\u7d1d\u95c9\u5b29\u7d8b\u705e\u546c\u8151\u93b4\u682b\u6690\u934b\u5fe5\u7d1d\u95c3\u6751\u5956\u9480\u6212\u7c2c\u9366\u7248\u6f98\n\u934f\u590c\u568e\u951b\u6c2b\u6676\u934f\u590b\u58a6\u6d5c\ufffd\u95c9\u5b2d\u97e9\u951b\u5c7e\u6ba9\u9479\u8336\u769f\u951b\u5c7d\u6662\u6d93\u6c2d\u619a\u8930\u904d\ufffd\u5ea2\u7278\n\u9479\u63d2\u50f5\u690b\u5ea2\u7278\u951b\u6c2d\u6ba9\u9479\u832c\u90f4\u951b\u5c7e\u66a3\u6d63\u64bb\u30b1\u935c\u5c7d\u5bb3\u95ab\u5099\u8151\u951b\u5c7e\u6e41\u935f\u55d5\u7b1f\u7490\u3126\u5285\n\u7459\u55da\ufffd\u5910\ufffd\u5ea2\u7278\u951b\u6c2b\u9a87\u935d\u4f79\u619a\u8930\u535e\u5553\u7039\u70ba\ufffd\u5ea2\u7278\n\n---\n\n\u9286\u6024ano Banana Pro \u7f02\u682c\u7deb\u93bb\u612e\u305a\u7487\u5d83\ufffd\ufffd\n\nPreserve exactly: a pair of white sneakers displayed on a light-colored surface; the shoes' shape, texture, color, stitching details, and sole design remain completely unchanged; the side lighting that highlights the shoe body is maintained; the soft shadow cast beneath and beside the shoes is preserved; commercial product photography style and overall warm-neutral color grading.\n\nEdit only: replace the entire background \u9225\ufffd remove the weathered brick wall \u9225\ufffd and replace it with a clean, seamless white photography studio cyclorama backdrop; the background should be pure white with a soft gradient where the floor meets the wall, creating an infinity-curve (cove) effect typical of professional product photography studios; no visible seams, no texture, no props.\n\nOutput constraints: aspect ratio 4:3 or 1:1 for product listing use; high resolution.\n\n---\n\n\u9286\u612a\u8151\u93c2\u56e6\u5a07\u9422\u3125\u7f13\u7481\ufffd\u9286\ufffd\n\n1. \u7039\u4ecb\u73ee\u59e3\u65bf\u7f13\u7481\ufffd\u951b\u6c2b\u9a87\u935d\u4f78\u774d\u7ec0\u54c4\u6d58\u93ba\u3128\u5d18 1:1\u951b\u5822\u6578\u935f\u55d5\u5bcc\u9365\u6485\u7d1a\u93b4\ufffd 4:3\u951b\u5823\ufffd\ufe3d\u510f\u6924\u7889\u7d1a\u951b\u5c7d\ufffd\u509e\u6e36\u93bc\ufffd\u95b0\u5d86\u6783\u5997\u581d\u5f72\u95ab\ufffd 16:9\u9286\ufffd\n2. \u7f02\u682c\u7deb\u9358\u71b7\u57af\u951b\u6c2d\ufffd\u3086\u5f41\u7ec0\u9e3f\u761d\u9359\ufffd\u93c0\u7470\u59e9\u9473\u5c7e\u6ad9\u6d93\ufffd\u6924\u7678\u7d1d\u7ed7\ufe40\u608e\"\u59e3\u5fd4\ufffd\u2033\u5f67\u93bb\u5fda\u582a\u6d93\ufffd\u6d93\ufffd\u93c0\u7470\u59e9\"\u9428\u52ec\u6e36\u6d63\u51b2\u7584\u74ba\u7889\u7d1d\u9351\u5fd3\u76af\u6d93\u8bb3\u7d8b\u741a\ufffd\u93b0\u5fd3\ufffd\u6826\u6168\u93c0\u572d\u6b91\u690b\u5ea8\u6ad3\u9286\ufffd\n3. \u5a09\u3126\u5270\u6d5c\u5b2e\u300d\u951b\u6b42ano Banana Pro \u7eee\u60e7\u5bb3\u6748\u51ae\u73ee\u951b\u5c80\u6ae7\u9479\u8336\u5117\u93c5\ufffd\u6d93\u5b2e\u7037\u6d63\u64b6\u7c8f\u947a\u509d\u7e55\u9358\u71b7\u566f\u7ead\ufffd\u6434\ufe40\u30bd\u951b\u5c7c\u7d7e\u6fe1\u509b\u7049\u95c9\u5b2d\u97e9\u68f0\u6ec6\u58ca\u6d94\u71b8\u69f8\u9427\u501f\u58ca\u951b\u5c84\u6e36\u7ead\ufffd\u6dc7\u6fc7\u0101\u9368\u5b2d\u5158\u9356\u54c4\u578e\u6d93\u8bb3\u7d8b\u6d93\u5ea4\u5117\u93c5\ufffd\u9225\u65ba\ufffd\u65bf\u5f72\u9366\ufffd Preserve \u95ae\u3125\u578e\u741b\u30e5\u5396\"the white sneakers remain clearly distinct from the white background through subtle shadow and depth\"\u9286\ufffd\n4. \u9352\u55d8\ufffd\u30e5\u7f13\u7481\ufffd\u951b\u6c33\u5ae2\u935a\u5c7e\u6902\u6769\u6a40\u6e36\u7455\u4f7d\u769f\u93c1\u6751\u539c\u7efe\u5321\u7d19\u6fe1\u5099\u7ca0\u93c6\u6827\u539c\u93c0\u901b\u8d1f\u9350\u98ce\u6ae7\u934f\u591b\u7d1a\u951b\u5c7d\u7f13\u7481\ufffd\u934f\u581d\u756c\u93b4\u612f\u5117\u93c5\ufffd\u93c7\u630e\u5d32\u951b\u5c80\u2018\u7481\u3086\u6665\u93cb\u6ec3\u6097\u9350\u5d85\u5d1f\u9419\ufffd\u93bb\u612a\u6c26\u6d93\ufffd\u5a06\u2033\u539c\u7efe\u80ef\u769f\u93c1\u5b58\u5f41\u7ec0\u9e3f\u761d\u951b\u5c7e\u6665\u93cb\u6ec4\u6d3f\u9359\ufffd\u93ba\u0441\ufffd\ufffd\n"}], "grading": null}, {"id": "eval-edit-nano-without_skill", "prompt": "\u8fd9\u5f20\u56fe\u6211\u60f3\u628a\u80cc\u666f\u6362\u6210\u767d\u8272\u5e72\u51c0\u7684\u6444\u5f71\u68da\uff0c\u7528 Nano Banana Pro \u51fa\u7f16\u8f91\u63d0\u793a\u8bcd\u3002\uff08\u56fe\u50cf\u63cf\u8ff0\uff1a\u4e00\u53cc\u767d\u8272\u8fd0\u52a8\u978b\u653e\u5728\u6728\u8d28\u5730\u677f\u4e0a\uff0c\u80cc\u666f\u662f\u505a\u65e7\u611f\u7816\u5899\uff0c\u4fa7\u5149\u6253\u4eae\u978b\u8eab\uff0c\u6696\u8272\u8c03\u5546\u4e1a\u6444\u5f71\u98ce\u683c\u3002\uff09", "eval_id": 3, "outputs": [{"name": "output.txt", "type": "text", "content": "\u9286\u6024ano Banana Pro \u9365\u60e7\u511a\u7f02\u682c\u7deb\u93bb\u612e\u305a\u7487\u5d83\ufffd\ufffd\n\n\u9429\ufffd\u93cd\u56f7\u7d30\u704f\u55da\u5117\u93c5\ufffd\u6d60\u5ea1\u4edb\u93c3\u0445\u723e\u6fa7\ufffd+\u93c8\u3128\u5ddd\u9366\u7248\u6f98\u93b9\u3221\u579a\u9a9e\u63d2\u5663\u9428\u52ed\u6ae7\u9479\u53c9\u619a\u8930\u8fa8\ufffd\u6c31\u5e46\u6fa7\ufffd\n\n---\n\n**\u7f02\u682c\u7deb\u93b8\u56e6\u62a4\u951b\u5717dit Prompt\u951b\u591b\u7d30**\n\nReplace the background brick wall and wooden floor with a clean, seamless white photography studio backdrop. The new background should be a pure white infinity curve (cove), smooth and featureless, with soft even studio lighting that eliminates harsh shadows. Maintain the white sneakers as the subject in the same position and scale. Adjust the overall lighting to match a high-key commercial product photography setup \u9225\ufffd soft diffused light from the front-left, subtle shadow beneath the shoes grounding them on the white surface, and a clean white floor that transitions seamlessly into the white background. Remove all warm tones from the background; keep the shoes' natural colors intact. The result should look like a professional product shoot in a white sweep studio.\n\n---\n\n**\u6d93\ufffd\u93c2\u56ea\ufffd\u5b58\u69d1\u951b\u581d\u5f2c\u9470\u51bf\u7d1a\u951b\ufffd**\n\n\u704f\u55da\u5117\u93c5\ufffd\u9428\u52eb\u4edb\u93c3\u0445\u723e\u6fa7\u6b0e\u7b0c\u93c8\u3128\u5ddd\u9366\u7248\u6f98\u93c7\u630e\u5d32\u6d93\u54c4\u5171\u9351\ufffd\u93c3\u72b5\u7d33\u9428\u52ed\u6ae7\u9479\u53c9\u619a\u8930\u8fa8\ufffd\u6c33\u5117\u93c5\ufffd\u951b\u5822\u6ae7\u9479\u53c9\u68e4\u95c4\u612c\u6b22\u6d7c\u54e5\u6b91\u5bee\u0443\u8230\u9473\u5c7e\u6ad9\u7efe\ufffd/\u9473\u5c7e\u6ad9\u752f\u51bf\u7d1a\u9286\u509b\u67ca\u9473\u5c7e\u6ad9\u6434\u65be\u8d1f\u7efe\ufffd\u9427\u501f\u58ca\u9286\u4f78\u539c\u5a4a\u621e\u68e4\u7efe\u572d\u608a\u951b\u5c84\u5670\u9422\u3125\u6f4e\u9356\ufffd\u93cc\u65bf\u62f0\u9428\u52ec\ufffd\u6c2d\u5abf\u940f\ufffd\u934f\u591b\u7d1d\u5a11\u5825\u6ace\u5bee\u8679\u5113\u95c3\u6751\u5956\u9286\u5099\u7e5a\u93b8\u4f7a\u6ae7\u9479\u8336\u7e4d\u9354\u3129\u7037\u9428\u52ea\u7d85\u7f03\ufffd\u9286\u4f78\u3047\u704f\u5fd3\u62f0\u7f01\u55da\u59ad\u6d93\u5d85\u5f49\u9286\u509b\u66a3\u6d63\u64b4\u58a6\u934f\u590e\u769f\u93c1\u7fe0\u8d1f\u6942\u6a3f\u769f\u935f\u55d5\u7b1f\u6d5c\u0443\u6427\u93bd\u52eb\u5956\u690b\u5ea2\u7278\u9225\u65ba\ufffd\u65c0\u6f75\u9477\ufffd\u5bb8\ufe40\u58a0\u93c2\u572d\u6b91\u93cc\u65bf\u62f0\u93c1\uff45\u76a0\u934f\u591b\u7d1d\u95c9\u5b2a\u7c33\u6d93\u5b29\u7e5a\u9423\u6b12\u4ea4\u5bf0\ufffd\u93ba\u30e5\u6e74\u95c3\u6751\u5956\u951b\u5c80\u6ae7\u9479\u63d2\u6e74\u95c8\ufffd\u6d93\u5ea3\u6ae7\u9479\u8336\u5117\u93c5\ufffd\u93c3\u72b5\u7d33\u94fb\u5d85\u608e\u9286\u509a\u5e53\u95c4\u3088\u5117\u93c5\ufffd\u6d93\ufffd\u9428\u52ec\u588d\u93c8\u590b\u6ba9\u9479\u8336\u769f\u951b\u5c7c\u7e5a\u9423\u6b13\u7037\u701b\u612d\u6e70\u97ec\ufffd\u9428\u52eb\u5e2b\u93c8\u590e\u58ca\u8930\u253f\ufffd\u509b\u6e36\u7f01\u581f\u6665\u93cb\u6ec3\u7c32\u935b\u5822\u5e47\u6d93\u8f70\u7b13\u6d93\u6c31\u6ae7\u9479\u53c9\u619a\u8930\u8fa8\ufffd\u6c2c\u5534\u9428\u52ea\u9a87\u935d\u4f79\u5abf\u93bd\u52eb\u6d58\u9286\ufffd\n\n---\n\n**\u934f\u62bd\u656d\u9359\u509b\u669f\u5be4\u9e3f\ufffd\ufffd\u951b\ufffd**\n- Strength\u951b\u5822\u7d2a\u6748\u621d\u5df1\u6434\ufe3c\u7d1a\u951b\ufffd0.75 ~ 0.85\u951b\u581c\u7e5a\u9423\u6b0e\u5bcc\u6d63\u64c4\u7d1d\u6fb6\u0443\u7b99\u93c0\u7470\u5f49\u9473\u5c7e\u6ad9\u951b\ufffd\n- \u6fe1\u509b\u656e\u93b8\ufffd Mask\u951b\u6c2c\ufffd\u7845\u5117\u93c5\ufffd\u9356\u54c4\u7159\u951b\u5822\u723e\u6fa7\ufffd+\u9366\u7248\u6f98\u951b\u590e\u7e58\u741b\u5c83\u630b\u9417\u582c\u7d1d\u95c9\u5b2a\u74d9\u9356\u54c4\u7159\u6dc7\u6fc7\u59e2\n- Style reference\u951b\u6b68igh-key product photography, white seamless backdrop\n"}], "grading": null}], "previous_feedback": {}, "previous_outputs": {}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server ！ but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable ！ no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete ！ include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) ！ download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "！";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ＼ " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "！") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "！") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "！") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "！") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "！") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "！ ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>

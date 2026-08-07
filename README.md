@@ -23,6 +23,7 @@
 | 技能名 | 功能描述 |
 |--------|----------|
 | `art-asset-designer` | 美术资产设计师：从剧本拆解人物/场景资产，生成 AI 图像生成提示词 |
+| `image-prompt` | 图像提示词生成器：为 AI 绘画工具生成高质量图像提示词 |
 | `video-style-prompt-advisor` | 视频视觉风格定调顾问：输出可复用的 GPT image2 风格预设提示词 |
 
 ### ✍️ 创作与编剧
@@ -85,7 +86,6 @@
 |--------|----------|
 | `skill-creator` | 技能创建器：创建、修改、优化和测试 Claude 技能 |
 | `init` | 初始化项目 CLAUDE.md 文档 |
-| `review` | 代码审查（系统内置） |
 | `dataviz` | 数据可视化：创建图表、仪表板和可视化 |
 | `update-config` | 配置 settings.json，设置权限、钩子和环境变量 |
 | `keybindings-help` | 自定义键盘快捷键配置 |

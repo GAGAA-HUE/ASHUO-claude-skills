@@ -1,0 +1,32 @@
+{
+  "eval_id": 3,
+  "eval_name": "eval-edit-nano",
+  "prompt": "这张图我想把背景换成白色干净的摄影棚，用 Nano Banana Pro 出编辑提示词。（图像描述：一双白色运动鞋放在木质地板上，背景是做旧感砖墙，侧光打亮鞋身，暖色调商业摄影风格。）",
+  "assertions": [
+    {
+      "text": "提示词本身使用英文输出",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "编辑提示词先列出要保留的内容（Preserve），再描述改动（Edit only）",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词聚焦于单一改动（背景替换），没有同时改多处",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "输出包含中文使用建议",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词是完全自洽的独立文本，不依赖对话上下文",
+      "passed": null,
+      "evidence": ""
+    }
+  ]
+}

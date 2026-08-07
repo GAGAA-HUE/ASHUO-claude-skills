@@ -1,0 +1,32 @@
+{
+  "eval_id": 2,
+  "eval_name": "eval-reverse-nano",
+  "prompt": "用 Nano Banana Pro 帮我反推这张图的提示词。（图像描述：一名20多岁亚裔女性，短发，米白色宽松针织毛衣，坐在咖啡馆窗边，手捧拿铁，望向窗外。柔和暖黄光，浅景深，胶片摄影风格。）",
+  "assertions": [
+    {
+      "text": "输出包含结构化图像分析，覆盖主体、场景、构图、光线、色彩、风格",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词本身使用英文输出",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词遵循 Nano Banana Pro 的 art director brief 格式，按主体→动作→场景→风格→构图→光线顺序组织",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "输出包含中文使用建议",
+      "passed": null,
+      "evidence": ""
+    },
+    {
+      "text": "提示词是完全自洽的独立文本，不依赖对话上下文",
+      "passed": null,
+      "evidence": ""
+    }
+  ]
+}

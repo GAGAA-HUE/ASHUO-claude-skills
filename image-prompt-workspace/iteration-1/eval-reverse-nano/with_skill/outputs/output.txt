@@ -1,0 +1,40 @@
+【图像分析】
+主体：一名20多岁的亚裔女性，短发，身穿米白色宽松针织毛衣
+动作/姿态：坐姿，双手捧着一杯拿铁，视线望向窗外
+场景：室内咖啡馆，窗边座位，白天，窗外可见模糊的街道与树影
+构图：竖构图（9:16），中景偏近，主体居画面中部，窗框形成自然边界
+光线：室内自然侧光，来自窗口，光质柔和，暖黄色色温，低对比度
+色彩风格：暖黄色调为主，低饱和度，浅景深背景大面积虚化，胶片色彩分级风格
+视觉风格：胶片摄影，写实，轻微颗粒质感，文艺日常叙事调性
+画面文字：无
+
+---
+
+【Nano Banana Pro 反推提示词】
+
+```
+A young East Asian woman in her mid-20s with short black hair, wearing an oversized cream-colored chunky knit sweater, sitting at a window-side table in a cozy café.
+
+She is seated and holding a latte cup with both hands close to her chest, her gaze directed softly toward the window and the street outside.
+
+Indoor café setting, daytime. Warm ambient light filters through a large window. Outside the window, a blurred street scene with trees and soft bokeh shapes.
+
+Film photography style, realistic, slightly grainy texture with gentle analog film grain. Artistic and contemplative everyday mood.
+
+Medium shot, eye-level angle, subject centered slightly toward the window. Shallow depth of field — background and exterior view are softly out of focus.
+
+Warm golden-yellow color palette, low saturation, soft low-contrast lighting with gentle side light from the window. Overall tone is muted, warm, and quiet — reminiscent of a 35mm film still.
+
+No text in the image.
+
+Aspect ratio 9:16, portrait orientation.
+```
+
+---
+
+【中文使用建议】
+
+1. 宽高比：使用 9:16 竖构图，符合原图风格，也适合手机端展示。
+2. 胶片质感：Nano Banana Pro 对"film grain"和"analog film"响应良好，可在生成后微调颗粒强度关键词（如将 "slightly grainy" 改为 "strong film grain"）来控制质感浓度。
+3. 景深控制：提示词中已明确 shallow depth of field，若背景虚化不够明显，可补充 "f/1.8 portrait lens bokeh" 强化效果。
+4. 色调一致性：若输出偏冷或饱和度偏高，可在色彩层补充 "desaturated warm tones, faded highlights" 进一步拉近胶片感。

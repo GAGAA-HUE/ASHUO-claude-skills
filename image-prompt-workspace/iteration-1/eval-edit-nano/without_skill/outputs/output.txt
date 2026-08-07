@@ -1,0 +1,22 @@
+【Nano Banana Pro 图像编辑提示词】
+
+目标：将背景从做旧砖墙+木质地板换成干净的白色摄影棚环境
+
+---
+
+**编辑指令（Edit Prompt）：**
+
+Replace the background brick wall and wooden floor with a clean, seamless white photography studio backdrop. The new background should be a pure white infinity curve (cove), smooth and featureless, with soft even studio lighting that eliminates harsh shadows. Maintain the white sneakers as the subject in the same position and scale. Adjust the overall lighting to match a high-key commercial product photography setup — soft diffused light from the front-left, subtle shadow beneath the shoes grounding them on the white surface, and a clean white floor that transitions seamlessly into the white background. Remove all warm tones from the background; keep the shoes' natural colors intact. The result should look like a professional product shoot in a white sweep studio.
+
+---
+
+**中文说明（参考）：**
+
+将背景的做旧砖墙与木质地板替换为干净无缝的白色摄影棚背景（白色无限延伸的弧形背景纸/背景布）。新背景应为纯白色、光滑无纹理，采用均匀柔和的棚拍灯光，消除强烈阴影。保持白色运动鞋的位置、大小和细节不变。整体打光调整为高调商业产品摄影风格——来自左前方的柔和散射光，鞋底下保留轻微接地阴影，白色地面与白色背景无缝融合。去除背景中的所有暖色调，保留鞋子本身的原有色彩。最终效果应呈现为专业白色摄影棚内的产品拍摄图。
+
+---
+
+**关键参数建议：**
+- Strength（编辑强度）：0.75 ~ 0.85（保留主体，大幅改变背景）
+- 如支持 Mask：对背景区域（砖墙+地板）进行蒙版，鞋子区域保护
+- Style reference：high-key product photography, white seamless backdrop

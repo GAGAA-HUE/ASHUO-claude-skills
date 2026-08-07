@@ -1,0 +1,25 @@
+【图像分析（基于描述模拟）】
+主体：一双白色运动鞋，鞋面干净，细节清晰
+动作/姿态：静置摆放
+场景：室内，木质地板上，背景为做旧感砖墙
+构图：商业产品摄影，平视或略俯视角度，鞋身居中或略偏
+光线：侧光，打亮鞋身，地板上有明显投影，暖色调
+色彩风格：暖色调为主，复古商业感
+视觉风格：实拍摄影，商业产品摄影风格
+
+---
+
+【Nano Banana Pro 编辑提示词】
+
+Preserve exactly: the pair of white sneakers — their shape, color, surface texture, lace details, sole design, and exact positioning in frame. Preserve the side lighting direction that highlights the shoe body and casts a natural shadow beneath the shoes. Preserve the commercial product photography style and overall composition.
+Edit only: replace the distressed brick wall background and wooden floor entirely with a clean, seamless white photography studio backdrop — pure white infinity curve background (cove), smooth white studio floor blending into the background with no visible horizon line, soft and even studio lighting on the background, maintaining the existing side key light on the shoes.
+Output constraints: aspect ratio 1:1, high resolution, product photography.
+
+---
+
+【中文使用建议】
+
+1. 宽高比：产品图推荐 1:1（电商主图）或 4:3，如需展示鞋侧面全貌可用 4:3。
+2. 分步建议：本次只改背景和地板，不改鞋体和光线，Nano Banana Pro 对"单一改动"的执行精度更高，建议严格按此单条编辑使用。
+3. 白色主体 + 白色背景风险：鞋体为白色，背景也改为白色，模型可能导致鞋身边缘融入背景。若效果不佳，可将背景改为 "light gray seamless studio backdrop" 以保留鞋身轮廓。
+4. 进阶调整：背景换好后如需同步将暖色调光线改为冷白摄影棚光，建议单独提交第二次编辑提示词，避免一次改动过多导致主体被意外修改。
