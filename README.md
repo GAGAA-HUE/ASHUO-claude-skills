@@ -15,6 +15,8 @@
 | `extract-video` | 提取视频信息、关键帧、音频、字幕 |
 | `lyric-mv-storyboard` | 根据歌词深度分析，生成完整音乐 MV 分镜脚本 |
 | `seedance-director` | 电影级分镜提示词生成器，专为 Seedance 2.x 优化 |
+| `cinedance-higgsfield` | **CINEDANCE V4** - Seedance 2.0 电影提示词导演系统（4D方法论） |
+| `acting` | **角色表演系统** - AI视频角色行为/表演指导（目标-障碍-策略） |
 | `shanyin-director-master-main` | 山音导演大师：专业 AI 视频生成提示词系统 |
 | `hailuo-h3-director` | H3 多模态视频提示词生成器，专为 Hailuo H3（MiniMax）设计 |
 
@@ -22,6 +24,7 @@
 
 | 技能名 | 功能描述 |
 |--------|----------|
+| `lira` | **Lira** - AI图像提示词优化专家（Soul 2.0/Cinema/NBP/Seedream/GPT Image 2） |
 | `art-asset-designer` | 美术资产设计师：从剧本拆解人物/场景资产，生成 AI 图像生成提示词 |
 | `image-prompt` | 图像提示词生成器：为 AI 绘画工具生成高质量图像提示词 |
 | `video-style-prompt-advisor` | 视频视觉风格定调顾问：输出可复用的 GPT image2 风格预设提示词 |
@@ -113,6 +116,78 @@ npx skills@latest add mattpocock/skills
 ---
 
 ## 📖 重点技能详解
+
+### 🎥 cinedance-higgsfield（CINEDANCE V4 - Seedance 2.0 提示词导演系统）
+
+**核心理念**：4D 方法论（Deconstruct → Diagnose → Develop → Deliver）
+
+**专业能力**：
+- **空间布局控制**：角色位置锚定、视线锁定、身体朝向、地标接近度精确定义
+- **光学设计系统**：用视场角度数（FOV°）控制镜头，而非焦距毫米数
+  - 47° 标准视角、84° 经典广角、107° 超广角、29° 短焦人像、18° 经典长焦、8° 超长焦观察
+- **多镜头剪辑**：支持单镜头长镜头或多镜头 HARD CUT 序列，精确控制每个镜头的时长、空间关系、连续性
+- **物理真实性**：重力、质量、惯性、布料延迟、液体流动、粒子运动全面锁定
+- **光影优先级**：背光逆光、侧光、关键光比控制，防止平面照明
+- **角色/场景参考管理**：@tag 系统精确管理多角色、多道具、多场景引用
+
+**输出格式**：结构化提示词（场景上下文 → 活动引用 → 位置地图 → 首帧空间布局 → 格式模式 → 光学 → 镜头 → 动作时序 → 物理 → 光影 → 音频 → 正向约束）
+
+**适用场景**：电影级视频生成、多镜头叙事、复杂运动控制、专业影视制作
+
+---
+
+### 🎭 acting（角色表演系统 - AI 视频角色行为指导）
+
+**核心公理**：表演是压力下的行为，而非情绪展示
+
+**五大支柱**：
+1. **目标（Objective）**：角色在当前场景中想从特定对象那里得到什么（动词化，可执行）
+2. **障碍与赌注（Obstacle & Stakes）**：什么阻止他们达成目标？失败的代价是什么？
+3. **策略（Tactics）**：具体执行方法（施压、魅力、羞辱、恳求、激怒、讨价还价、威胁、拖延）
+4. **节拍（Beats）**：动作最小单位，每个节拍变化必须在行为中可见（停顿、姿势变化、语速变化、视线转移）
+5. **潜台词（Subtext）**：角色真正的想法 vs 说出口的话
+
+**专业技术**：
+- **倾听与反应**：反应先于台词结束、思考先于言语、评估时刻、从对手传染节奏
+- **身体生活**：重心位置、动作质感、手部习惯、物理状态先于心理
+- **眼部生命**：微扫视、视线瞄准、真实眨眼率、活跃捕光、眼睛引导思考
+- **声音锁定**：每个角色固定的声音身份（年龄/口音/音色/节奏/情感特征）
+- **状态链接**：描述"已在状态中"而非"过渡到状态"（AI 模型擅长状态，不擅长转场）
+
+**输出规范**：主档案（角色身份） → 场景改写（当前时刻的具体行为）
+
+**适用场景**：需要真实表演的角色视频、对话场景、情感张力设计、演员指导
+
+---
+
+### 🖼️ lira（AI 图像提示词优化专家）
+
+**核心方法**：4D 方法论（Deconstruct → Diagnose → Develop → Deliver）
+
+**模型路由矩阵**：
+| 任务类型 | 首选模型 | 原因 |
+|---------|---------|------|
+| 角色/选角表 | Higgsfield Soul 2.0 / Cinema Studio AI Cast | Soul ID 锁定同一张脸，AI Cast 自动生成参考表 |
+| 场景/电影静帧 | Higgsfield Soul Cinema | 电影级纹理、自然颗粒、21:9 宽银幕支持 |
+| 道具/产品 | NBP / GPT Image 2 | 真实产品质感 + 精确文字渲染 |
+| 图像编辑（首选） | Nano Banana Pro (NBP) | 基于原图后期处理，最小改动，最大保留 |
+| 纹理修复 | Seedream 4.5 | 修复 AI 生成的糟糕纹理（皮肤/布料/表面），不做点编辑 |
+| 最精细局部编辑 | GPT Image 2 | 最后手段，全局脏但局部强；也擅长场景视角切换 |
+
+**关键技术**：
+- **防崩溃规则**：自然散文而非关键词堆砌、精简胜于冗余、正向描述优于负向、技术光影优于抽象情绪
+- **调色板控制**：百分比语法（60% 暖赭石 + 30% 深炭灰 + 10% 锈红）
+- **角色一致性**：Soul ID（平台参数）+ 身份锚点（散文）
+- **编辑纪律**：最小 CHANGE 块 + 详尽 PRESERVE EXACTLY 块
+- **插画漂移防御**：避免触发词（"character reference sheet"、"painterly"），强化写实锚点
+
+**操作模式**：
+- **DETAIL 模式**（默认）：收集上下文 → 提问 2-3 个澄清问题 → 优化
+- **BASIC 模式**（快速）：修复关键问题 → 应用核心技术 → 立即交付
+
+**适用场景**：角色设计、场景概念图、道具表、精确图像编辑、跨平台提示词迁移
+
+---
 
 ### art-asset-designer（美术资产设计师）
 
@@ -211,29 +286,81 @@ description: |
 2. **定时任务**：`research-assistant` 的定时功能依赖系统 Cron
 3. **Git 操作**：`git-guardrails-claude-code` 需先运行安装才能生效
 4. **Obsidian**：`obsidian-vault` 的保险库路径需在技能配置中设置
-5. **AI 视频生成**：`seedance-director`、`hailuo-h3-director` 输出的提示词需复制到对应平台使用
-6. **系统工具**：`update-config`、`keybindings-help`、`loop` 等系统技能直接修改 Claude Code 配置
+5. **AI 视频生成**：
+   - `cinedance-higgsfield`：输出结构化 Seedance 2.0 提示词，支持多镜头序列
+   - `seedance-director`：轻量化提示词，适合快速生成
+   - `hailuo-h3-director`：专为 H3 多模态优化
+6. **AI 图像生成**：
+   - `lira`：支持 Soul 2.0/Cinema、NBP、Seedream 4.5、GPT Image 2 全平台
+   - 角色一致性依赖 Soul ID（平台参数），不能仅靠提示词
+   - 编辑任务固定顺序：NBP（首选） → Seedream（纹理） → GPT Image 2（精细局部）
+7. **角色表演**：`acting` 输出的表演指导需嵌入到视频提示词的"角色行为"部分
+8. **系统工具**：`update-config`、`keybindings-help`、`loop` 等系统技能直接修改 Claude Code 配置
+
+---
+
+## 🆕 三大新技能核心差异
+
+| 维度 | cinedance-higgsfield | acting | lira |
+|------|---------------------|--------|------|
+| **作用对象** | 整个视频镜头（空间+光学+时序） | 镜头内角色的行为/表演 | 单帧图像生成/编辑 |
+| **输出格式** | 结构化多段落提示词 | 角色表演段落（嵌入视频提示词） | 自然散文提示词 |
+| **核心方法论** | 4D：解构-诊断-开发-交付 | 5柱：目标-障碍-策略-节拍-潜台词 | 4D + 模型路由 |
+| **技术特色** | FOV度数光学系统、空间锚定 | 状态链、眼部生命、身体物理 | Soul ID、编辑纪律、防崩溃规则 |
+| **适用平台** | Seedance 2.0 | Seedance 2.0（嵌入） | Soul 2.0/Cinema/NBP/Seedream/GPT Image 2 |
+| **组合使用** | 作为提示词框架 | 填充框架中的角色表演部分 | 生成参考图供视频引用 |
+
+**协作示例**：
+```
+1. lira 生成角色参考图（Soul 2.0，Soul ID: @HERO1）
+2. acting 设计角色表演档案（目标：说服对方，策略：先施压后恳求）
+3. cinedance-higgsfield 生成完整提示词，其中：
+   - ACTIVE REFERENCES 引用 @HERO1
+   - ACTION TIMING 嵌入 acting 的表演描述
+   - OPTICS 选择 29° 短焦人像
+   - LIGHTING 锁定背光逆光
+```
+
+---
 
 ## 📚 推荐技能组合
 
-### 历史题材视频创作流程
+### 🎬 电影级视频制作完整流程（Seedance 2.0）
+1. `/lira` - 生成角色/场景参考图（Soul 2.0/Soul Cinema）
+2. `/acting` - 设计角色表演细节（目标-障碍-策略-节拍-潜台词）
+3. `/cinedance-higgsfield` - 生成多镜头电影分镜提示词（4D 方法论 + 光学设计）
+4. 平台生成 → 如需编辑：`/lira` + NBP/Seedream/GPT Image 2
+
+### 📜 历史题材视频创作流程
 1. `/historian-storyteller` - 深度研究历史人物/事件
 2. `/historical-vlog-creator` - 生成第一视角 Vlog 脚本
-3. `/art-asset-designer` - 拆解场景与人物美术资产
-4. `/seedance-director` 或 `/hailuo-h3-director` - 生成视频分镜提示词
+3. `/lira` - 生成历史人物角色图像参考（Soul 2.0）
+4. `/acting` - 设计历史人物表演风格
+5. `/cinedance-higgsfield` 或 `/seedance-director` - 生成视频分镜提示词
 
-### 短剧创作完整流程
+### 🎭 短剧创作完整流程
 1. `/short-drama-writer` - 剧本创作与改编
-2. `/art-asset-designer` - 人物与场景设计
-3. `/seedance-director` - 分镜头提示词生成
+2. `/lira` - 角色选角表 + 场景概念图
+3. `/acting` - 每场戏的角色表演设计
+4. `/cinedance-higgsfield` - 分镜头提示词生成
 
-### 音乐 MV 制作流程
+### 🎵 音乐 MV 制作流程
 1. `/suno-prompter` - 音乐创作与歌词生成
 2. `/lyric-mv-storyboard` - 根据歌词生成 MV 分镜
-3. `/art-asset-designer` - MV 场景与视觉资产设计
-4. `/hailuo-h3-director` - 生成音画同步的视频提示词
+3. `/lira` - MV 场景与视觉资产设计（Soul Cinema）
+4. `/acting` - 歌手/演员表演设计
+5. `/hailuo-h3-director` - 生成音画同步的视频提示词
 
-## 📄 许可证
+### 🎨 图像资产生产线
+1. `/lira` - 角色选角（Soul 2.0 或 AI Cast）
+2. `/lira` - 场景/环境设计（Soul Cinema，支持 21:9）
+3. `/lira` - 道具/产品表（NBP/GPT Image 2）
+4. 如需编辑：`/lira` - NBP（首选） → Seedream 4.5（纹理） → GPT Image 2（精细局部）
+
+### 🔧 新技能开发
+- `/skill-creator` - 创建、修改、优化新技能
+
+---
 
 个人使用，技能内容归原作者所有。
 
