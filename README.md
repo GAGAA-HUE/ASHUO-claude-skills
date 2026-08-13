@@ -14,7 +14,8 @@
 |--------|----------|
 | `extract-video` | 提取视频信息、关键帧、音频、字幕 |
 | `lyric-mv-storyboard` | 根据歌词深度分析，生成完整音乐 MV 分镜脚本 |
-| `seedance-director` | 电影级分镜提示词生成器，专为 Seedance 2.x 优化 |
+| `seedance-director` | 电影级分镜提示词生成器，专为 Seedance 2.x 优化（15s 以内轻量提示词） |
+| `seedance-2.5-scene-director` | **Seedance 2.5 导演级场景提示词生成器**，30s 叙事场景 + 导演阐述 + 拍摄计划 |
 | `cinedance-higgsfield` | **CINEDANCE V4** - Seedance 2.0 电影提示词导演系统（4D方法论） |
 | `acting` | **角色表演系统** - AI视频角色行为/表演指导（目标-障碍-策略） |
 | `shanyin-director-master-main` | 山音导演大师：专业 AI 视频生成提示词系统 |
@@ -38,6 +39,12 @@
 | `screenwriting-master` | 山音专业编剧辅助：剧本结构分析与创作指导，全格式影视剧本 |
 | `short-drama-writer` | 短剧编剧大师：小说改编、市场分析、原创短剧、分集剧本与分镜 |
 | `suno-prompter` | Suno v5.5 Pro 音乐提示词+歌词生成专家 |
+
+### 🎓 教育与科普
+
+| 技能名 | 功能描述 |
+|--------|----------|
+| `edu-video-creator` | **教育科普短视频顾问**：将课本/教材/科普资料转化为抖音风格教学口播文案与画面设计方案 |
 
 ### 💻 软件开发
 
@@ -66,6 +73,36 @@
 |--------|----------|
 | `grilling` | 压力测试：就方案/决策/想法进行无情追问 |
 | `department-report` | 部门报告生成：将工作日志转化为结构化部门报告 |
+
+### 🔄 Matt Pocock 工程工作流
+
+> 通过 `npx skills@latest add mattpocock/skills` 安装的软件工程技能包，覆盖从想法到交付的完整流程。其中 `code-review`、`tdd`、`codebase-design`、`domain-modeling`、`prototype`、`obsidian-vault`、`research`、`qa` 等通用开发技能已在上文分类中列出，此处补充该包独有的流程与协作技能。
+
+| 技能名 | 功能描述 |
+|--------|----------|
+| `setup-matt-pocock-skills` | 配置工程技能环境：issue tracker、标签词汇、domain doc 布局 |
+| `ask-matt` | 技能路由器：询问当前情况适合使用哪个技能/流程 |
+| `grill-me` | 无代码库时的压力测试：打磨计划或设计 |
+| `grill-with-docs` | 有代码库时的压力测试：同步创建 ADR 和术语表 |
+| `batch-grill-me` | 批量压力测试：一次性抛出所有边界问题 |
+| `handoff` / `claude-handoff` | 会话交接：将当前对话压缩为交接文档 |
+| `wayfinder` | 大型工作规划：为超过一个会话能容纳的任务绘制决策地图 |
+| `to-spec` | 将当前对话转为 spec 并发布到 issue tracker |
+| `to-tickets` | 将计划/spec 拆分为 tracer-bullet tickets |
+| `implement` | 基于 spec 或 tickets 实现功能 |
+| `triage` | issue / 外部 PR 分类与状态机流转 |
+| `improve-codebase-architecture` | 扫描代码库架构改进机会，输出 HTML 报告 |
+| `ubiquitous-language` | 提取 DDD 式统一语言术语表 |
+| `setup-ts-deep-modules` | 用 dependency-cruiser 将 TypeScript 包配置为深模块 |
+| `teach` | 在 workspace 中教授新概念或技能 |
+| `wizard` | 生成交互式 bash 向导，引导完成手动流程 |
+| `loop-me` | 在工作区中就想要构建的工作流进行 spec 压力测试 |
+| `to-questionnaire` | 将无法回答的决策转为问卷 |
+| `edit-article` | 编辑和改进文章结构、清晰度 |
+| `writing-beats` | 将原始材料组装为节拍之旅 |
+| `writing-fragments` | 挖掘原始片段，无结构探索 |
+| `writing-shape` | 将原始材料塑造成文章 |
+| `writing-great-skills` | 编写高质量 skills 的参考指南 |
 
 ### 🔧 工具与辅助
 
@@ -219,9 +256,50 @@ npx skills@latest add mattpocock/skills
 
 ---
 
+### edu-video-creator（教育科普短视频顾问）
+
+**核心定位**：将教科书、课本、科普资料转化为抖音风格教学短视频的口播文案与画面设计顾问。
+
+**输出内容**：
+- **口播文案**：每条 ≤80 字，约 15 秒可读完，抖音历史/科普博主语气
+- **画面设计说明**：主体、内容属性、知识形态、空间关系、开场抓眼策略、信息图层、视觉语法、花字规划
+- **视觉语法工具箱**：信息层级、重点标注、关系示意、信息注释、文字标题、氛围质感、动态节奏、情绪强化、空间建构、数据可视化等 10 类语法
+
+**工作流程**：
+1. 内容整理：知识点梳理、片段拆分、知识层级标注
+2. 偏好确认：目标受众、视频时长、画幅、口播风格、配音来源
+3. 内容精炼 + 口播脚本 + 画面设计
+4. 用户确认与最终交付
+
+**协作关系**：本 skill **只输出文案和画面设计方案**，不生成 H3 视频提示词；后续可交给 `hailuo-h3-director` 转化为视频生成提示词。
+
+**适用场景**：课本内容讲解、历史科普、科学知识、地理文化等知识类短视频
+
+---
+
 ### seedance-director（Seedance 分镜导演）
 
 电影级分镜提示词生成，专为 Seedance 2.x 优化。专业打斗场景支持，Shot 级美术设定隔离，单个 Shot 提示词限制 2000 字符，自然语言化提示词正文。默认输出适合直接复制的轻量成品提示词，优先贴近长镜头、多分镜、蒙太奇三类实用模板。
+
+---
+
+### seedance-2.5-scene-director（Seedance 2.5 导演级场景提示词生成器）
+
+**核心定位**：电影级 30 秒叙事场景创作工具，以"场"为最小创作单元。
+
+**与 seedance-director 的分工**：
+- `seedance-director`：快速单镜头提示词（15s 以内）、简单 MV / 蒙太奇
+- `seedance-2.5-scene-director`：30s 导演化场景、具备叙事弧线、需要导演阐述和场结构规划
+
+**默认输出结构**：
+- **导演阐述**：情感意图 + 核心视觉决策 + 叙事功能（150-250 字，第一人称导演视角）
+- **场元数据**：场号、场类型、叙事功能、总时长、内部节拍
+- **Prompt 本体**：按 `[0s-Xs · 阶段名称]` 时间轴分段，每段覆盖调度语言、镜头语言意图、节奏控制、光影配合
+- **拍摄计划·技术参数**：焦段、光源方案、运动轴线、景深、色温、画幅、禁用项
+
+**快速版**：用户说"快速版"时，跳过导演阐述和场元数据，只输出 Prompt 本体。
+
+**适用平台**：Seedance 2.5
 
 ---
 
@@ -288,14 +366,17 @@ description: |
 4. **Obsidian**：`obsidian-vault` 的保险库路径需在技能配置中设置
 5. **AI 视频生成**：
    - `cinedance-higgsfield`：输出结构化 Seedance 2.0 提示词，支持多镜头序列
-   - `seedance-director`：轻量化提示词，适合快速生成
+   - `seedance-director`：轻量化提示词，适合 15s 以内快速生成
+   - `seedance-2.5-scene-director`：30s 导演化场景，含导演阐述、场元数据、拍摄计划
    - `hailuo-h3-director`：专为 H3 多模态优化
 6. **AI 图像生成**：
    - `lira`：支持 Soul 2.0/Cinema、NBP、Seedream 4.5、GPT Image 2 全平台
    - 角色一致性依赖 Soul ID（平台参数），不能仅靠提示词
    - 编辑任务固定顺序：NBP（首选） → Seedream（纹理） → GPT Image 2（精细局部）
 7. **角色表演**：`acting` 输出的表演指导需嵌入到视频提示词的"角色行为"部分
-8. **系统工具**：`update-config`、`keybindings-help`、`loop` 等系统技能直接修改 Claude Code 配置
+8. **教育科普**：`edu-video-creator` 只输出文案和画面设计方案，不生成 H3 提示词；后续可交给 `hailuo-h3-director`
+9. **Matt Pocock 工程技能包**：`setup-matt-pocock-skills` 需在使用其他工程流程技能前运行一次，配置 issue tracker 和 domain doc 布局
+10. **系统工具**：`update-config`、`keybindings-help`、`loop` 等系统技能直接修改 Claude Code 配置
 
 ---
 
@@ -331,12 +412,24 @@ description: |
 3. `/cinedance-higgsfield` - 生成多镜头电影分镜提示词（4D 方法论 + 光学设计）
 4. 平台生成 → 如需编辑：`/lira` + NBP/Seedream/GPT Image 2
 
+### 🎬 Seedance 2.5 叙事场景制作流程
+1. `/lira` - 生成角色/场景参考图（Soul 2.0/Soul Cinema）
+2. `/acting` - 设计角色表演档案（目标-障碍-策略-节拍-潜台词）
+3. `/seedance-2.5-scene-director` - 生成 30s 导演化场景提示词（含导演阐述 + 拍摄计划）
+4. 平台生成 → 如需编辑：`/lira` + NBP/Seedream/GPT Image 2
+
 ### 📜 历史题材视频创作流程
 1. `/historian-storyteller` - 深度研究历史人物/事件
 2. `/historical-vlog-creator` - 生成第一视角 Vlog 脚本
 3. `/lira` - 生成历史人物角色图像参考（Soul 2.0）
 4. `/acting` - 设计历史人物表演风格
 5. `/cinedance-higgsfield` 或 `/seedance-director` - 生成视频分镜提示词
+
+### 🎓 教育科普短视频制作流程
+1. `/edu-video-creator` - 将课本/科普内容拆分为 15s 片段，输出口播文案 + 画面设计
+2. `/lira` - 生成关键视觉资产（文物、地图、人物复原图等）
+3. `/hailuo-h3-director` - 将画面设计转化为 H3 视频生成提示词
+4. 平台生成 → 如需编辑：`/lira` + NBP/Seedream/GPT Image 2
 
 ### 🎭 短剧创作完整流程
 1. `/short-drama-writer` - 剧本创作与改编
