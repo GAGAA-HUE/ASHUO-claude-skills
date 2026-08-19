@@ -39,6 +39,7 @@
 | `screenwriting-master` | 山音专业编剧辅助：剧本结构分析与创作指导，全格式影视剧本 |
 | `short-drama-writer` | 短剧编剧大师：小说改编、市场分析、原创短剧、分集剧本与分镜 |
 | `suno-prompter` | Suno v5.5 Pro 音乐提示词+歌词生成专家 |
+| `cat-heritage-series` | 猫咪非遗系列短视频选题大纲生成器：基于双猫设定+设计宪法，输出多期结构化脚本表 |
 
 ### 🎓 教育与科普
 
@@ -64,8 +65,6 @@
 | `scaffold-exercises` | 创建练习目录结构，含题目、解答和解析 |
 | `setup-pre-commit` | 配置 Husky pre-commit 钩子（Prettier + 类型检查 + 测试） |
 | `tdd` | 测试驱动开发：红→绿循环，含测试规范与反模式指导 |
-| `simplify` | 代码简化：审查变更后的代码，应用复用、简化、效率和高度清理 |
-| `security-review` | 安全审查：扫描安全漏洞和潜在风险 |
 
 ### 📋 项目管理与规划
 
@@ -85,7 +84,8 @@
 | `grill-me` | 无代码库时的压力测试：打磨计划或设计 |
 | `grill-with-docs` | 有代码库时的压力测试：同步创建 ADR 和术语表 |
 | `batch-grill-me` | 批量压力测试：一次性抛出所有边界问题 |
-| `handoff` / `claude-handoff` | 会话交接：将当前对话压缩为交接文档 |
+| `handoff` | 会话交接：将当前对话压缩为交接文档 |
+| `claude-handoff` | 会话交接变体：将当前对话压缩为交接文档（mattpocock/skills 包内别名） |
 | `wayfinder` | 大型工作规划：为超过一个会话能容纳的任务绘制决策地图 |
 | `to-spec` | 将当前对话转为 spec 并发布到 issue tracker |
 | `to-tickets` | 将计划/spec 拆分为 tracer-bullet tickets |
@@ -256,6 +256,31 @@ npx skills@latest add mattpocock/skills
 
 ---
 
+### cat-heritage-series（猫咪非遗系列短视频选题大纲生成器）
+
+基于共享理解 v1.3 + 双猫设定 + 设计宪法 v1.2，为"猫咪为主角的非遗科普短视频系列"生成多期结构化选题大纲。
+
+**调用前必读 references**（每次调用都需重新读取，避免与归档内容重复）：
+- `references/design-spec.md` — v1.3 决策清单 + 双猫设定 + 设计宪法
+- `references/v4-format-conventions.md` — v4 输出格式约定
+- `references/episode-archive-index.md` — 已有归档索引（避免重复生成）
+
+**输入约定**：最小输入为高层主题词（"做一期米塑"、"plan 10 episodes 覆盖蜡染/扎染/夹缬/灰缬/灰缬"），可选补充期望期数、主题类别、非遗级别、主推猫复用。
+
+**v4 输出结构**（每期一份结构化脚本表）：
+- **基本信息**：期号、主题、类别、非遗级别、风格倾向
+- **工艺段（含制作知识文本）**：核心知识点 + 视觉化工艺要点
+- **双猫互动**：橘猫 + 另一只猫的角色分工、动作编排、关系表达
+- **橘猫行为推导**：从橘猫性格出发预测其对工艺的反应
+- **整体节奏 + 脚本叙事**：开场 3 秒钩子 → 工艺讲解 → 双猫互动 → 收尾
+- **字幕卡汇总**：花字文案、放置位置、节奏点
+
+**触发场景**：用户说"做一期 X"、"下一集拍 X"、"规划 N 期"、"列选题"、询问"这个非遗适不适合做"。
+
+**不适用**：单条 Seedance 视频提示词生成（→ `seedance-director` / `seedance-2.5-scene-director`）；非猫 / 非非遗内容；用户已给完整剧本只想校验（→ 直接读 v1.3 文档对照）。
+
+---
+
 ### edu-video-creator（教育科普短视频顾问）
 
 **核心定位**：将教科书、课本、科普资料转化为抖音风格教学短视频的口播文案与画面设计顾问。
@@ -375,7 +400,8 @@ description: |
    - 编辑任务固定顺序：NBP（首选） → Seedream（纹理） → GPT Image 2（精细局部）
 7. **角色表演**：`acting` 输出的表演指导需嵌入到视频提示词的"角色行为"部分
 8. **教育科普**：`edu-video-creator` 只输出文案和画面设计方案，不生成 H3 提示词；后续可交给 `hailuo-h3-director`
-9. **Matt Pocock 工程技能包**：`setup-matt-pocock-skills` 需在使用其他工程流程技能前运行一次，配置 issue tracker 和 domain doc 布局
+9. **猫咪非遗系列**：`cat-heritage-series` 每次被调用必须先读取 `references/`（design-spec / v4-format-conventions / episode-archive-index），避免与已归档内容重复；本技能只输出多期选题大纲，不生成单个 Seedance 提示词
+10. **Matt Pocock 工程技能包**：`setup-matt-pocock-skills` 需在使用其他工程流程技能前运行一次，配置 issue tracker 和 domain doc 布局
 10. **系统工具**：`update-config`、`keybindings-help`、`loop` 等系统技能直接修改 Claude Code 配置
 
 ---
@@ -430,6 +456,14 @@ description: |
 2. `/lira` - 生成关键视觉资产（文物、地图、人物复原图等）
 3. `/hailuo-h3-director` - 将画面设计转化为 H3 视频生成提示词
 4. 平台生成 → 如需编辑：`/lira` + NBP/Seedream/GPT Image 2
+
+### 🐱 猫咪非遗系列短视频规划流程
+1. `/cat-heritage-series` - 生成多期结构化选题大纲（自动读取已归档索引避免重复）
+2. `/lira` - 生成双猫角色参考图（Soul 2.0，锁定双猫 Soul ID）
+3. `/lira` - 关键文物 / 工艺道具 / 场景参考图（按需）
+4. `/acting` - 为橘猫设计性格化表演档案（目标-障碍-策略-节拍-潜台词）
+5. 单期制作：`/seedance-director` 或 `/seedance-2.5-scene-director` - 把大纲中的"双猫互动+工艺段"落到视频提示词
+6. 平台生成 → 如需编辑：`/lira` + NBP/Seedream/GPT Image 2
 
 ### 🎭 短剧创作完整流程
 1. `/short-drama-writer` - 剧本创作与改编
