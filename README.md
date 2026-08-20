@@ -20,6 +20,14 @@
 | `acting` | **角色表演系统** - AI视频角色行为/表演指导（目标-障碍-策略） |
 | `shanyin-director-master-main` | 山音导演大师：专业 AI 视频生成提示词系统 |
 | `hailuo-h3-director` | H3 多模态视频提示词生成器，专为 Hailuo H3（MiniMax）设计 |
+| `3d-animation-short-generator` | 3D 动画短视频：脚本→镜头→3D 提示词的端到端工作流 |
+| `brand-promo-video-generator` | 品牌宣传视频生成器：从品牌资料到成片提示词的完整流水线 |
+| `co-op-game-intro-generator` | 合作游戏开场动画生成器：双人/多人合作游戏 CG 片头提示词 |
+| `handdrawn-live-video-generator` | 手绘实拍风短视频生成器：板绘/手绘动效与实拍融合的视频提示词 |
+| `music-video-subtitle-generator` | MV 字幕与歌词排版生成器：歌词时间轴、字幕样式、动态排版方案 |
+| `paper-collage-explainer-generator` | 纸质拼贴风解说视频生成器：剪报/拼贴美学的科普类视频提示词 |
+| `papercraft-stop-motion-explainer` | 纸艺定格动画解说生成器：纸质立体模型 + 定格动画风格的提示词 |
+| `minimalist-product-ad-generator` | 极简风产品广告生成器：留白/材质光/克制动效的产品广告提示词 |
 
 ### 🖼️ AI 绘画与图像
 
@@ -122,6 +130,8 @@
 
 ### 🛠️ Claude Code 系统工具
 
+> 除 `skill-creator` 外，本节列出的均为 Claude Code 内置技能，不在仓库 `skills/` 目录中，无需单独安装。
+
 | 技能名 | 功能描述 |
 |--------|----------|
 | `skill-creator` | 技能创建器：创建、修改、优化和测试 Claude 技能 |
@@ -133,6 +143,8 @@
 | `loop` | 循环执行：按时间间隔重复运行命令或技能 |
 | `claude-api` | Claude API / Anthropic SDK 参考文档 |
 | `run` | 启动和驱动项目应用，确认变更生效 |
+| `simplify` | 审查变更代码并应用复用、简化、效率优化 |
+| `security-review` | 安全审查：在改动前/后扫描安全风险 |
 
 ---
 
@@ -402,7 +414,7 @@ description: |
 8. **教育科普**：`edu-video-creator` 只输出文案和画面设计方案，不生成 H3 提示词；后续可交给 `hailuo-h3-director`
 9. **猫咪非遗系列**：`cat-heritage-series` 每次被调用必须先读取 `references/`（design-spec / v4-format-conventions / episode-archive-index），避免与已归档内容重复；本技能只输出多期选题大纲，不生成单个 Seedance 提示词
 10. **Matt Pocock 工程技能包**：`setup-matt-pocock-skills` 需在使用其他工程流程技能前运行一次，配置 issue tracker 和 domain doc 布局
-10. **系统工具**：`update-config`、`keybindings-help`、`loop` 等系统技能直接修改 Claude Code 配置
+11. **系统工具**：`update-config`、`keybindings-help`、`loop` 等系统技能直接修改 Claude Code 配置
 
 ---
 
